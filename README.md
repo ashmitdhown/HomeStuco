@@ -67,3 +67,6 @@ export default tseslint.config([
   },
 ])
 ```
+
+
+npm create vite@latest . -- --template react-ts
