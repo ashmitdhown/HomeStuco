@@ -23,7 +23,7 @@ const Navigation = () => {
       <Link to="/" className="flex items-center space-x-3 group">
         <img src={logo} alt="Student Council Logo" className="h-12 w-12 object-contain transition-transform duration-300 group-hover:scale-105" />
         <div className="text-white">
-          <div className="font-bold text-lg tracking-wide">BPDC Student Council</div>
+          <div className="font-bold text-lg tracking-wide">BITS Student Council</div>
           <div className="text-champagne text-xs font-medium">Excellence in Leadership</div>
         </div>
       </Link>

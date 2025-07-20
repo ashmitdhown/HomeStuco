@@ -28,7 +28,7 @@ const councilMembers: CouncilMember[] = [
     linkedin: "https://www.linkedin.com/in/shams-gangavali",
   },
   {
-    name: "Siva Balamurugan",
+    name: "Sivaa Balamurugan",
     position: "President",
     image: sivaImg,
     instagram: "https://www.instagram.com/siva_balamurugan",
@@ -99,37 +99,40 @@ export const CouncilSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Add larger margin-top to prevent image overlap with section title */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-8 mt-24">
           {councilMembers.map((member, index) => (
             <Card 
               key={index} 
-              className="bg-card/80 backdrop-blur-sm border-border/50 shadow-card hover:shadow-luxury transition-all duration-300 group hover:transform hover:scale-105 relative overflow-hidden"
+              className="bg-card/80 backdrop-blur-sm border-border/50 shadow-card hover:shadow-luxury transition-all duration-300 group hover:transform hover:scale-105 relative overflow-visible min-h-[200px]"
             >
-              <CardContent className="p-6 text-center relative z-10 group-hover:opacity-0 transition-opacity duration-300">
-                <div className="mb-4 relative">
-                  <div className="w-24 h-24 mx-auto rounded-full overflow-hidden shadow-glow border-2 border-champagne/30">
-                    <img 
-                      src={member.image} 
-                      alt={member.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+              {/* Overlapping Profile Image, fades out on hover */}
+              <div className="absolute left-1/2 -top-12 transform -translate-x-1/2 z-20 transition-opacity duration-300 group-hover:opacity-0">
+                <div className="w-24 h-24 rounded-full overflow-hidden shadow-glow border-4 border-white">
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                
-                <h3 className="text-xl font-semibold text-velvet mb-2">
+              </div>
+              <CardContent className="p-6 text-center relative z-10 pt-16 flex flex-col items-center">
+                <h3 className="text-xl font-bold text-velvet mb-1 mt-2 tracking-tight text-center transition-opacity duration-300 group-hover:opacity-0">
                   {member.name}
                 </h3>
-                
+                <span className="text-base font-medium text-muted-foreground mb-3 text-center block transition-opacity duration-300 group-hover:opacity-0">
+                  {member.position}
+                </span>
                 <Badge 
                   variant="secondary" 
-                  className="bg-champagne/20 text-velvet hover:bg-champagne/30 mb-3"
+                  className="bg-champagne/20 text-velvet hover:bg-champagne/30 mb-3 hidden"
                 >
                   {member.position}
                 </Badge>
               </CardContent>
 
               {/* Hover Overlay with Background Color Change */}
-              <div className="absolute inset-0 bg-gradient-to-br from-velvet/90 to-champagne/80 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center z-20">
+              <div className="absolute inset-0 bg-gradient-to-br from-velvet/90 to-champagne/80 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center z-20 rounded-lg">
                 <div className="flex gap-4 justify-center">
                   {member.instagram && (
                     <a
