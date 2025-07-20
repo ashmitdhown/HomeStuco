@@ -49,30 +49,30 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "council@bpdc.edu.in",
-      link: "mailto:council@bpdc.edu.in",
+      value: "studentcouncil@dubai.bits-pilani.ac.in",
+      link: "mailto:studentcouncil@dubai.bits-pilani.ac.in",
       description: "Send us an email anytime"
     },
     {
       icon: Instagram,
       title: "Instagram",
-      value: "@bpdccouncil",
-      link: "https://www.instagram.com/bpdccouncil",
+      value: "@council.bitsdubai",
+      link: "https://www.instagram.com/council.bitsdubai/",
       description: "Follow us for updates"
     },
     {
       icon: Linkedin,
       title: "LinkedIn",
-      value: "BPDC Student Council",
-      link: "https://www.linkedin.com/company/bpdc-student-council",
+      value: "Student Council BPDC",
+      link: "https://www.linkedin.com/company/student-council-bpdc/",
       description: "Connect with us professionally"
     },
     {
       icon: MapPin,
-      title: "Office Location",
-      value: "Student Center, BPDC Campus",
-      link: "#",
-      description: "Visit us during office hours"
+      title: "Location",
+      value: "BPDC Campus, Dubai",
+      link: "https://www.google.com/maps/place/Birla+Institute+of+Technology+and+Science,+Pilani-+Dubai/data=!4m2!3m1!1s0x0:0x178903db8ef63bc7?sa=X&ved=1t:2428&ictx=111",
+      description: "Find us on the map"
     }
   ];
 
@@ -127,15 +127,16 @@ const Contact = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
           {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="h-full"
           >
-            <Card className="bg-card/90 backdrop-blur-sm border-border/50 shadow-luxury">
+            <Card className="bg-card/90 backdrop-blur-sm border-border/50 shadow-luxury h-full min-h-[500px] flex flex-col">
               <CardHeader>
                 <CardTitle className="text-2xl text-velvet flex items-center gap-3">
                   <MessageSquare className="h-6 w-6 text-champagne" />
@@ -178,8 +179,9 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="h-full"
           >
-            <Card className="bg-card/90 backdrop-blur-sm border-border/50 shadow-luxury">
+            <Card className="bg-card/90 backdrop-blur-sm border-border/50 shadow-luxury h-full min-h-[500px] flex flex-col">
               <CardHeader>
                 <CardTitle className="text-2xl text-velvet flex items-center gap-3">
                   <Send className="h-6 w-6 text-champagne" />

@@ -42,7 +42,7 @@ const About = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
         >
           <h1 className="text-4xl md:text-6xl font-bold text-velvet mb-6">
             About <span className="text-transparent bg-gradient-accent bg-clip-text">Student Council</span>
@@ -59,7 +59,7 @@ const About = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.4, delay: 0.05 }}
         >
           <Card className="bg-white/90 backdrop-blur-sm border-border/50 shadow-luxury">
             <CardContent className="p-8 md:p-12">
@@ -125,7 +125,7 @@ const About = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
         >
           <Card className="bg-gradient-to-br from-velvet/5 to-champagne/10 backdrop-blur-sm border-border/50 shadow-luxury">
             <CardContent className="p-8 md:p-12">
@@ -205,7 +205,7 @@ const About = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
         >
           <Card className="bg-white/90 backdrop-blur-sm border-border/50 shadow-luxury">
             <CardContent className="p-8">
