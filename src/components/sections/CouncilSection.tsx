@@ -1,10 +1,13 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Instagram, Linkedin } from "lucide-react";
 
 interface CouncilMember {
   name: string;
   position: string;
   image: string;
+  instagram?: string;
+  linkedin?: string;
 }
 
 const councilMembers: CouncilMember[] = [
@@ -12,48 +15,57 @@ const councilMembers: CouncilMember[] = [
     name: "Siva Balamurugan",
     position: "President",
     image: "/api/placeholder/300/300",
+    instagram: "https://www.instagram.com/siva_balamurugan",
+    linkedin: "https://www.linkedin.com/in/siva-balamurugan",
   },
   {
     name: "Isharjot Singh Pasricha",
     position: "Vice President",
     image: "/api/placeholder/300/300",
+    instagram: "https://www.instagram.com/isharjot_singh",
+    linkedin: "https://www.linkedin.com/in/isharjot-singh-pasricha",
   },
   {
     name: "Sivapriya Madhu Pillai",
     position: "Secretary",
     image: "/api/placeholder/300/300",
+    instagram: "https://www.instagram.com/sivapriya_madhu",
+    linkedin: "https://www.linkedin.com/in/sivapriya-madhu-pillai",
   },
   {
     name: "Raj Singh",
     position: "4th Year HR",
     image: "/api/placeholder/300/300",
-
+    instagram: "https://www.instagram.com/raj_singh",
+    linkedin: "https://www.linkedin.com/in/raj-singh",
   },
   {
     name: "Ashmit Dhown",
     position: "3rd Year HR",
     image: "/api/placeholder/300/300",
-
+    instagram: "https://www.instagram.com/ashmit_dhown",
+    linkedin: "https://www.linkedin.com/in/ashmit-dhown",
   },
   {
     name: "Gurkaran Singh",
     position: "3rd Year DSR",
     image: "/api/placeholder/300/300",
-
+    instagram: "https://www.instagram.com/gurkaran_singh",
+    linkedin: "https://www.linkedin.com/in/gurkaran-singh",
   },
-
   {
     name: "Suhas Simha S",
     position: "2nd Year HR",
     image: "/api/placeholder/300/300",
-
+    instagram: "https://www.instagram.com/suhas_simha",
+    linkedin: "https://www.linkedin.com/in/suhas-simha",
   },
-
   {
     name: "Tanisha Handa",
     position: "2nd Year DSR",
     image: "/api/placeholder/300/300",
-
+    instagram: "https://www.instagram.com/tanisha_handa",
+    linkedin: "https://www.linkedin.com/in/tanisha-handa",
   }
 ];
 
@@ -75,9 +87,9 @@ export const CouncilSection = () => {
           {councilMembers.map((member, index) => (
             <Card 
               key={index} 
-              className="bg-card/80 backdrop-blur-sm border-border/50 shadow-card hover:shadow-luxury transition-all duration-300 group hover:transform hover:scale-105"
+              className="bg-card/80 backdrop-blur-sm border-border/50 shadow-card hover:shadow-luxury transition-all duration-300 group hover:transform hover:scale-105 relative overflow-hidden"
             >
-              <CardContent className="p-6 text-center">
+              <CardContent className="p-6 text-center relative z-10 group-hover:opacity-0 transition-opacity duration-300">
                 <div className="mb-4 relative">
                   <div className="w-24 h-24 mx-auto rounded-full bg-gradient-accent flex items-center justify-center shadow-glow">
                     <span className="text-2xl font-bold text-velvet">
@@ -96,8 +108,33 @@ export const CouncilSection = () => {
                 >
                   {member.position}
                 </Badge>
-                
               </CardContent>
+
+              {/* Hover Overlay with Background Color Change */}
+              <div className="absolute inset-0 bg-gradient-to-br from-velvet/90 to-champagne/80 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center z-20">
+                <div className="flex gap-4 justify-center">
+                  {member.instagram && (
+                    <a
+                      href={member.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 hover:scale-110 transition-all duration-200 shadow-lg border border-white/30 cursor-pointer"
+                    >
+                      <Instagram className="w-6 h-6" />
+                    </a>
+                  )}
+                  {member.linkedin && (
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 hover:scale-110 transition-all duration-200 shadow-lg border border-white/30 cursor-pointer"
+                    >
+                      <Linkedin className="w-6 h-6" />
+                    </a>
+                  )}
+                </div>
+              </div>
             </Card>
           ))}
         </div>
