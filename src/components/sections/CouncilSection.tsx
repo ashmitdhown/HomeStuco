@@ -1,6 +1,15 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Instagram, Linkedin } from "lucide-react";
+import shamsImg from "@/assets/councilphotos/Shams.jpeg";
+import sivaImg from "@/assets/councilphotos/Siva.jpeg";
+import isharjotImg from "@/assets/councilphotos/Isharjot.jpeg";
+import sivapriyaImg from "@/assets/councilphotos/Sivapriya.jpeg";
+import rajImg from "@/assets/councilphotos/Raj.jpeg";
+import ashmitImg from "@/assets/councilphotos/Ashmit.jpeg";
+import gurkaranImg from "@/assets/councilphotos/Gurkaran.jpeg";
+import suhasImg from "@/assets/councilphotos/Suhas.jpeg";
+import tanishaImg from "@/assets/councilphotos/Tanisha.jpeg";
 
 interface CouncilMember {
   name: string;
@@ -12,58 +21,65 @@ interface CouncilMember {
 
 const councilMembers: CouncilMember[] = [
   {
+    name: "Mohammad Shamshuddin Gangavali",
+    position: "Ex-Officio",
+    image: shamsImg,
+    instagram: "https://www.instagram.com/shams_gangavali",
+    linkedin: "https://www.linkedin.com/in/shams-gangavali",
+  },
+  {
     name: "Siva Balamurugan",
     position: "President",
-    image: "/api/placeholder/300/300",
+    image: sivaImg,
     instagram: "https://www.instagram.com/siva_balamurugan",
     linkedin: "https://www.linkedin.com/in/siva-balamurugan",
   },
   {
     name: "Isharjot Singh Pasricha",
     position: "Vice President",
-    image: "/api/placeholder/300/300",
+    image: isharjotImg,
     instagram: "https://www.instagram.com/isharjot_singh",
     linkedin: "https://www.linkedin.com/in/isharjot-singh-pasricha",
   },
   {
     name: "Sivapriya Madhu Pillai",
     position: "Secretary",
-    image: "/api/placeholder/300/300",
+    image: sivapriyaImg,
     instagram: "https://www.instagram.com/sivapriya_madhu",
     linkedin: "https://www.linkedin.com/in/sivapriya-madhu-pillai",
   },
   {
     name: "Raj Singh",
     position: "4th Year HR",
-    image: "/api/placeholder/300/300",
+    image: rajImg,
     instagram: "https://www.instagram.com/raj_singh",
     linkedin: "https://www.linkedin.com/in/raj-singh",
   },
   {
     name: "Ashmit Dhown",
     position: "3rd Year HR",
-    image: "/api/placeholder/300/300",
+    image: ashmitImg,
     instagram: "https://www.instagram.com/ashmit_dhown",
     linkedin: "https://www.linkedin.com/in/ashmit-dhown",
   },
   {
     name: "Gurkaran Singh",
     position: "3rd Year DSR",
-    image: "/api/placeholder/300/300",
+    image: gurkaranImg,
     instagram: "https://www.instagram.com/gurkaran_singh",
     linkedin: "https://www.linkedin.com/in/gurkaran-singh",
   },
   {
     name: "Suhas Simha S",
     position: "2nd Year HR",
-    image: "/api/placeholder/300/300",
+    image: suhasImg,
     instagram: "https://www.instagram.com/suhas_simha",
     linkedin: "https://www.linkedin.com/in/suhas-simha",
   },
   {
     name: "Tanisha Handa",
     position: "2nd Year DSR",
-    image: "/api/placeholder/300/300",
+    image: tanishaImg,
     instagram: "https://www.instagram.com/tanisha_handa",
     linkedin: "https://www.linkedin.com/in/tanisha-handa",
   }
@@ -91,10 +107,12 @@ export const CouncilSection = () => {
             >
               <CardContent className="p-6 text-center relative z-10 group-hover:opacity-0 transition-opacity duration-300">
                 <div className="mb-4 relative">
-                  <div className="w-24 h-24 mx-auto rounded-full bg-gradient-accent flex items-center justify-center shadow-glow">
-                    <span className="text-2xl font-bold text-velvet">
-                      {member.name.split(' ').map(n => n[0]).join('')}
-                    </span>
+                  <div className="w-24 h-24 mx-auto rounded-full overflow-hidden shadow-glow border-2 border-champagne/30">
+                    <img 
+                      src={member.image} 
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
                 

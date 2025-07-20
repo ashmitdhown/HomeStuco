@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, Home, Users, Calendar, Mail, Trophy } from "lucide-react";
+import { Menu, X, Home, Users, Calendar, Mail, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
 
@@ -11,6 +11,7 @@ const Navigation = () => {
     { name: "Home", path: "/", icon: Home },
     { name: "About", path: "/about", icon: Users },
     { name: "Events", path: "/events", icon: Calendar },
+    { name: "Merch", path: "/merch", icon: ShoppingBag },
     { name: "Contact", path: "/contact", icon: Mail },
   ];
 

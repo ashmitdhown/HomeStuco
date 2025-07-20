@@ -1,13 +1,13 @@
 import { HeroSection } from "@/components/sections/HeroSection";
 import { CouncilSection } from "@/components/sections/CouncilSection";
-import { EventsSection } from "@/components/sections/EventsSection";
+import { AnnouncementSection } from "@/components/sections/AnnouncementSection";
 
 const Index = () => {
   return (
     <div className="min-h-screen pt-16">
       <HeroSection />
       <CouncilSection />
-      <EventsSection />
+      <AnnouncementSection/>
     </div>
   );
 };

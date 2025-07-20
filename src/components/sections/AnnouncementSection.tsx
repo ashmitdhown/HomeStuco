@@ -7,7 +7,7 @@ import orientationImg from "@/assets/orientation-fair.jpg";
 import workshopImg from "@/assets/leadership-workshop.jpg";
 import serviceImg from "@/assets/community-service.jpg";
 
-interface Event {
+interface Announcement {
   id: number;
   title: string;
   date: string;
@@ -18,7 +18,7 @@ interface Event {
   category: string;
 }
 
-const events: Event[] = [
+const events: Announcement[] = [
   {
     id: 1,
     title: "Annual Orientation Fair",
@@ -51,7 +51,7 @@ const events: Event[] = [
   }
 ];
 
-export const EventsSection = () => {
+export const AnnouncementSection = () => {
   return (
     <section className="py-20 bg-gradient-secondary relative overflow-hidden">
       {/* Luxe Background Elements */}
@@ -91,7 +91,7 @@ export const EventsSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-velvet mb-6">
-            LATEST EVENTS
+            ANNOUNCEMENTS
           </h2>
           <div className="w-24 h-1 bg-gradient-accent mx-auto mb-6"></div>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -182,27 +182,6 @@ export const EventsSection = () => {
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          className="text-center mt-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <Button
-            size="lg"
-            className="bg-gradient-primary text-pearl hover:bg-gradient-primary/90 font-semibold px-8 py-3 shadow-luxury hover:shadow-glow transition-all duration-300"
-            asChild
-          >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              VIEW ALL EVENTS
-            </motion.button>
-          </Button>
-        </motion.div>
       </div>
     </section>
   );
