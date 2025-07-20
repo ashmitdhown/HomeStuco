@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Calendar, Clock, Users, MapPin } from "lucide-react";
+import { Calendar, Clock, Users, MapPin, X, ExternalLink } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -52,6 +53,19 @@ const events: Announcement[] = [
 ];
 
 export const AnnouncementSection = () => {
+  const [selectedEvent, setSelectedEvent] = useState<Announcement | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleLearnMore = (event: Announcement) => {
+    setSelectedEvent(event);
+    setIsModalOpen(true);
+  };
+
+  const handleJoinEvent = () => {
+    // Replace this URL with your actual Google Form URL for event registration
+    window.open('https://forms.google.com/event-registration-form', '_blank');
+  };
+
   return (
     <section className="py-20 bg-gradient-secondary relative overflow-hidden">
       {/* Luxe Background Elements */}
@@ -167,7 +181,7 @@ export const AnnouncementSection = () => {
                   <div className="pt-4 border-t border-border/50">
                     <Button 
                       className="w-full bg-velvet hover:bg-velvet/90 text-pearl font-semibold transition-all duration-300 hover:shadow-glow"
-                      asChild
+                      onClick={() => handleLearnMore(event)}
                     >
                       <motion.button
                         whileHover={{ scale: 1.02 }}
@@ -183,6 +197,127 @@ export const AnnouncementSection = () => {
           ))}
         </div>
       </div>
+
+      {/* Event Details Modal */}
+      {isModalOpen && selectedEvent && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={() => setIsModalOpen(false)}
+          ></div>
+          
+          {/* Modal Content */}
+          <div className="relative bg-card/95 backdrop-blur-md border border-border/50 shadow-luxury max-w-4xl w-full max-h-[90vh] rounded-xl overflow-hidden flex flex-col">
+            {/* Close Button */}
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-4 right-4 z-10 w-8 h-8 bg-black/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/40 transition-colors"
+            >
+              <X className="h-4 w-4" />
+            </button>
+            
+            {/* Event Image */}
+            <div className="relative h-48 md:h-56 overflow-hidden flex-shrink-0">
+              <img
+                src={selectedEvent.image}
+                alt={selectedEvent.title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-velvet/60 via-transparent to-transparent"></div>
+              <div className="absolute bottom-4 left-4">
+                <Badge 
+                  variant="secondary" 
+                  className="bg-champagne/90 text-velvet hover:bg-champagne border-none"
+                >
+                  {selectedEvent.category}
+                </Badge>
+              </div>
+            </div>
+            
+            {/* Event Details */}
+            <div className="p-4 md:p-6 space-y-4 md:space-y-6 overflow-y-auto flex-1">
+              {/* Header */}
+              <div className="text-center">
+                <h2 className="text-2xl md:text-3xl font-bold text-velvet mb-3">
+                  {selectedEvent.title}
+                </h2>
+                <div className="w-16 h-1 bg-gradient-accent mx-auto mb-4"></div>
+              </div>
+              
+              {/* Description */}
+              <div className="text-center">
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                  {selectedEvent.description}
+                </p>
+              </div>
+
+              {/* Event Details Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div className="flex items-center gap-3 p-3 bg-gradient-primary/10 rounded-xl border border-champagne/20">
+                  <Calendar className="h-4 w-4 text-champagne" />
+                  <div>
+                    <p className="text-xs text-muted-foreground">Date</p>
+                    <p className="font-semibold text-velvet text-sm">{selectedEvent.date}</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-3 p-3 bg-gradient-primary/10 rounded-xl border border-champagne/20">
+                  <Clock className="h-4 w-4 text-champagne" />
+                  <div>
+                    <p className="text-xs text-muted-foreground">Time</p>
+                    <p className="font-semibold text-velvet text-sm">{selectedEvent.time}</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-3 p-3 bg-gradient-primary/10 rounded-xl border border-champagne/20">
+                  <Users className="h-4 w-4 text-champagne" />
+                  <div>
+                    <p className="text-xs text-muted-foreground">Expected Attendees</p>
+                    <p className="font-semibold text-velvet text-sm">{selectedEvent.attendees} students</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Additional Information */}
+              <div className="bg-gradient-primary/10 rounded-xl p-4 border border-champagne/20">
+                <h4 className="font-semibold text-velvet mb-3">
+                  What to Expect:
+                </h4>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-champagne rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Engaging activities and interactive sessions</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-champagne rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Networking opportunities with fellow students</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-champagne rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Valuable insights and learning experiences</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-champagne rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Refreshments and social interaction</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Join Button */}
+              <div className="text-center">
+                <Button
+                  onClick={handleJoinEvent}
+                  className="bg-velvet hover:bg-velvet/90 text-pearl font-semibold px-8 py-3 shadow-luxury hover:shadow-glow transition-all duration-300"
+                >
+                  <ExternalLink className="h-4 w-4 mr-2" />
+                  Join
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

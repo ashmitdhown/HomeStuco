@@ -87,7 +87,7 @@ const councilMembers: CouncilMember[] = [
 
 export const CouncilSection = () => {
   return (
-    <section className="py-20 bg-gradient-card">
+    <section id="council-section" className="py-20 bg-gradient-card">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-velvet mb-6">

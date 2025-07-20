@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight, Users, Calendar, Award } from "lucide-react";
 
 export const HeroSection = () => {
+
   return (
     <section className="min-h-screen bg-gradient-hero flex items-center justify-center px-4 py-20">
       <div className="max-w-6xl mx-auto text-center">
@@ -20,8 +21,13 @@ export const HeroSection = () => {
           <Button 
             size="lg" 
             className="bg-velvet hover:bg-velvet/90 text-pearl px-8 py-6 text-lg font-semibold shadow-luxury hover:shadow-glow transition-all duration-300"
+            onClick={() => {
+              document.getElementById('council-section')?.scrollIntoView({ 
+                behavior: 'smooth' 
+              });
+            }}
           >
-            Join Our Mission
+            Know Your Council
             <ChevronRight className="ml-2 h-5 w-5" />
           </Button>
           <Button 
@@ -59,6 +65,8 @@ export const HeroSection = () => {
           </div>
         </div>
       </div>
+
+
     </section>
   );
 };
