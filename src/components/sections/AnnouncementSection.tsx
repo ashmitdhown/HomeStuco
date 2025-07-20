@@ -67,7 +67,7 @@ export const AnnouncementSection = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-secondary relative overflow-hidden">
+    <section id="announcement-section" className="py-20 bg-gradient-secondary relative overflow-hidden">
       {/* Luxe Background Elements */}
       <div className="absolute inset-0">
         <motion.div
@@ -201,117 +201,124 @@ export const AnnouncementSection = () => {
       {/* Event Details Modal */}
       {isModalOpen && selectedEvent && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          {/* Backdrop */}
+          {/* Enhanced Backdrop */}
           <div 
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/60 backdrop-blur-md"
             onClick={() => setIsModalOpen(false)}
           ></div>
           
-          {/* Modal Content */}
-          <div className="relative bg-card/95 backdrop-blur-md border border-border/50 shadow-luxury max-w-4xl w-full max-h-[90vh] rounded-xl overflow-hidden flex flex-col">
-            {/* Close Button */}
+          {/* Enhanced Modal Content */}
+          <div className="relative bg-white/95 backdrop-blur-xl border border-white/20 shadow-2xl max-w-5xl w-full max-h-[92vh] rounded-2xl overflow-hidden flex flex-col">
+            {/* Enhanced Close Button */}
             <button
               onClick={() => setIsModalOpen(false)}
-              className="absolute top-4 right-4 z-10 w-8 h-8 bg-black/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/40 transition-colors"
+              className="absolute top-6 right-6 z-10 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-velvet hover:bg-white/30 transition-all duration-300 shadow-lg border border-white/30"
             >
-              <X className="h-4 w-4" />
+              <X className="h-5 w-5" />
             </button>
             
-            {/* Event Image */}
-            <div className="relative h-48 md:h-56 overflow-hidden flex-shrink-0">
+            {/* Enhanced Event Image */}
+            <div className="relative h-52 md:h-64 overflow-hidden flex-shrink-0">
               <img
                 src={selectedEvent.image}
                 alt={selectedEvent.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-velvet/60 via-transparent to-transparent"></div>
-              <div className="absolute bottom-4 left-4">
+              <div className="absolute inset-0 bg-gradient-to-t from-velvet/80 via-velvet/20 to-transparent"></div>
+              <div className="absolute bottom-6 left-6">
                 <Badge 
                   variant="secondary" 
-                  className="bg-champagne/90 text-velvet hover:bg-champagne border-none"
+                  className="bg-champagne/95 text-velvet hover:bg-champagne border-none px-4 py-2 text-sm font-medium shadow-lg"
                 >
                   {selectedEvent.category}
                 </Badge>
               </div>
             </div>
             
-            {/* Event Details */}
-            <div className="p-4 md:p-6 space-y-4 md:space-y-6 overflow-y-auto flex-1">
-              {/* Header */}
-              <div className="text-center">
-                <h2 className="text-2xl md:text-3xl font-bold text-velvet mb-3">
+            {/* Enhanced Event Details */}
+            <div className="p-6 md:p-8 space-y-6 overflow-y-auto flex-1">
+              {/* Enhanced Header */}
+              <div className="text-center space-y-4">
+                <h2 className="text-3xl md:text-4xl font-bold text-velvet leading-tight">
                   {selectedEvent.title}
                 </h2>
-                <div className="w-16 h-1 bg-gradient-accent mx-auto mb-4"></div>
+                <div className="w-20 h-1 bg-gradient-to-r from-champagne to-velvet mx-auto rounded-full"></div>
               </div>
               
-              {/* Description */}
-              <div className="text-center">
-                <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+              {/* Enhanced Description */}
+              <div className="text-center max-w-3xl mx-auto">
+                <p className="text-lg md:text-xl text-velvet/80 leading-relaxed font-medium">
                   {selectedEvent.description}
                 </p>
               </div>
 
-              {/* Event Details Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                <div className="flex items-center gap-3 p-3 bg-gradient-primary/10 rounded-xl border border-champagne/20">
-                  <Calendar className="h-4 w-4 text-champagne" />
-                  <div>
-                    <p className="text-xs text-muted-foreground">Date</p>
-                    <p className="font-semibold text-velvet text-sm">{selectedEvent.date}</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-3 p-3 bg-gradient-primary/10 rounded-xl border border-champagne/20">
-                  <Clock className="h-4 w-4 text-champagne" />
-                  <div>
-                    <p className="text-xs text-muted-foreground">Time</p>
-                    <p className="font-semibold text-velvet text-sm">{selectedEvent.time}</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-3 p-3 bg-gradient-primary/10 rounded-xl border border-champagne/20">
-                  <Users className="h-4 w-4 text-champagne" />
-                  <div>
-                    <p className="text-xs text-muted-foreground">Expected Attendees</p>
-                    <p className="font-semibold text-velvet text-sm">{selectedEvent.attendees} students</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Additional Information */}
-              <div className="bg-gradient-primary/10 rounded-xl p-4 border border-champagne/20">
-                <h4 className="font-semibold text-velvet mb-3">
+              {/* Enhanced Additional Information */}
+              <div className="bg-gradient-to-br from-champagne/10 to-velvet/5 rounded-2xl p-6 border border-champagne/30 shadow-inner">
+                <h4 className="font-bold text-velvet mb-4 text-lg flex items-center gap-2">
+                  <div className="w-2 h-2 bg-champagne rounded-full"></div>
                   What to Expect:
                 </h4>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li className="flex items-start gap-2">
+                <ul className="space-y-3 text-velvet/80">
+                  <li className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-champagne rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Engaging activities and interactive sessions</span>
+                    <span className="font-medium">Engaging activities and interactive sessions</span>
                   </li>
-                  <li className="flex items-start gap-2">
+                  <li className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-champagne rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Networking opportunities with fellow students</span>
+                    <span className="font-medium">Networking opportunities with fellow students</span>
                   </li>
-                  <li className="flex items-start gap-2">
+                  <li className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-champagne rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Valuable insights and learning experiences</span>
+                    <span className="font-medium">Valuable insights and learning experiences</span>
                   </li>
-                  <li className="flex items-start gap-2">
+                  <li className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-champagne rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Refreshments and social interaction</span>
+                    <span className="font-medium">Refreshments and social interaction</span>
                   </li>
                 </ul>
               </div>
 
-              {/* Join Button */}
-              <div className="text-center">
+              {/* Enhanced Event Details Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="flex items-center gap-4 p-4 bg-gradient-to-br from-champagne/10 to-velvet/5 rounded-xl border border-champagne/30 shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="w-12 h-12 bg-champagne/20 rounded-lg flex items-center justify-center">
+                    <Calendar className="h-5 w-5 text-champagne" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-velvet/60 font-medium uppercase tracking-wide">Date</p>
+                    <p className="font-bold text-velvet">{selectedEvent.date}</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-4 p-4 bg-gradient-to-br from-champagne/10 to-velvet/5 rounded-xl border border-champagne/30 shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="w-12 h-12 bg-champagne/20 rounded-lg flex items-center justify-center">
+                    <Clock className="h-5 w-5 text-champagne" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-velvet/60 font-medium uppercase tracking-wide">Time</p>
+                    <p className="font-bold text-velvet">{selectedEvent.time}</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-4 p-4 bg-gradient-to-br from-champagne/10 to-velvet/5 rounded-xl border border-champagne/30 shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="w-12 h-12 bg-champagne/20 rounded-lg flex items-center justify-center">
+                    <Users className="h-5 w-5 text-champagne" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-velvet/60 font-medium uppercase tracking-wide">Expected Attendees</p>
+                    <p className="font-bold text-velvet">{selectedEvent.attendees} students</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Enhanced Join Button */}
+              <div className="text-center pt-4">
                 <Button
                   onClick={handleJoinEvent}
-                  className="bg-velvet hover:bg-velvet/90 text-pearl font-semibold px-8 py-3 shadow-luxury hover:shadow-glow transition-all duration-300"
+                  className="bg-gradient-to-r from-velvet to-velvet/90 hover:from-velvet/90 hover:to-velvet text-pearl font-bold px-10 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 rounded-xl"
                 >
-                  <ExternalLink className="h-4 w-4 mr-2" />
-                  Join
+                  <ExternalLink className="h-5 w-5 mr-3" />
+                  Join This Event
                 </Button>
               </div>
             </div>

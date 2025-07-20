@@ -142,29 +142,28 @@ const Contact = () => {
                   Contact Information
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-4">
                 {contactInfo.map((info, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
                     className="group"
                   >
                     <a
                       href={info.link}
                       target={info.link.startsWith('http') ? "_blank" : "_self"}
                       rel={info.link.startsWith('http') ? "noopener noreferrer" : ""}
-                      className="flex items-start gap-4 p-4 rounded-xl hover:bg-velvet/5 transition-all duration-300 group-hover:transform group-hover:scale-105"
+                      className="flex items-center gap-5 p-5 rounded-xl hover:bg-velvet/5 transition-all duration-300 group-hover:transform group-hover:scale-105"
                     >
-                      <div className="w-12 h-12 bg-gradient-accent rounded-lg flex items-center justify-center shadow-glow group-hover:shadow-lg transition-all duration-300">
-                        <info.icon className="h-6 w-6 text-velvet" />
+                      <div className="w-14 h-14 bg-gradient-accent rounded-xl flex items-center justify-center shadow-glow group-hover:shadow-lg transition-all duration-300 flex-shrink-0">
+                        <info.icon className="h-7 w-7 text-velvet" />
                       </div>
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-velvet mb-1">{info.title}</h3>
-                        <p className="text-velvet/80 font-medium">{info.value}</p>
-                        <p className="text-sm text-muted-foreground">{info.description}</p>
+                      <div className="flex-1 flex flex-col justify-center min-w-0">
+                        <h3 className="font-semibold text-velvet mb-0.5 truncate">{info.title}</h3>
+                        <p className="text-velvet/80 font-medium leading-tight truncate">{info.value}</p>
+                        <p className="text-sm text-muted-foreground leading-snug mt-0.5 truncate">{info.description}</p>
                       </div>
                     </a>
                   </motion.div>

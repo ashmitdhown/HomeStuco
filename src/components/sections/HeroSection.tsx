@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight, Users, Calendar, Award } from "lucide-react";
 
 export const HeroSection = () => {
-
   return (
     <section className="min-h-screen bg-gradient-hero flex items-center justify-center px-4 py-20">
       <div className="max-w-6xl mx-auto text-center">
@@ -34,8 +33,13 @@ export const HeroSection = () => {
             variant="outline" 
             size="lg"
             className="border-velvet text-velvet hover:bg-velvet hover:text-pearl px-8 py-6 text-lg font-semibold transition-all duration-300"
+            onClick={() => {
+              document.getElementById('announcement-section')?.scrollIntoView({ 
+                behavior: 'smooth' 
+              });
+            }}
           >
-            Learn More
+            Announcements
           </Button>
         </div>
 
@@ -65,8 +69,6 @@ export const HeroSection = () => {
           </div>
         </div>
       </div>
-
-
     </section>
   );
 };
