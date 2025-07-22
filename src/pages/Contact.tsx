@@ -38,7 +38,7 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyxZP5v4b_ScdFJ-YvHIxQJjszdrc1sU7wvhJIDQ76qMIHUuqHytgdRD4UNXrkNu4AojQ/exec";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwlDSHO-aEWlT_OWPy8FAobG_vLMCsz1Wud4sMulmB2SAHDexeVS7094-iYDx9DOVU/exec";
     try {
       await fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
