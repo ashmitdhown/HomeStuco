@@ -1,72 +1,78 @@
-# React + TypeScript + Vite
+# Student Council Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive website for the BITS Pilani Dubai Campus Student Council. This site showcases council members, announcements, contact forms, and more, with a beautiful and interactive UI.
 
-Currently, two official plugins are available:
+## Features
+- Hero landing section
+- Council members with interactive cards and social links
+- Announcements and events
+- Contact form (integrated with Google Sheets via Apps Script)
+- Responsive design for all devices
+- Modern UI with Tailwind CSS and Framer Motion animations
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+- **React** (with Vite)
+- **TypeScript**
+- **Tailwind CSS**
+- **Framer Motion** (animations)
+- **Google Apps Script** (for contact form backend)
+- **Lucide React** (icons)
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
+- Node.js (v16+ recommended)
+- npm (v8+ recommended)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Installation
+1. **Clone the repository:**
+   ```sh
+   git clone <your-repo-url>
+   cd <repo-folder>
+   ```
+2. **Install dependencies:**
+   ```sh
+   npm install
+   ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Development
+To start the development server:
+```sh
+npm run dev
+```
+- The site will be available at `http://localhost:5173` (or as shown in your terminal).
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Building for Production
+To build the site for production:
+```sh
+npm run build
+```
+The output will be in the `dist/` folder.
+
+### Linting
+To run the linter:
+```sh
+npm run lint
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Contact Form Integration
+- The contact form submits data to a Google Apps Script endpoint, which writes to a Google Sheet.
+- For local development, CORS limitations apply (see code comments for details).
+- For production, use a backend proxy for secure and robust form handling.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Deployment
+You can deploy the site to platforms like **Vercel**, **Netlify**, or your own server. For backend proxy deployment, see the `/council-backend` example in the docs or ask for a template.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Contributing
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -am 'Add new feature'`)
+4. Push to the branch (`git push origin feature/your-feature`)
+5. Open a Pull Request
+
+## License
+This project is for educational and student council use. For other uses, please contact the maintainers.
+
+---
 
 
-npm create vite@latest . -- --template react-ts
