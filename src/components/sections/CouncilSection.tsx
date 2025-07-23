@@ -5,6 +5,7 @@ import shamsImg from "@/assets/councilphotos/Shams.jpeg";
 import sivaImg from "@/assets/councilphotos/Siva.jpeg";
 import isharjotImg from "@/assets/councilphotos/Isharjot.jpeg";
 import sivapriyaImg from "@/assets/councilphotos/Sivapriya.jpeg";
+import mustafaImg from "@/assets/councilphotos/Mustafa.jpeg";
 import rajImg from "@/assets/councilphotos/Raj.jpeg";
 import ashmitImg from "@/assets/councilphotos/Ashmit.jpeg";
 import gurkaranImg from "@/assets/councilphotos/Gurkaran.jpeg";
@@ -38,50 +39,53 @@ const councilMembers: CouncilMember[] = [
     name: "Isharjot Singh Pasricha",
     position: "Vice President",
     image: isharjotImg,
-    instagram: "https://www.instagram.com/isharjot_singh",
-    linkedin: "https://www.linkedin.com/in/isharjot-singh-pasricha",
+    instagram: "https://www.instagram.com/isharjotpasricha",
+    linkedin: "https://www.linkedin.com/in/isharjotpasricha",
   },
   {
     name: "Sivapriya Madhu Pillai",
     position: "Secretary",
     image: sivapriyaImg,
-    instagram: "https://www.instagram.com/sivapriya_madhu",
-    linkedin: "https://www.linkedin.com/in/sivapriya-madhu-pillai",
+    instagram: "https://www.instagram.com/sivapriyamadhupillai/",
+    linkedin: "https://www.linkedin.com/in/sivapriya-madhu-pillai-721aa130a/",
   },
   {
     name: "Raj Singh",
     position: "4th Year HR",
     image: rajImg,
-    instagram: "https://www.instagram.com/raj_singh",
-    linkedin: "https://www.linkedin.com/in/raj-singh",
+  },
+  {
+    name: "Mustafa Fatehi",
+    position: "4th Year DSR",
+    image: mustafaImg,
+    instagram: "https://www.instagram.com/mustafatehi",
+    linkedin: "https://www.linkedin.com/in/mustafa-fatehi",
   },
   {
     name: "Ashmit Dhown",
     position: "3rd Year HR",
     image: ashmitImg,
-    instagram: "https://www.instagram.com/ashmit_dhown",
-    linkedin: "https://www.linkedin.com/in/ashmit-dhown",
+    instagram: "https://www.instagram.com/ashmitdhown",
+    linkedin: "https://www.linkedin.com/in/ashmit-dhown-3b5523314/",
   },
   {
     name: "Gurkaran Singh",
     position: "3rd Year DSR",
     image: gurkaranImg,
-    instagram: "https://www.instagram.com/gurkaran_singh",
-    linkedin: "https://www.linkedin.com/in/gurkaran-singh",
+    instagram: "https://www.instagram.com/i._guru",
+    linkedin: "https://www.linkedin.com/in/gurkaran-singh-b1127b327",
   },
   {
     name: "Suhas Simha S",
     position: "2nd Year HR",
     image: suhasImg,
-    instagram: "https://www.instagram.com/suhas_simha",
-    linkedin: "https://www.linkedin.com/in/suhas-simha",
+    linkedin: "https://www.linkedin.com/in/suhas-simha-s-301931325/",
   },
   {
     name: "Tanisha Handa",
     position: "2nd Year DSR",
     image: tanishaImg,
-    instagram: "https://www.instagram.com/tanisha_handa",
-    linkedin: "https://www.linkedin.com/in/tanisha-handa",
+    instagram: "https://www.instagram.com/txnishx24"
   }
 ];
 
@@ -100,7 +104,7 @@ export const CouncilSection = () => {
         </div>
 
         {/* Add larger margin-top to prevent image overlap with section title */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-8 mt-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-20 gap-x-8 mt-24">
           {councilMembers.map((member, index) => (
             <Card 
               key={index} 
