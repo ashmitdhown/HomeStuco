@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -76,97 +75,26 @@ const Contact = () => {
     }
   };
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: "Email",
-      value: "studentcouncil@dubai.bits-pilani.ac.in",
-      link: "mailto:studentcouncil@dubai.bits-pilani.ac.in",
-      description: "Send us an email anytime"
-    },
-    {
-      icon: Instagram,
-      title: "Instagram",
-      value: "@council.bitsdubai",
-      link: "https://www.instagram.com/council.bitsdubai/",
-      description: "Follow us for updates"
-    },
-    {
-      icon: Linkedin,
-      title: "LinkedIn",
-      value: "Student Council BPDC",
-      link: "https://www.linkedin.com/company/student-council-bpdc/",
-      description: "Connect with us professionally"
-    },
-    {
-      icon: MapPin,
-      title: "Location",
-      value: "BPDC Campus, Dubai",
-      link: "https://www.google.com/maps/place/Birla+Institute+of+Technology+and+Science,+Pilani-+Dubai/data=!4m2!3m1!1s0x0:0x178903db8ef63bc7?sa=X&ved=1t:2428&ictx=111",
-      description: "Find us on the map"
-    }
-  ];
-
-
-
   return (
     <div className="min-h-screen pt-16 bg-gradient-hero">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute top-20 right-20 w-96 h-96 bg-gradient-primary opacity-10 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute bottom-20 left-20 w-64 h-64 bg-champagne/20 rounded-full blur-2xl"
-          animate={{
-            x: [0, 50, 0],
-            y: [0, -30, 0],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
+        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-primary opacity-10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-20 w-64 h-64 bg-champagne/20 rounded-full blur-2xl" />
       </div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-        {/* Header Section */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
+        <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl font-bold text-velvet mb-6">
-            Get In <span className="text-transparent bg-gradient-accent bg-clip-text">Touch</span>
+            Contact <span className="text-transparent bg-gradient-accent bg-clip-text">Us</span>
           </h1>
           <div className="w-24 h-1 bg-gradient-accent mx-auto mb-6"></div>
-          <p className="text-xl text-velvet/80 max-w-2xl mx-auto">
-            Have questions, suggestions, or want to get involved? We'd love to hear from you. 
-            Reach out to us through any of the channels below.
+          <p className="text-xl text-velvet/80 max-w-3xl mx-auto">
+            Reach out to us for any queries, suggestions, or feedback. We're here to help!
           </p>
-        </motion.div>
-
+        </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
           {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="h-full"
-          >
+          <div className="h-full">
             <Card className="bg-card/90 backdrop-blur-sm border-border/50 shadow-luxury h-full min-h-[500px] flex flex-col">
               <CardHeader>
                 <CardTitle className="text-2xl text-velvet flex items-center gap-3">
@@ -175,43 +103,31 @@ const Contact = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                {contactInfo.map((info, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="group"
-                  >
-                    <a
-                      href={info.link}
-                      target={info.link.startsWith('http') ? "_blank" : "_self"}
-                      rel={info.link.startsWith('http') ? "noopener noreferrer" : ""}
-                      className="flex items-center gap-5 p-5 rounded-xl hover:bg-velvet/5 transition-all duration-300 group-hover:transform group-hover:scale-105"
-                    >
-                      <div className="w-14 h-14 bg-gradient-accent rounded-xl flex items-center justify-center shadow-glow group-hover:shadow-lg transition-all duration-300 flex-shrink-0">
-                        <info.icon className="h-7 w-7 text-velvet" />
-                      </div>
-                      <div className="flex-1 flex flex-col justify-center min-w-0">
-                        <h3 className="font-semibold text-velvet mb-0.5 truncate">{info.title}</h3>
-                        <p className="text-velvet/80 font-medium leading-tight truncate">{info.value}</p>
-                        <p className="text-sm text-muted-foreground leading-snug mt-0.5 truncate">{info.description}</p>
-                      </div>
-                    </a>
-                  </motion.div>
-                ))}
+                <div className="flex items-center gap-3">
+                  <Mail className="h-5 w-5 text-champagne" />
+                  <span className="text-velvet">studentcouncil@university.edu</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Phone className="h-5 w-5 text-champagne" />
+                  <span className="text-velvet">+1 234 567 8900</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <MapPin className="h-5 w-5 text-champagne" />
+                  <span className="text-velvet">123 Campus Road, City, Country</span>
+                </div>
+                <div className="flex gap-4 mt-4">
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-champagne/30 rounded-full flex items-center justify-center text-velvet hover:bg-champagne/50 transition-all duration-200 shadow-lg border border-white/30 cursor-pointer">
+                    <Instagram className="h-5 w-5" />
+                  </a>
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-champagne/30 rounded-full flex items-center justify-center text-velvet hover:bg-champagne/50 transition-all duration-200 shadow-lg border border-white/30 cursor-pointer">
+                    <Linkedin className="h-5 w-5" />
+                  </a>
+                </div>
               </CardContent>
             </Card>
-          </motion.div>
-
+          </div>
           {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="h-full"
-          >
+          <div className="h-full">
             <Card className="bg-card/90 backdrop-blur-sm border-border/50 shadow-luxury h-full min-h-[500px] flex flex-col">
               <CardHeader>
                 <CardTitle className="text-2xl text-velvet flex items-center gap-3">
@@ -224,43 +140,30 @@ const Contact = () => {
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name" className="text-velvet font-medium">
-                        Full Name *
-                      </Label>
-                      <Input
-                        id="name"
-                        name="name"
-                        type="text"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required
-                        className="border-border/50 focus:border-champagne focus:ring-champagne/20"
-                        placeholder="Enter your full name"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email" className="text-velvet font-medium">
-                        Email Address *
-                      </Label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                        className="border-border/50 focus:border-champagne focus:ring-champagne/20"
-                        placeholder="Enter your email"
-                      />
-                    </div>
+                  <div>
+                    <Label htmlFor="name">Name</Label>
+                    <Input
+                      id="name"
+                      name="name"
+                      type="text"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                    />
                   </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="subject" className="text-velvet font-medium">
-                      Subject *
-                    </Label>
+                  <div>
+                    <Label htmlFor="email">Email</Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="subject">Subject</Label>
                     <Input
                       id="subject"
                       name="subject"
@@ -268,27 +171,18 @@ const Contact = () => {
                       value={formData.subject}
                       onChange={handleInputChange}
                       required
-                      className="border-border/50 focus:border-champagne focus:ring-champagne/20"
-                      placeholder="What's this about?"
                     />
                   </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="message" className="text-velvet font-medium">
-                      Message *
-                    </Label>
+                  <div>
+                    <Label htmlFor="message">Message</Label>
                     <Textarea
                       id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
                       required
-                      rows={6}
-                      className="border-border/50 focus:border-champagne focus:ring-champagne/20 resize-none"
-                      placeholder="Tell us more about your inquiry..."
                     />
                   </div>
-                  
                   <Button
                     type="submit"
                     className="w-full bg-velvet hover:bg-velvet/90 text-pearl font-semibold py-3 shadow-luxury hover:shadow-glow transition-all duration-300"
@@ -328,7 +222,7 @@ const Contact = () => {
                 </form>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>
