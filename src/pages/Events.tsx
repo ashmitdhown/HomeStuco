@@ -290,16 +290,39 @@ const Events = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 pt-16">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            Upcoming <span className="text-yellow-300">Events</span>
-          </h1>
-          <p className="text-xl md:text-2xl opacity-90">
-            Discover all the exciting events and activities organized by our student council
-          </p>
-        </div>
+      {/* Hero Section with Carousel */}
+      <div className="relative h-[420px] md:h-[520px] lg:h-[600px] w-full overflow-hidden">
+        {/* Hero Carousel Slider - covers entire hero section */}
+        {featuredEvents.length > 0 && (
+          <Slider
+            dots={true}
+            infinite={true}
+            speed={500}
+            slidesToShow={1}
+            slidesToScroll={1}
+            nextArrow={<SampleNextArrow />}
+            prevArrow={<SamplePrevArrow />}
+            className="h-full w-full"
+          >
+            {featuredEvents.map((event) => (
+              <div key={event.id} className="h-[420px] md:h-[520px] lg:h-[600px] w-full relative">
+                <img
+                  src={event.image}
+                  alt={event.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                {/* Overlay for heading and subtitle only */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                  <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white drop-shadow-lg">
+                    Upcoming <span className="text-yellow-300">Events</span>
+                  </h1>
+                </div>
+              </div>
+            ))}
+          </Slider>
+        )}
       </div>
 
       {/* Search and Filter */}
