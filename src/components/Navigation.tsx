@@ -21,9 +21,10 @@ const Navigation = () => {
   return (
     <>
       <SplineBg />
+
+      {/* Fixed, fully transparent navbar */}
       <nav
-        className="w-full absolute top-0 left-0 z-50 px-8 pt-6 flex items-center"
-        style={{ background: "rgba(0,0,0,0.0)" }}
+        className="w-full fixed top-0 left-0 z-50 px-8 pt-6 flex items-center bg-transparent"
       >
         {/* Left Logo */}
         <div className="flex-shrink-0">

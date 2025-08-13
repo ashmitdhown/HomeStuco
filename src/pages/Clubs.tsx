@@ -129,9 +129,10 @@ export default function Clubs() {
             </div>
           </div>
         )}
-      {/* Floating Contact Button */}
-      <a
-        href="/contact us"
+      </PageBgAndCursor>
+            {/* Floating Contact Button */}
+            <a
+        href="/contact"
         className="fixed z-50 bottom-2 right-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2 hover:bg-primary/90 transition-all text-lg font-semibold"
         style={{ boxShadow: '0 4px 24px 0 rgba(0,0,0,0.18)' }}
         aria-label="Contact Us"
@@ -141,7 +142,6 @@ export default function Clubs() {
         </svg>
         Contact Us
       </a>
-      </PageBgAndCursor>
     </>
   );
 }
