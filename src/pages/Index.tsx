@@ -1,4 +1,4 @@
-// Author: Manav Arya & Ashmit Dhon
+// Author: Manav Arya & Ashmit Dhown
 import { HeroSection } from "@/components/sections/HeroSection";
 import { CouncilSection } from "@/components/sections/CouncilSection";
 import { AnnouncementSection } from "@/components/sections/AnnouncementSection";

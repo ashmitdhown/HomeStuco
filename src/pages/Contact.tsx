@@ -1,4 +1,4 @@
-// Author: Manav Arya & Ashmit Dhon
+// Author: Manav Arya & Ashmit Dhown
 import { useState, useRef, useEffect } from "react";
 import { PageBgAndCursor } from "@/components/PageBgAndCursor";
 import { Button } from "@/components/ui/button";
@@ -14,6 +14,7 @@ import {
   Zap,
   MessageCircle
 } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -22,30 +23,12 @@ const Contact = () => {
     subject: "",
     message: ""
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [focusedField, setFocusedField] = useState(null);
+  const [focusedField, setFocusedField] = useState<string | null>(null);
   const containerRef = useRef(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: e.clientX - rect.left,
-          y: e.clientY - rect.top
-        });
-      }
-    };
-
-    const container = containerRef.current;
-    if (container) {
-      container.addEventListener('mousemove', handleMouseMove);
-      return () => container.removeEventListener('mousemove', handleMouseMove);
-    }
-  }, []);
-
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -53,7 +36,8 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     setIsSubmitting(true);
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwlDSHO-aEWlT_OWPy8FAobG_vLMCsz1Wud4sMulmB2SAHDexeVS7094-iYDx9DOVU/exec";
     try {
@@ -81,8 +65,16 @@ const Contact = () => {
         subject: "",
         message: ""
       });
+    } catch (error) {
+      toast({
+        title: "Submission Failed",
+        description: "There was an error submitting the form.",
+        duration: 5000,
+      });
+      console.error("Submission error:", error);
+    } finally {
       setIsSubmitting(false);
-    }, 2000);
+    }
   };
 
   const contactMethods = [

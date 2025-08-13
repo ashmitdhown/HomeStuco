@@ -1,4 +1,4 @@
-// Author: Manav Arya & Ashmit Dhon
+// Author: Manav Arya & Ashmit Dhown
 import * as React from "react"
 
 const MOBILE_BREAKPOINT = 768

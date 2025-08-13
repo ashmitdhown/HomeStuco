@@ -1,2 +1,2 @@
-// Author: Manav Arya & Ashmit Dhon
+// Author: Manav Arya & Ashmit Dhown
 /// <reference types="vite/client" />

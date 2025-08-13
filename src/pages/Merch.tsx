@@ -1,4 +1,4 @@
-// Author: Manav Arya & Ashmit Dhon
+// Author: Manav Arya & Ashmit Dhown
 import { useState } from 'react';
 import { ShoppingCart, Heart, Star, CreditCard } from 'lucide-react';
 

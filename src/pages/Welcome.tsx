@@ -1,4 +1,4 @@
-// Author: Manav Arya & Ashmit Dhon
+// Author: Manav Arya & Ashmit Dhown
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 

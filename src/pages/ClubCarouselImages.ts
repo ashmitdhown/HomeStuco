@@ -1,4 +1,4 @@
-// Author: Manav Arya & Ashmit Dhon
+// Author: Manav Arya & Ashmit Dhown
 // Images for the Clubs page carousel
 export const clubCarouselImages = [
   {

@@ -1,4 +1,4 @@
-// Author: Manav Arya & Ashmit Dhon
+// Author: Manav Arya & Ashmit Dhown
 import SplineBg from "@/components/SplineBg";
 
 const Footer = () => (

@@ -1,4 +1,4 @@
-// Author: Manav Arya & Ashmit Dhon
+// Author: Manav Arya & Ashmit Dhown
 import { useState, useEffect } from 'react';
 import { Calendar, Clock, MapPin, BookOpen, Sparkles, PartyPopper, Zap, ChevronLeft, ChevronRight, Search, Filter, Share2, Calendar as CalendarIcon, Grid, List } from 'lucide-react';
 import Slider from 'react-slick';

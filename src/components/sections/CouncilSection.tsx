@@ -80,11 +80,10 @@ const councilMembers: CouncilMember[] = [
     name: "Ashmit Dhown",
     position: "3rd Year HR",
     image: ashmitImg,
-    instagram: "https://www.instagram.com/ashmit_dhown",
-    linkedin: "https://www.linkedin.com/in/ashmit-dhown",
-    bio: LOREM
     instagram: "https://www.instagram.com/ashmitdhown",
     linkedin: "https://www.linkedin.com/in/ashmit-dhown-3b5523314/",
+    bio: LOREM
+
   },
   {
     name: "Gurkaran Singh",
@@ -99,9 +98,8 @@ const councilMembers: CouncilMember[] = [
     position: "2nd Year HR",
     image: suhasImg,
     instagram: "https://www.instagram.com/suhas_simha",
-    linkedin: "https://www.linkedin.com/in/suhas-simha",
-    bio: LOREM
     linkedin: "https://www.linkedin.com/in/suhas-simha-s-301931325/",
+    bio: LOREM
   },
   {
     name: "Tanisha Handa",
@@ -122,9 +120,9 @@ const councilMembers: CouncilMember[] = [
     name: "To be announced",
     position: "1st Year DSR",
     image: blankProfileImg,
+    instagram: "https://www.instagram.com/txnishx24",
     linkedin: "https://linkedin.com",
     bio: LOREM
-    instagram: "https://www.instagram.com/txnishx24"
   }
 ];
 
