@@ -1,6 +1,15 @@
+// Author: Manav Arya & Ashmit Dhon
 import { useState } from 'react';
-import Slider from 'react-slick';
-import { ShoppingCart, Heart, Star } from 'lucide-react';
+import { ShoppingCart, Heart, Star, CreditCard } from 'lucide-react';
+
+import { PageBgAndCursor } from "@/components/PageBgAndCursor";
+import Spline from '@splinetool/react-spline';
+import hoodieImg from "@/assets/MERCH/black-hoodie-mockup-classic-comfortable-stylish-apparel_191095-82052.jpg.avif";
+import toteGirlImg from "@/assets/MERCH/a-beige-cotton-tote-bag-on-a-black-background-png.webp";
+import toteBoyImg from "@/assets/MERCH/a-beige-cotton-tote-bag-on-a-black-background-png.webp";
+import capImg from "@/assets/MERCH/Black_Baseball_Cap_PNG_Clipart-982.png";
+import sweatshirtImg from "@/assets/MERCH/5d2ac61c96e7f3691bc68e80ad9a2200.jpg";
+import poloImg from "@/assets/MERCH/ai-generated-short-sleeves-black-polo-t-shirt-isolated-on-transparent-background-free-png.webp";
 
 interface Product {
   id: number;
@@ -18,7 +27,6 @@ interface Product {
 
 const Merch = () => {
   const [wishlist, setWishlist] = useState<number[]>([]);
-  const [cart, setCart] = useState<{id: number, quantity: number}[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   // Conversion rate: 1 USD = 3.67 AED (as of knowledge cutoff)
@@ -30,7 +38,7 @@ const Merch = () => {
       name: 'BIts Hoodie',
       price: 49.99,
       category: 'hoodie',
-      image: 'https://via.placeholder.com/300x300/f3f4f6/6b7280?text=BIts+Hoodie',
+      image: hoodieImg,
       colors: ['black', 'navy', 'gray'],
       sizes: ['S', 'M', 'L', 'XL'],
       rating: 4.8,
@@ -42,7 +50,7 @@ const Merch = () => {
       name: 'Bits Tote Bag (Girl)',
       price: 24.99,
       category: 'bag',
-      image: 'https://via.placeholder.com/300x300/f9fafb/6b7280?text=Bits+Tote+Bag',
+      image: toteGirlImg,
       colors: [],
       sizes: ['One Size'],
       rating: 4.7,
@@ -54,7 +62,7 @@ const Merch = () => {
       name: 'Bits Tote Bag (Boys)',
       price: 24.99,
       category: 'bag',
-      image: 'https://via.placeholder.com/300x300/f3f4f6/6b7280?text=Bits+Tote+Bag+Boys',
+      image: toteBoyImg,
       colors: [],
       sizes: ['One Size'],
       rating: 4.6,
@@ -65,7 +73,7 @@ const Merch = () => {
       name: 'Bits Cap',
       price: 19.99,
       category: 'cap',
-      image: 'https://via.placeholder.com/300x300/f9fafb/6b7280?text=Bits+Cap',
+      image: capImg,
       colors: ['black', 'navy', 'gray', 'white'],
       sizes: ['One Size'],
       rating: 4.5,
@@ -77,7 +85,7 @@ const Merch = () => {
       name: 'Bits Sweatshirt',
       price: 44.99,
       category: 'sweatshirt',
-      image: 'https://via.placeholder.com/300x300/f3f4f6/6b7280?text=Bits+Sweatshirt',
+      image: sweatshirtImg,
       colors: ['black', 'gray', 'burgundy'],
       sizes: ['S', 'M', 'L', 'XL'],
       rating: 4.7,
@@ -89,7 +97,7 @@ const Merch = () => {
       name: 'Bits Polo',
       price: 34.99,
       category: 'polo',
-      image: 'https://via.placeholder.com/300x300/f9fafb/6b7280?text=Bits+Polo',
+      image: poloImg,
       colors: ['white', 'navy', 'black'],
       sizes: ['S', 'M', 'L', 'XL'],
       rating: 4.6,
@@ -111,55 +119,52 @@ const Merch = () => {
     );
   };
 
-  const addToCart = (productId: number) => {
-    setCart(prev => {
-      const existingItem = prev.find(item => item.id === productId);
-      if (existingItem) {
-        return prev.map(item => 
-          item.id === productId 
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
-      }
-      return [...prev, { id: productId, quantity: 1 }];
-    });
+
+
+  // Scroll to products section
+  const handleViewProducts = () => {
+    const productsSection = document.getElementById('products-section');
+    if (productsSection) {
+      productsSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
-      {/* Hero Section with Carousel */}
-      <div className="relative h-[420px] md:h-[520px] lg:h-[600px] w-full overflow-hidden">
-        {/* Hero Carousel Slider - covers entire hero section */}
-        <Slider
-          dots={true}
-          infinite={true}
-          speed={500}
-          slidesToShow={1}
-          slidesToScroll={1}
-          className="h-full w-full"
-        >
-          {products.map((product) => (
-            <div key={product.id} className="h-[420px] md:h-[520px] lg:h-[600px] w-full relative">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="absolute inset-0 w-full h-full object-cover"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-              {/* Overlay for heading only */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-                <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white drop-shadow-lg">
-                  Student Council <span className="text-yellow-300">Merch</span>
-                </h1>
-              </div>
-            </div>
-          ))}
-        </Slider>
+    <>
+      <PageBgAndCursor>
+      <div className="min-h-screen">
+      {/* Hero Section - Spline Cover */}
+      <div className="relative h-screen w-full overflow-hidden">
+        {/* Spline 3D Background */}
+        <div className="absolute inset-0 w-full h-full z-0">
+          <Spline scene="https://prod.spline.design/E9Y1f0Wp36HmvzX0/scene.splinecode" />
+        </div>
+        {/* Floating View Products Button */}
+        <div className="absolute z-10 bottom-2 right-1 md:bottom-4 md:right-6">
+          <button
+            onClick={handleViewProducts}
+            className="bg-gray-900 text-white px-6 py-3 rounded-full shadow-lg font-semibold text-base hover:bg-gray-800 transition-colors duration-200"
+            style={{ minWidth: 150 }}
+          >
+            BITS PILANI
+          </button>
+        </div>
       </div>
 
+      {/* Floating Contact Us Button */}
+      <a
+        href="/contact us"
+        className="fixed z-50 bottom-2 right-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2 hover:bg-primary/90 transition-all text-lg font-semibold"
+        style={{ boxShadow: '0 4px 24px 0 rgba(0,0,0,0.18)' }}
+        aria-label="Contact Us"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-.659 1.591l-7.5 7.5a2.25 2.25 0 01-3.182 0l-7.5-7.5A2.25 2.25 0 012.25 6.993V6.75" />
+        </svg>
+        Contact Us
+      </a>
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div id="products-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {categories.map(category => (
@@ -180,9 +185,9 @@ const Merch = () => {
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProducts.map(product => (
-            <div key={product.id} className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
+            <div key={product.id} className="bg-black/80 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full text-white">
               {/* Product Image - Fixed height container */}
-              <div className="relative h-80 flex items-center justify-center bg-gray-50">
+              <div className="relative h-80 flex items-center justify-center bg-black/60">
                 <img 
                   src={product.image} 
                   alt={product.name}
@@ -218,7 +223,7 @@ const Merch = () => {
               <div className="p-5 flex-grow flex flex-col">
                 <div className="flex justify-between items-start">
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900">{product.name}</h3>
+                    <h3 className="text-lg font-semibold text-white">{product.name}</h3>
                     <div className="flex items-center mt-1">
                       {[...Array(5)].map((_, i) => (
                         <Star 
@@ -230,22 +235,22 @@ const Merch = () => {
                           }`}
                         />
                       ))}
-                      <span className="text-sm text-gray-500 ml-1">
+                      <span className="text-sm text-gray-200 ml-1">
                         ({product.reviews})
                       </span>
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="text-xl font-bold text-indigo-600">
-                      AED {usdToAed(product.price)}
-                    </div>
+                  <div className="text-xl font-bold text-indigo-400">
+                    AED {usdToAed(product.price)}
+                  </div>
                   </div>
                 </div>
 
                 {/* Colors - Only show if product has colors */}
                 {product.colors.length > 0 && (
                   <div className="mt-3">
-                    <p className="text-sm text-gray-500">Colors:</p>
+                    <p className="text-sm text-gray-200">Colors:</p>
                     <div className="flex space-x-2 mt-1">
                       {product.colors.map(color => (
                         <button
@@ -261,7 +266,7 @@ const Merch = () => {
 
                 {/* Sizes */}
                 <div className="mt-3">
-                  <p className="text-sm text-gray-500">Sizes:</p>
+                  <p className="text-sm text-gray-200">Sizes:</p>
                   <div className="flex space-x-2 mt-1">
                     {product.sizes.map(size => (
                       <button
@@ -276,13 +281,15 @@ const Merch = () => {
 
                 {/* Add to Cart Button - Pushed to bottom */}
                 <div className="mt-auto pt-4">
-                  <button
-                    onClick={() => addToCart(product.id)}
+                  <a
+                    href="https://forms.gle/your-google-form-link" // TODO: Replace with actual Google Form link
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-full flex items-center justify-center bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors duration-200 font-medium"
                   >
-                    <ShoppingCart className="w-5 h-5 mr-2" />
-                    Add to Cart
-                  </button>
+                    <CreditCard className="w-5 h-5 mr-2" />
+                    Buy Now
+                  </a>
                 </div>
               </div>
             </div>
@@ -290,16 +297,10 @@ const Merch = () => {
         </div>
       </div>
 
-      {/* Shopping Cart Preview (simplified) */}
-      {cart.length > 0 && (
-        <div className="fixed bottom-4 right-4 bg-white rounded-lg shadow-xl p-4 z-50">
-          <div className="flex items-center">
-            <ShoppingCart className="w-6 h-6 text-indigo-600 mr-2" />
-            <span className="font-medium">{cart.reduce((sum, item) => sum + item.quantity, 0)} items</span>
-          </div>
-        </div>
-      )}
-    </div>
+
+      </div>
+      </PageBgAndCursor>
+    </>
   );
 };
 

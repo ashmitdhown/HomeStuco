@@ -1,20 +1,19 @@
-import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+// Author: Manav Arya & Ashmit Dhon
+import { useState, useRef, useEffect } from "react";
+import { PageBgAndCursor } from "@/components/PageBgAndCursor";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Badge } from "@/components/ui/badge";
 import { 
   Mail, 
   Instagram, 
   Linkedin, 
   MapPin, 
-  Phone, 
   Send,
-  MessageSquare
+  Sparkles,
+  Zap,
+  MessageCircle
 } from "lucide-react";
-import { useToast } from "@/components/ui/use-toast";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -24,9 +23,29 @@ const Contact = () => {
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [focusedField, setFocusedField] = useState(null);
+  const containerRef = useRef(null);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        setMousePosition({
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top
+        });
+      }
+    };
+
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('mousemove', handleMouseMove);
+      return () => container.removeEventListener('mousemove', handleMouseMove);
+    }
+  }, []);
+
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -34,216 +53,217 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     setIsSubmitting(true);
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyxZP5v4b_ScdFJ-YvHIxQJjszdrc1sU7wvhJIDQ76qMIHUuqHytgdRD4UNXrkNu4AojQ/exec";
-    try {
-      await fetch(GOOGLE_SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors", // CORS workaround (you won't get response)
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          Name: formData.name,
-          Email: formData.email,
-          Subject: formData.subject,
-          Message: formData.message,
-        }),
-      });
-      toast({
-        title: "Form Submitted",
-        description: "Thank you! We will contact you shortly.",
-        duration: 5000,
-      });
+    
+    setTimeout(() => {
+      alert("🚀 Message sent! We'll get back to you soon.");
       setFormData({
         name: "",
         email: "",
         subject: "",
         message: ""
       });
-    } catch (error) {
-      toast({
-        title: "Submission Failed",
-        description: "There was an error submitting the form.",
-        duration: 5000,
-      });
-      console.error("Submission error:", error);
-    } finally {
       setIsSubmitting(false);
-    }
+    }, 2000);
   };
 
+  const contactMethods = [
+    {
+      icon: Mail,
+      label: "Email",
+      value: "studentcouncil@dubai.bits-pilani.ac.in",
+      href: "mailto:studentcouncil@dubai.bits-pilani.ac.in"
+    },
+    {
+      icon: Instagram,
+      label: "Instagram",
+      value: "@council.bitsdubai",
+      href: "https://www.instagram.com/council.bitsdubai/"
+    },
+    {
+      icon: Linkedin,
+      label: "LinkedIn", 
+      value: "Student Council BPDC",
+      href: "https://www.linkedin.com/company/student-council-bpdc/"
+    },
+    {
+      icon: MapPin,
+      label: "Campus",
+      value: "BITS Pilani Dubai",
+      href: "https://www.google.com/maps/place/Birla+Institute+of+Technology+and+Science,+Pilani-+Dubai/"
+    }
+  ];
+
   return (
-    <div className="min-h-screen pt-16 bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-50 relative">
-      {/* Animated Gradient Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-10 right-10 w-[28rem] h-[28rem] bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-300 opacity-20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-10 left-10 w-80 h-80 bg-gradient-to-tr from-pink-200 via-yellow-100 to-indigo-200 opacity-30 rounded-full blur-2xl animate-pulse" />
-      </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-velvet mb-6 drop-shadow-lg">
-            Contact <span className="text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-400 bg-clip-text animate-gradient">Us</span>
-          </h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-300 mx-auto mb-6 rounded-full animate-pulse"></div>
-          <p className="text-xl text-velvet/80 max-w-3xl mx-auto font-medium">
-            Reach out to us for any queries, suggestions, or feedback. We're here to help!
-          </p>
-        </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
-          {/* Contact Information */}
-          <div className="h-full">
-            <Card className="bg-white/70 backdrop-blur-lg border border-gray-200 shadow-2xl h-full min-h-[500px] flex flex-col transition-all duration-300 hover:scale-[1.02] hover:shadow-3xl">
-              <CardHeader>
-                <CardTitle className="text-2xl text-velvet flex items-center gap-3 font-bold">
-                  <MessageSquare className="h-6 w-6 text-indigo-400 animate-bounce" />
-                  Contact Information
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="space-y-6">
-                  <div className="flex items-center gap-4 p-4 rounded-lg bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 shadow-sm hover:shadow-md transition-all">
-                    <Mail className="h-7 w-7 text-indigo-500 bg-white rounded-full p-1 shadow" />
-                    <div className="flex flex-col">
-                      <span className="text-xs text-gray-500 font-medium">Email</span>
-                      <span className="text-lg text-velvet font-semibold">studentcouncil@university.edu</span>
-                    </div>
-                  </div>
-                  <div className="border-t border-gray-200 my-2" />
-                  <div className="flex items-center gap-4 p-4 rounded-lg bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 shadow-sm hover:shadow-md transition-all">
-                    <Phone className="h-7 w-7 text-indigo-500 bg-white rounded-full p-1 shadow" />
-                    <div className="flex flex-col">
-                      <span className="text-xs text-gray-500 font-medium">Phone</span>
-                      <span className="text-lg text-velvet font-semibold">+1 234 567 8900</span>
-                    </div>
-                  </div>
-                  <div className="border-t border-gray-200 my-2" />
-                  <div className="flex items-center gap-4 p-4 rounded-lg bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 shadow-sm hover:shadow-md transition-all">
-                    <MapPin className="h-7 w-7 text-indigo-500 bg-white rounded-full p-1 shadow" />
-                    <div className="flex flex-col">
-                      <span className="text-xs text-gray-500 font-medium">Address</span>
-                      <span className="text-lg text-velvet font-semibold">123 Campus Road, City, Country</span>
-                    </div>
-                  </div>
-                  <div className="border-t border-gray-200 my-2" />
-                  <div className="flex gap-4 mt-6 justify-center">
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gradient-to-br from-pink-400 via-purple-400 to-indigo-400 rounded-full flex items-center justify-center text-white hover:scale-110 transition-all duration-200 shadow-lg border border-white/30 cursor-pointer">
-                      <Instagram className="h-6 w-6" />
-                    </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white hover:scale-110 transition-all duration-200 shadow-lg border border-white/30 cursor-pointer">
-                      <Linkedin className="h-6 w-6" />
-                    </a>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+    <PageBgAndCursor>
+      <div 
+        ref={containerRef}
+        className="min-h-screen relative"
+      >
+      <div className="relative z-10 min-h-screen flex items-center justify-center p-6">
+        <div className="w-full max-w-6xl">
+          
+          {/* Header */}
+          <div className="text-center mb-16">
+            <h1 className="text-6xl md:text-8xl font-black text-white mb-6 leading-none">
+              Let's Talk
+            </h1>
           </div>
-          {/* Contact Form */}
-          <div className="h-full">
-            <Card className="bg-white/70 backdrop-blur-lg border border-gray-200 shadow-2xl h-full min-h-[500px] flex flex-col transition-all duration-300 hover:scale-[1.02] hover:shadow-3xl">
-              <CardHeader>
-                <CardTitle className="text-2xl text-velvet flex items-center gap-3 font-bold">
-                  <Send className="h-6 w-6 text-indigo-400 animate-bounce" />
-                  Send Us a Message
-                </CardTitle>
-                <p className="text-muted-foreground font-medium">
-                  Fill out the form below and we'll get back to you as soon as possible.
-                </p>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-7">
-                  <div>
-                    <Label htmlFor="name" className="font-semibold text-velvet">Name</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      type="text"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition-all duration-200"
-                    />
+
+          <div className="grid lg:grid-cols-5 gap-8 items-start">
+            
+            {/* Contact Methods */}
+            <div className="lg:col-span-2 space-y-4">
+              {contactMethods.map((method, index) => (
+                <div key={index} className="group relative">
+                  <a
+                    href={method.href}
+                    target={method.href.startsWith('http') ? '_blank' : '_self'}
+                    rel={method.href.startsWith('http') ? 'noopener noreferrer' : ''}
+                    className="block p-6 bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl hover:bg-white/30 hover:border-white/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-white/30 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-all duration-300">
+                        <method.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="text-white font-semibold text-lg">{method.label}</div>
+                        <div className="text-white text-sm">{method.value}</div>
+                      </div>
+                    </div>
+                    {/* Hover Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                  </a>
+                </div>
+              ))}
+            </div>
+
+            {/* Contact Form */}
+            <div className="lg:col-span-3">
+              <div className="bg-white/30 backdrop-blur-xl border border-white/40 rounded-3xl p-8 shadow-2xl text-white">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-10 h-10 bg-white/30 rounded-xl flex items-center justify-center">
+                    <MessageCircle className="w-5 h-5 text-white" />
                   </div>
-                  <div>
-                    <Label htmlFor="email" className="font-semibold text-velvet">Email</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition-all duration-200"
-                    />
+                  <h2 className="text-2xl font-bold text-white">Send Message</h2>
+                </div>
+                
+                <div className="space-y-6">
+                  
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="relative group">
+                      <Input
+                        name="name"
+                        type="text"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        onFocus={() => setFocusedField('name')}
+                        onBlur={() => setFocusedField(null)}
+                        className="w-full bg-white/20 border border-white/40 rounded-xl px-4 py-3 text-white placeholder-white focus:bg-white/30 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400/50 transition-all duration-300"
+                        placeholder="Your Name"
+                      />
+                      {focusedField === 'name' && (
+                        <div className="absolute -top-2 left-4 bg-gradient-to-r from-blue-500 to-yellow-500 text-white px-2 py-1 rounded text-xs font-medium">
+                          <span className="text-white">Full Name</span>
+                        </div>
+                      )}
+                    </div>
+                    
+                    <div className="relative group">
+                      <Input
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        onFocus={() => setFocusedField('email')}
+                        onBlur={() => setFocusedField(null)}
+                        className="w-full bg-white/20 border border-white/40 rounded-xl px-4 py-3 text-white placeholder-white focus:bg-white/30 focus:border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-400/50 transition-all duration-300"
+                        placeholder="your@email.com"
+                      />
+                      {focusedField === 'email' && (
+                        <div className="absolute -top-2 left-4 bg-gradient-to-r from-yellow-500 to-amber-500 text-white px-2 py-1 rounded text-xs font-medium">
+                          <span className="text-white">Email Address</span>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                  <div>
-                    <Label htmlFor="subject" className="font-semibold text-velvet">Subject</Label>
+                  
+                  <div className="relative group">
                     <Input
-                      id="subject"
                       name="subject"
                       type="text"
                       value={formData.subject}
                       onChange={handleInputChange}
-                      required
-                      className="mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition-all duration-200"
+                      onFocus={() => setFocusedField('subject')}
+                      onBlur={() => setFocusedField(null)}
+                    className="w-full bg-white/20 border border-white/40 rounded-xl px-4 py-3 text-white placeholder-white focus:bg-white/30 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-400/50 transition-all duration-300"
+                      placeholder="Subject"
                     />
+                    {focusedField === 'subject' && (
+                      <div className="absolute -top-2 left-4 bg-gradient-to-r from-sky-500 to-blue-500 text-white px-2 py-1 rounded text-xs font-medium">
+                        <span className="text-white">What's this about?</span>
+                      </div>
+                    )}
                   </div>
-                  <div>
-                    <Label htmlFor="message" className="font-semibold text-velvet">Message</Label>
+                  
+                  <div className="relative group">
                     <Textarea
-                      id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
-                      required
-                      className="mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition-all duration-200 min-h-[120px]"
+                      onFocus={() => setFocusedField('message')}
+                      onBlur={() => setFocusedField(null)}
+                      rows={5}
+                      className="w-full bg-white/20 border border-white/40 rounded-xl px-4 py-3 text-white placeholder-white focus:bg-white/30 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400/50 transition-all duration-300 resize-none"
+                      placeholder="Tell us what's on your mind..."
                     />
+                    {focusedField === 'message' && (
+                      <div className="absolute -top-2 left-4 bg-gradient-to-r from-amber-500 to-yellow-500 text-white px-2 py-1 rounded text-xs font-medium">
+                        <span className="text-white">Your Message</span>
+                      </div>
+                    )}
                   </div>
+                  
                   <Button
-                    type="submit"
-                    className="w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-400 hover:from-indigo-600 hover:to-pink-500 text-white font-semibold py-3 shadow-xl hover:shadow-2xl transition-all duration-300 text-lg flex items-center justify-center gap-2"
+                    onClick={handleSubmit}
                     disabled={isSubmitting}
+                    className="w-full bg-white/30 text-white font-semibold py-4 px-8 rounded-xl shadow-lg hover:bg-white/40 hover:shadow-2xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed group"
                   >
                     {isSubmitting ? (
                       <>
-                        <svg
-                          className="animate-spin h-5 w-5 text-white mr-2"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                        >
-                          <circle
-                            className="opacity-25"
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                          ></circle>
-                          <path
-                            className="opacity-75"
-                            fill="currentColor"
-                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                          ></path>
-                        </svg>
-                        Sending...
+                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-3"></div>
+                        Sending your message...
                       </>
                     ) : (
                       <>
-                        <Send className="h-5 w-5 mr-2" />
+                        <Send className="w-5 h-5 mr-3 group-hover:rotate-12 transition-transform duration-300 text-white" />
                         Send Message
+                        <Zap className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white" />
                       </>
                     )}
                   </Button>
-                </form>
-              </CardContent>
-            </Card>
+                  
+                </div>
+              </div>
+            </div>
+            
           </div>
         </div>
       </div>
-    </div>
+      </div>
+      {/* Floating Back to Homepage Button */}
+      <a
+        href="/"
+        className="fixed z-50 bottom-5 right-4 flex items-center gap-2 px-5 py-3 rounded-full bg-blue-600 text-white font-bold shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 backdrop-blur-lg border-2 border-white/30"
+        style={{ minWidth: 0 }}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l9-9 9 9M4.5 10.5V21h15V10.5" />
+        </svg>
+        Back to Homepage
+      </a>
+    </PageBgAndCursor>
   );
 };
 

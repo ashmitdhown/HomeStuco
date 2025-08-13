@@ -1,9 +1,12 @@
+// Author: Manav Arya & Ashmit Dhon
 import { useState, useEffect } from 'react';
 import { Calendar, Clock, MapPin, BookOpen, Sparkles, PartyPopper, Zap, ChevronLeft, ChevronRight, Search, Filter, Share2, Calendar as CalendarIcon, Grid, List } from 'lucide-react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { motion, AnimatePresence } from 'framer-motion';
+import { PageBgAndCursor } from "@/components/PageBgAndCursor";
+import SplineBg from "@/components/SplineBg";
 
 interface EventCardProps {
   id: number;
@@ -31,36 +34,7 @@ const categories = [
   { id: 'social', name: 'Social' },
 ];
 
-// Custom arrow components for the slider
-const SampleNextArrow = (props: any) => {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={`${className} hidden sm:block`}
-      style={{ ...style, right: '-40px' }}
-      onClick={onClick}
-    >
-      <div className="bg-indigo-100 hover:bg-indigo-200 rounded-full p-2 transition-colors duration-200">
-        <ChevronRight className="w-6 h-6 text-indigo-600" />
-      </div>
-    </div>
-  );
-};
-
-const SamplePrevArrow = (props: any) => {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={`${className} hidden sm:block`}
-      style={{ ...style, left: '-40px' }}
-      onClick={onClick}
-    >
-      <div className="bg-indigo-100 hover:bg-indigo-200 rounded-full p-2 transition-colors duration-200">
-        <ChevronLeft className="w-6 h-6 text-indigo-600" />
-      </div>
-    </div>
-  );
-};
+// ...existing code...
 
 const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
   const [timeLeft, setTimeLeft] = useState({
@@ -127,7 +101,7 @@ const EventCard = ({ id, title, description, date, time, location, category, ico
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col border border-gray-100"
+      className="bg-[#14213d]/60 backdrop-blur-md text-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col border border-gray-900"
     >
       {/* Event Image */}
       <div className="relative h-48 overflow-hidden">
@@ -142,8 +116,8 @@ const EventCard = ({ id, title, description, date, time, location, category, ico
             Featured
           </div>
         )}
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-          <span className="text-white text-sm font-medium bg-black/40 px-2 py-1 rounded">
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#14213d]/90 to-transparent p-4">
+          <span className="text-white text-sm font-medium bg-[#14213d]/80 px-2 py-1 rounded">
             {category}
           </span>
         </div>
@@ -155,22 +129,22 @@ const EventCard = ({ id, title, description, date, time, location, category, ico
           <div className={`p-3 rounded-lg ${gradient.replace('bg-gradient-to-r', 'bg-gradient-to-br')} text-white mr-4`}>
             {icon}
           </div>
-          <h3 className="text-2xl font-bold text-gray-900">{title}</h3>
+          <h3 className="text-2xl font-bold text-white">{title}</h3>
         </div>
         
-        <p className="text-gray-600 mb-6 flex-grow">{description}</p>
+        <p className="text-white/80 mb-6 flex-grow">{description}</p>
         
         <div className="space-y-3 mt-auto">
-          <div className="flex items-center text-gray-600">
-            <Calendar className="w-5 h-5 mr-2 text-indigo-500" />
+          <div className="flex items-center text-white/70">
+            <Calendar className="w-5 h-5 mr-2 text-indigo-300" />
             <span>{date}</span>
           </div>
-          <div className="flex items-center text-gray-600">
-            <Clock className="w-5 h-5 mr-2 text-indigo-500" />
+          <div className="flex items-center text-white/70">
+            <Clock className="w-5 h-5 mr-2 text-indigo-300" />
             <span>{time}</span>
           </div>
-          <div className="flex items-center text-gray-600">
-            <MapPin className="w-5 h-5 mr-2 text-indigo-500" />
+          <div className="flex items-center text-white/70">
+            <MapPin className="w-5 h-5 mr-2 text-indigo-300" />
             <span>{location}</span>
           </div>
         </div>
@@ -179,13 +153,11 @@ const EventCard = ({ id, title, description, date, time, location, category, ico
           <button className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium py-3 px-4 rounded-lg transition-all duration-200 transform hover:scale-[1.02] shadow-md hover:shadow-lg">
             Register Now
           </button>
-          <button className="p-2 text-gray-500 hover:text-indigo-600 hover:bg-gray-100 rounded-lg transition-colors">
+          <button className="p-2 text-white/60 hover:text-indigo-300 hover:bg-indigo-900 rounded-lg transition-colors">
             <Share2 size={20} />
           </button>
         </div>
-        <div className="mt-3 text-center">
-          <CountdownTimer targetDate={new Date(date + ' ' + time)} />
-        </div>
+        {/* Countdown removed */}
       </div>
     </motion.div>
   );
@@ -203,7 +175,7 @@ const Events = () => {
     {
       id: 1,
       title: 'Peer-Peer Mentorship',
-      description: 'Connect with experienced mentors and peers to enhance your academic and personal growth through structured guidance and support.',
+      description: 'Connect with experienced mentors and peers to enhance your academic and personal growth through structured guidance.',
       date: 'August 15, 2025',
       time: '15:00',
       location: 'Student Center, Room 205',
@@ -262,18 +234,7 @@ const Events = () => {
       gradient: 'bg-gradient-to-r from-purple-500 to-blue-500',
       image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80'
     },
-    {
-      id: 6,
-      title: 'Alumni Mixer',
-      description: 'Network with successful alumni and explore career opportunities in various industries.',
-      date: 'November 15, 2025',
-      time: '18:30',
-      location: 'Grand Ballroom',
-      category: 'Social',
-      icon: <PartyPopper className="w-6 h-6" />,
-      gradient: 'bg-gradient-to-r from-red-500 to-pink-500',
-      image: 'https://images.unsplash.com/photo-1521737451536-00a86f630f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
-    }
+    
   ];
 
   // Filter events based on search query and active category
@@ -289,7 +250,22 @@ const Events = () => {
   const regularEvents = filteredEvents.filter(event => !event.featured);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 pt-16">
+    <>
+      <SplineBg />
+      {/* Floating Contact Us Button */}
+      <a
+        href="/contact us"
+        className="fixed z-50 bottom-2 right-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2 hover:bg-primary/90 transition-all text-lg font-semibold"
+        style={{ boxShadow: '0 4px 24px 0 rgba(0,0,0,0.18)' }}
+        aria-label="Contact Us"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-.659 1.591l-7.5 7.5a2.25 2.25 0 01-3.182 0l-7.5-7.5A2.25 2.25 0 012.25 6.993V6.75" />
+        </svg>
+        Contact Us
+      </a>
+      <PageBgAndCursor>
+      <div className="min-h-screen pt-16 -mt-16">
       {/* Hero Section with Carousel */}
       <div className="relative h-[420px] md:h-[520px] lg:h-[600px] w-full overflow-hidden">
         {/* Hero Carousel Slider - covers entire hero section */}
@@ -300,8 +276,7 @@ const Events = () => {
             speed={500}
             slidesToShow={1}
             slidesToScroll={1}
-            nextArrow={<SampleNextArrow />}
-            prevArrow={<SamplePrevArrow />}
+              
             className="h-full w-full"
           >
             {featuredEvents.map((event) => (
@@ -327,15 +302,15 @@ const Events = () => {
 
       {/* Search and Filter */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
+        <div className="bg-black rounded-xl shadow-sm p-6 mb-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="relative flex-1 max-w-2xl">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Search className="h-5 w-5 text-gray-400" />
+                <Search className="h-5 w-5 text-gray-300" />
               </div>
               <input
                 type="text"
-                className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="block w-full pl-10 pr-3 py-3 border border-gray-700 rounded-lg bg-gray-900 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 placeholder="Search events..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -345,21 +320,21 @@ const Events = () => {
             <div className="flex items-center space-x-2">
               <button
                 onClick={() => setViewMode('grid')}
-                className={`p-2 rounded-lg ${viewMode === 'grid' ? 'bg-indigo-100 text-indigo-600' : 'text-gray-500 hover:bg-gray-100'}`}
+                className={`p-2 rounded-lg ${viewMode === 'grid' ? 'bg-indigo-700 text-white' : 'text-gray-300 hover:bg-gray-800'}`}
                 aria-label="Grid view"
               >
                 <Grid className="w-5 h-5" />
               </button>
               <button
                 onClick={() => setViewMode('list')}
-                className={`p-2 rounded-lg ${viewMode === 'list' ? 'bg-indigo-100 text-indigo-600' : 'text-gray-500 hover:bg-gray-100'}`}
+                className={`p-2 rounded-lg ${viewMode === 'list' ? 'bg-indigo-700 text-white' : 'text-gray-300 hover:bg-gray-800'}`}
                 aria-label="List view"
               >
                 <List className="w-5 h-5" />
               </button>
               <button
                 onClick={() => setIsFilterOpen(!isFilterOpen)}
-                className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
+                className="flex items-center space-x-2 px-4 py-2 border border-gray-700 rounded-lg text-gray-200 hover:bg-gray-800 transition-colors"
               >
                 <Filter className="w-5 h-5" />
                 <span>Filter</span>
@@ -402,26 +377,13 @@ const Events = () => {
         {/* Featured Events */}
         {featuredEvents.length > 0 && (
           <div className="mb-12">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold text-gray-900">Featured Events</h2>
-              <div className="flex space-x-2">
-                <button className="p-2 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded-full">
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                <button className="p-2 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded-full">
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-              </div>
-            </div>
-            
+            <h2 className="text-2xl font-bold text-white mb-6">Featured Events</h2>
             <Slider
               dots={true}
               infinite={true}
               speed={500}
               slidesToShow={Math.min(2, featuredEvents.length)}
               slidesToScroll={1}
-              nextArrow={<SampleNextArrow />}
-              prevArrow={<SamplePrevArrow />}
               responsive={[
                 {
                   breakpoint: 1024,
@@ -453,7 +415,7 @@ const Events = () => {
         {/* All Events */}
         <div className="mb-12">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">All Events</h2>
+            <h2 className="text-2xl font-bold text-white">All Events</h2>
             <div className="flex items-center text-sm text-gray-500">
               <CalendarIcon className="w-4 h-4 mr-1" />
               <span>View Calendar</span>
@@ -494,7 +456,9 @@ const Events = () => {
       </div>
 
 
-    </div>
+      </div>
+      </PageBgAndCursor>
+    </>
   );
 };
 

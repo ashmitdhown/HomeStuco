@@ -1,84 +1,68 @@
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, Users, Calendar, Award } from "lucide-react";
+import { ChevronRight, Mail, Linkedin, Instagram, Facebook, X as Twitter } from "lucide-react";
 
 export const HeroSection = () => {
+  const [showContact, setShowContact] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowContact(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <section className="min-h-screen bg-gradient-hero flex items-center justify-center px-4 py-20 relative overflow-hidden">
-      {/* Subtle static background shape for depth (no animation) */}
-      <div className="absolute -top-32 -left-32 w-96 h-96 bg-champagne/10 rounded-full blur-3xl z-0" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-velvet/5 rounded-full blur-2xl z-0" />
-      <div className="max-w-6xl mx-auto text-center relative z-10">
-        <div className="mb-8">
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight bg-gradient-to-r from-velvet via-champagne to-velvet bg-clip-text text-transparent relative inline-block">
-            Student Council
-            {/* Shine effect (static, not animated) */}
-            <span className="absolute left-0 top-0 w-full h-full pointer-events-none overflow-hidden">
-              <span className="block w-1/3 h-full bg-gradient-to-r from-white/0 via-white/60 to-white/0 opacity-40 rotate-12" style={{ left: '33%' }} />
-            </span>
-          </h1>
-          <div className="w-32 h-1 bg-gradient-accent mx-auto mb-8" />
-          <p className="text-xl md:text-2xl text-velvet/80 max-w-3xl mx-auto leading-relaxed">
-            Empowering students, fostering community, and creating positive change
-            through collaborative leadership and innovative initiatives.
-          </p>
-        </div>
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-          <Button
-            size="lg"
-            className="bg-velvet hover:bg-velvet/90 text-pearl px-8 py-6 text-lg font-semibold shadow-luxury hover:shadow-glow transition-all duration-300"
-            onClick={() => {
-              document.getElementById('council-section')?.scrollIntoView({
-                behavior: 'smooth'
-              });
-            }}
-          >
-            Know Your Council
-            <ChevronRight className="ml-2 h-5 w-5" />
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="border-velvet text-velvet hover:bg-velvet hover:text-pearl px-8 py-6 text-lg font-semibold transition-all duration-300"
-            onClick={() => {
-              document.getElementById('announcement-section')?.scrollIntoView({
-                behavior: 'smooth'
-              });
-            }}
-          >
-            Announcements
-          </Button>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div className="text-center group">
-            <div className="bg-card/70 backdrop-blur-sm rounded-2xl p-8 shadow-card hover:shadow-luxury transition-all duration-300 group-hover:transform group-hover:scale-105">
-              <Users className="h-12 w-12 text-champagne mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-velvet mb-2">Community</h3>
-              <p className="text-muted-foreground">Building connections across all student groups</p>
-            </div>
-          </div>
-          <div className="text-center group">
-            <div className="bg-card/70 backdrop-blur-sm rounded-2xl p-8 shadow-card hover:shadow-luxury transition-all duration-300 group-hover:transform group-hover:scale-105">
-              <Calendar className="h-12 w-12 text-champagne mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-velvet mb-2">Events</h3>
-              <p className="text-muted-foreground">Organizing memorable experiences for students</p>
-            </div>
-          </div>
-          <div className="text-center group">
-            <div className="bg-card/70 backdrop-blur-sm rounded-2xl p-8 shadow-card hover:shadow-luxury transition-all duration-300 group-hover:transform group-hover:scale-105">
-              <Award className="h-12 w-12 text-champagne mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-velvet mb-2">Excellence</h3>
-              <p className="text-muted-foreground">Striving for outstanding student representation</p>
-            </div>
-          </div>
+    <section className="w-full h-screen flex items-center justify-center relative overflow-hidden z-30 p-0 m-0 -mt-16">
+      {/* Full Background Image */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        <img
+          src={"src/assets/Hero 2.jpg"}
+          alt="Student Council Background"
+          className="w-full h-full object-cover object-center"
+          style={{ filter: "brightness(0.6)" }}
+        />
+        {/* Overlay for readability */}
+        <div className="absolute inset-0 bg-black/40" />
+      </div>
+      {/* Animated shine keyframes */}
+      <style>{`
+        @keyframes shine {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+        .shine-animate {
+          animation: shine 2.5s linear infinite;
+        }
+      `}</style>
+      {/* Social Icons Vertical Bar */}
+      <div className="hidden md:flex flex-col items-center gap-6 absolute right-12 top-1/2 -translate-y-1/2 z-20">
+        <a href="mailto:studentcouncil@dubai.bits-pilani.ac.in" target="_blank" rel="noopener noreferrer" className="text-white hover:text-champagne transition"><Mail size={28} /></a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-champagne transition"><Linkedin size={28} /></a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-champagne transition"><Instagram size={28} /></a>
+      </div>
+      {/* Main Content */}
+      <div className="w-full max-w-4xl mx-auto text-center relative z-10 flex flex-col items-center justify-center" style={{ minHeight: '100vh' }}>
+        <h1 className="text-[8rem] md:text-[7.5rem] font-extrabold text-white mb-[-2rem] tracking-tight uppercase drop-shadow-lg">STUDENT</h1>
+        <h1 className="text-[8rem] md:text-[7.5rem] font-extrabold text-white mb-[-1rem] tracking-tight uppercase drop-shadow-lg">COUNCIL</h1>
+        <h2 className="text-[4rem] md:text-[3.5rem] font-semibold text-white mb-0 tracking-wide uppercase drop-shadow">BITS PILANI, DUBAI</h2>
+        <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-16">
+          {/* ...existing code... */}
         </div>
       </div>
-      {/* Scroll Down Indicator (static) */}
-      <div className="absolute left-1/2 bottom-8 -translate-x-1/2 flex flex-col items-center z-20">
-        <div className="w-8 h-8 rounded-full border-2 border-champagne flex items-center justify-center mb-1">
-          <ChevronRight className="h-6 w-6 text-champagne rotate-90" />
-        </div>
-        <span className="text-xs text-champagne font-semibold tracking-widest">SCROLL</span>
-      </div>
+
+      {/* Floating Contact Button */}
+      {showContact && (
+        <a
+          href="mailto:studentcouncil@dubai.bits-pilani.ac.in"
+          className="fixed bottom-5 right-3 z-50 bg-blue-600 text-white rounded-full shadow-lg p-4 px-7 flex items-center gap-2 hover:bg-blue-700 transition-all duration-300"
+          style={{ boxShadow: "0 5px 24px rgba(0,0,0,0.2)" }}
+        >
+          <Mail size={26} />
+          <span className="font-semibold hidden sm:inline">Contact Us</span>
+        </a>
+      )}
     </section>
   );
 };

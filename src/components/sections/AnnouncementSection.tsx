@@ -73,7 +73,7 @@ export const AnnouncementSection = () => {
       </div>
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-velvet mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             ANNOUNCEMENTS
           </h2>
           <div className="w-24 h-1 bg-gradient-accent mx-auto mb-6"></div>
@@ -84,7 +84,7 @@ export const AnnouncementSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {events.map((event, index) => (
             <div key={event.id}>
-              <Card className="bg-card/90 backdrop-blur-sm border-border/50 shadow-card hover:shadow-luxury transition-all duration-500 group overflow-hidden">
+              <Card className="bg-[#14213d99] backdrop-blur-md border-border/50 shadow-card hover:shadow-luxury transition-all duration-500 group overflow-hidden text-white">
                 <div className="relative overflow-hidden">
                   <img
                     src={event.image}
@@ -102,24 +102,24 @@ export const AnnouncementSection = () => {
                   </div>
                 </div>
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-xl text-velvet group-hover:text-champagne transition-colors duration-300">
+                  <CardTitle className="text-xl text-white group-hover:text-champagne transition-colors duration-300">
                     {event.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <p className="text-muted-foreground text-sm leading-relaxed">
+                  <p className="text-white/80 text-sm leading-relaxed">
                     {event.description}
                   </p>
                   <div className="grid grid-cols-1 gap-3">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-sm text-white/70">
                       <Calendar className="h-4 w-4 text-champagne" />
                       <span>{event.date}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-sm text-white/70">
                       <Clock className="h-4 w-4 text-champagne" />
                       <span>{event.time}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-sm text-white/70">
                       <Users className="h-4 w-4 text-champagne" />
                       <span>{event.attendees} attendees</span>
                     </div>
@@ -129,7 +129,7 @@ export const AnnouncementSection = () => {
                       className="w-full bg-velvet hover:bg-velvet/90 text-pearl font-semibold transition-all duration-300 hover:shadow-glow"
                       onClick={() => handleLearnMore(event)}
                     >
-                      LEARN MORE
+                      Join This Event
                     </Button>
                   </div>
                 </CardContent>
