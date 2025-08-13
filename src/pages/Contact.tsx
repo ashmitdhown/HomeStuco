@@ -1,5 +1,5 @@
 // Author: Manav Arya & Ashmit Dhown
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { PageBgAndCursor } from "@/components/PageBgAndCursor";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,7 +10,6 @@ import {
   Linkedin, 
   MapPin, 
   Send,
-  Sparkles,
   Zap,
   MessageCircle
 } from "lucide-react";
@@ -43,10 +42,8 @@ const Contact = () => {
     try {
       await fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
-        mode: "no-cors", // CORS workaround (you won't get response)
-        headers: {
-          "Content-Type": "application/json",
-        },
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           Name: formData.name,
           Email: formData.email,
@@ -105,174 +102,175 @@ const Contact = () => {
   ];
 
   return (
-    <PageBgAndCursor>
-      <div 
-        ref={containerRef}
-        className="min-h-screen relative"
-      >
-      <div className="relative z-10 min-h-screen flex items-center justify-center p-6">
-        <div className="w-full max-w-6xl">
-          
-          {/* Header */}
-          <div className="text-center mb-16">
-            <h1 className="text-6xl md:text-8xl font-black text-white mb-6 leading-none">
-              Let's Talk
-            </h1>
-          </div>
+    <>
+      <PageBgAndCursor>
+        <div ref={containerRef} className="min-h-screen relative">
+          <div className="relative z-10 min-h-screen flex items-center justify-center p-6">
+            <div className="w-full max-w-6xl">
+              
+              {/* Header */}
+              <div className="text-center mb-16">
+                <h1 className="text-6xl md:text-8xl font-black text-white mb-6 leading-none">
+                  Let's Talk
+                </h1>
+              </div>
 
-          <div className="grid lg:grid-cols-5 gap-8 items-start">
-            
-            {/* Contact Methods */}
-            <div className="lg:col-span-2 space-y-4">
-              {contactMethods.map((method, index) => (
-                <div key={index} className="group relative">
-                  <a
-                    href={method.href}
-                    target={method.href.startsWith('http') ? '_blank' : '_self'}
-                    rel={method.href.startsWith('http') ? 'noopener noreferrer' : ''}
-                    className="block p-6 bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl hover:bg-white/30 hover:border-white/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-white/30 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-all duration-300">
-                        <method.icon className="w-6 h-6 text-white" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="text-white font-semibold text-lg">{method.label}</div>
-                        <div className="text-white text-sm">{method.value}</div>
-                      </div>
-                    </div>
-                    {/* Hover Effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
-                  </a>
-                </div>
-              ))}
-            </div>
-
-            {/* Contact Form */}
-            <div className="lg:col-span-3">
-              <div className="bg-white/30 backdrop-blur-xl border border-white/40 rounded-3xl p-8 shadow-2xl text-white">
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-10 h-10 bg-white/30 rounded-xl flex items-center justify-center">
-                    <MessageCircle className="w-5 h-5 text-white" />
-                  </div>
-                  <h2 className="text-2xl font-bold text-white">Send Message</h2>
-                </div>
+              <div className="grid lg:grid-cols-5 gap-10">
                 
-                <div className="space-y-6">
-                  
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="relative group">
-                      <Input
-                        name="name"
-                        type="text"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        onFocus={() => setFocusedField('name')}
-                        onBlur={() => setFocusedField(null)}
-                        className="w-full bg-white/20 border border-white/40 rounded-xl px-4 py-3 text-white placeholder-white focus:bg-white/30 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400/50 transition-all duration-300"
-                        placeholder="Your Name"
-                      />
-                      {focusedField === 'name' && (
-                        <div className="absolute -top-2 left-4 bg-gradient-to-r from-blue-500 to-yellow-500 text-white px-2 py-1 rounded text-xs font-medium">
-                          <span className="text-white">Full Name</span>
-                        </div>
-                      )}
+                {/* Contact Methods */}
+                <div className="lg:col-span-2">
+                  <div className="h-full flex flex-col justify-between space-y-5">
+                    {contactMethods.map((method, index) => (
+                      <div key={index} className="group relative flex-1">
+                        <a
+                          href={method.href}
+                          target={method.href.startsWith('http') ? '_blank' : '_self'}
+                          rel={method.href.startsWith('http') ? 'noopener noreferrer' : ''}
+                          className="flex h-full items-center p-8 bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl hover:bg-white/30 hover:border-white/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2"
+                        >
+                          <div className="flex items-center gap-5 w-full">
+                            <div className="w-14 h-14 bg-white/30 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-all duration-300">
+                              <method.icon className="w-7 h-7 text-white" />
+                            </div>
+                            <div className="flex-1">
+                              <div className="text-white font-semibold text-xl">{method.label}</div>
+                              <div className="text-white text-base">{method.value}</div>
+                            </div>
+                          </div>
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Contact Form */}
+                <div className="lg:col-span-3">
+                  <div className="bg-white/30 backdrop-blur-xl border border-white/40 rounded-3xl p-10 shadow-2xl text-white h-full flex flex-col">
+                    <div className="flex items-center gap-4 mb-10">
+                      <div className="w-12 h-12 bg-white/30 rounded-xl flex items-center justify-center">
+                        <MessageCircle className="w-6 h-6 text-white" />
+                      </div>
+                      <h2 className="text-3xl font-bold text-white">Send Message</h2>
                     </div>
                     
-                    <div className="relative group">
-                      <Input
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        onFocus={() => setFocusedField('email')}
-                        onBlur={() => setFocusedField(null)}
-                        className="w-full bg-white/20 border border-white/40 rounded-xl px-4 py-3 text-white placeholder-white focus:bg-white/30 focus:border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-400/50 transition-all duration-300"
-                        placeholder="your@email.com"
-                      />
-                      {focusedField === 'email' && (
-                        <div className="absolute -top-2 left-4 bg-gradient-to-r from-yellow-500 to-amber-500 text-white px-2 py-1 rounded text-xs font-medium">
-                          <span className="text-white">Email Address</span>
+                    <div className="space-y-7 flex-1 flex flex-col">
+                      
+                      <div className="grid md:grid-cols-2 gap-5">
+                        <div className="relative group">
+                          <Input
+                            name="name"
+                            type="text"
+                            value={formData.name}
+                            onChange={handleInputChange}
+                            onFocus={() => setFocusedField('name')}
+                            onBlur={() => setFocusedField(null)}
+                            className="w-full bg-white/20 border border-white/40 rounded-xl px-5 py-4 text-white placeholder-white focus:bg-white/30 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400/50 transition-all duration-300 text-base"
+                            placeholder="Your Name"
+                          />
+                          {focusedField === 'name' && (
+                            <div className="absolute -top-2 left-4 bg-gradient-to-r from-blue-500 to-yellow-500 text-white px-2 py-1 rounded text-xs font-medium">
+                              <span className="text-white">Full Name</span>
+                            </div>
+                          )}
                         </div>
-                      )}
+                        
+                        <div className="relative group">
+                          <Input
+                            name="email"
+                            type="email"
+                            value={formData.email}
+                            onChange={handleInputChange}
+                            onFocus={() => setFocusedField('email')}
+                            onBlur={() => setFocusedField(null)}
+                            className="w-full bg-white/20 border border-white/40 rounded-xl px-5 py-4 text-white placeholder-white focus:bg-white/30 focus:border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-400/50 transition-all duration-300 text-base"
+                            placeholder="your@email.com"
+                          />
+                          {focusedField === 'email' && (
+                            <div className="absolute -top-2 left-4 bg-gradient-to-r from-yellow-500 to-amber-500 text-white px-2 py-1 rounded text-xs font-medium">
+                              <span className="text-white">Email Address</span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      
+                      <div className="relative group">
+                        <Input
+                          name="subject"
+                          type="text"
+                          value={formData.subject}
+                          onChange={handleInputChange}
+                          onFocus={() => setFocusedField('subject')}
+                          onBlur={() => setFocusedField(null)}
+                          className="w-full bg-white/20 border border-white/40 rounded-xl px-5 py-4 text-white placeholder-white focus:bg-white/30 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-400/50 transition-all duration-300 text-base"
+                          placeholder="Subject"
+                        />
+                        {focusedField === 'subject' && (
+                          <div className="absolute -top-2 left-4 bg-gradient-to-r from-sky-500 to-blue-500 text-white px-2 py-1 rounded text-xs font-medium">
+                            <span className="text-white">What's this about?</span>
+                          </div>
+                        )}
+                      </div>
+                      
+                      <div className="relative group flex-1">
+                        <Textarea
+                          name="message"
+                          value={formData.message}
+                          onChange={handleInputChange}
+                          onFocus={() => setFocusedField('message')}
+                          onBlur={() => setFocusedField(null)}
+                          className="w-full h-full min-h-[140px] bg-white/20 border border-white/40 rounded-xl px-5 py-4 text-white placeholder-white focus:bg-white/30 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400/50 transition-all duration-300 resize-none text-base"
+                          placeholder="Tell us what's on your mind..."
+                        />
+                        {focusedField === 'message' && (
+                          <div className="absolute -top-2 left-4 bg-gradient-to-r from-amber-500 to-yellow-500 text-white px-2 py-1 rounded text-xs font-medium">
+                            <span className="text-white">Your Message</span>
+                          </div>
+                        )}
+                      </div>
+                      
+                      <Button
+                        onClick={handleSubmit}
+                        disabled={isSubmitting}
+                        className="w-full bg-white/30 text-white font-semibold py-5 px-8 rounded-xl shadow-lg hover:bg-white/40 hover:shadow-2xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed group mt-auto text-base"
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-3"></div>
+                            Sending your message...
+                          </>
+                        ) : (
+                          <>
+                            <Send className="w-5 h-5 mr-3 group-hover:rotate-12 transition-transform duration-300 text-white" />
+                            Send Message
+                            <Zap className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white" />
+                          </>
+                        )}
+                      </Button>
+                      
                     </div>
                   </div>
-                  
-                  <div className="relative group">
-                    <Input
-                      name="subject"
-                      type="text"
-                      value={formData.subject}
-                      onChange={handleInputChange}
-                      onFocus={() => setFocusedField('subject')}
-                      onBlur={() => setFocusedField(null)}
-                    className="w-full bg-white/20 border border-white/40 rounded-xl px-4 py-3 text-white placeholder-white focus:bg-white/30 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-400/50 transition-all duration-300"
-                      placeholder="Subject"
-                    />
-                    {focusedField === 'subject' && (
-                      <div className="absolute -top-2 left-4 bg-gradient-to-r from-sky-500 to-blue-500 text-white px-2 py-1 rounded text-xs font-medium">
-                        <span className="text-white">What's this about?</span>
-                      </div>
-                    )}
-                  </div>
-                  
-                  <div className="relative group">
-                    <Textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      onFocus={() => setFocusedField('message')}
-                      onBlur={() => setFocusedField(null)}
-                      rows={5}
-                      className="w-full bg-white/20 border border-white/40 rounded-xl px-4 py-3 text-white placeholder-white focus:bg-white/30 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400/50 transition-all duration-300 resize-none"
-                      placeholder="Tell us what's on your mind..."
-                    />
-                    {focusedField === 'message' && (
-                      <div className="absolute -top-2 left-4 bg-gradient-to-r from-amber-500 to-yellow-500 text-white px-2 py-1 rounded text-xs font-medium">
-                        <span className="text-white">Your Message</span>
-                      </div>
-                    )}
-                  </div>
-                  
-                  <Button
-                    onClick={handleSubmit}
-                    disabled={isSubmitting}
-                    className="w-full bg-white/30 text-white font-semibold py-4 px-8 rounded-xl shadow-lg hover:bg-white/40 hover:shadow-2xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed group"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-3"></div>
-                        Sending your message...
-                      </>
-                    ) : (
-                      <>
-                        <Send className="w-5 h-5 mr-3 group-hover:rotate-12 transition-transform duration-300 text-white" />
-                        Send Message
-                        <Zap className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white" />
-                      </>
-                    )}
-                  </Button>
-                  
                 </div>
+                
               </div>
             </div>
-            
           </div>
         </div>
-      </div>
-      </div>
+      </PageBgAndCursor>
+
       {/* Floating Back to Homepage Button */}
       <a
-        href="/"
-        className="fixed z-50 bottom-5 right-4 flex items-center gap-2 px-5 py-3 rounded-full bg-blue-600 text-white font-bold shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 backdrop-blur-lg border-2 border-white/30"
-        style={{ minWidth: 0 }}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l9-9 9 9M4.5 10.5V21h15V10.5" />
-        </svg>
-        Back to Homepage
-      </a>
-    </PageBgAndCursor>
+      href="/"
+      className="fixed z-[9999] bottom-4 right-3 bg-primary text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2 hover:bg-primary/90 transition-all text-lg font-semibold"
+      style={{ minWidth: 0, boxShadow: '0 4px 24px 0 rgba(0,0,0,0.18)' }}
+        >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l9-9 9 9M4.5 10.5V21h15V10.5" />
+      </svg>
+       Back to Homepage
+    </a>
+
+    </>
   );
 };
 
