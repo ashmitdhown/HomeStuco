@@ -1,0 +1,139 @@
+{
+  "components": [
+    "Footer",
+    "Navigation",
+    "ScrollProgressBar",
+    {
+      "sections": [
+        "AnnouncementSection",
+        "ClubsSection",
+        "CouncilSection",
+        "EMCSection",
+        "HeroSection",
+        "OurBackboneSection"
+      ]
+    },
+    {
+      "ui": [
+        "accordion",
+        "alert-dialog",
+        "alert",
+        "aspect-ratio",
+        "avatar",
+        "badge",
+        "breadcrumb",
+        "button",
+        "calendar",
+        "card",
+        "carousel",
+        "chart",
+        "checkbox",
+        "collapsible",
+        "command",
+        "context-menu",
+        "dialog",
+        "drawer",
+        "dropdown-menu",
+        "form",
+        "hover-card",
+        "input-otp",
+        "input",
+        "label",
+        "menubar",
+        "navigation-menu",
+        "pagination",
+        "popover",
+        "progress",
+        "radio-group",
+        "resizable",
+        "scroll-area",
+        "select",
+        "separator",
+        "sheet",
+        "sidebar",
+        "skeleton",
+        "slider",
+        "sonner",
+        "switch",
+        "table",
+        "tabs",
+        "textarea",
+        "toast",
+        "toaster",
+        "toggle-group",
+        "toggle",
+        "tooltip",
+        "use-toast"
+      ]
+    }
+  ],
+  "pages": [
+    "About",
+    "ClubDetail",
+    "Clubs",
+    "Contact",
+    "EMC",
+    "Events",
+    "Index",
+    "Merch",
+    "NotFound",
+    "Welcome"
+  ],
+  "textContent": {
+    "heroSection": "Empowering students, fostering community, and creating positive change through collaborative leadership and innovative initiatives.",
+    "aboutPage": {
+      "mission": "To empower students through leadership development, foster a vibrant campus community, and advocate for student interests while promoting academic excellence and personal growth.",
+      "vision": "To be the leading student council that creates an inclusive, innovative, and inspiring campus environment where every student thrives and achieves their full potential.",
+      "presidentNote": "It is with immense pride and gratitude that I serve as your Student Council President. Our council represents the collective voice of every student at BPDC, and we are committed to ensuring that your academic journey is enriched with meaningful experiences, opportunities for growth, and a supportive community that celebrates diversity and inclusion."
+    },
+    "contactPage": {
+      "header": "Have questions, suggestions, or want to get involved? We'd love to hear from you. Reach out to us through any of the channels below.",
+      "email": "studentcouncil@dubai.bits-pilani.ac.in",
+      "instagram": "@council.bitsdubai",
+      "linkedin": "Student Council BPDC"
+    },
+    "merchPage": {
+      "header": "Show your school spirit with our exclusive merchandise!",
+      "items": [
+        "T-shirts",
+        "Hoodies",
+        "Caps",
+        "Mugs",
+        "Stickers"
+      ],
+      "description": "All proceeds go towards funding student council initiatives and events."
+    },
+    "eventsPage": {
+      "header": "Discover our exciting events!",
+      "upcomingEvents": [
+        "Peer-Peer Mentorship",
+        "Jashn",
+        "Sparks",
+        "Recharge",
+        "Tech Symposium"
+      ],
+      "description": "Join us for a variety of events that bring our community together and celebrate student achievements."
+    },
+    "clubsPage": {
+      "header": "Explore our vibrant clubs!",
+      "description": "From arts to technology, our clubs offer something for everyone. Join a club today and connect with like-minded peers!",
+      "popularClubs": [
+        "Drama Club",
+        "Robotics Club",
+        "Music Club",
+        "Debate Society",
+        "Photography Club"
+      ]
+    },
+    "emcPage": {
+      "header": "Empowering Minds Club (EMC)",
+      "description": "EMC is dedicated to fostering innovation, creativity, and leadership among students. Join us to make a difference!",
+      "initiatives": [
+        "Hackathons",
+        "Workshops",
+        "Community Outreach",
+        "Leadership Training"
+      ]
+    }
+  }
+}

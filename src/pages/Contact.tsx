@@ -1,21 +1,19 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+// Author: Manav Arya & Ashmit Dhon
+import { useState, useRef, useEffect } from "react";
+import { PageBgAndCursor } from "@/components/PageBgAndCursor";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Badge } from "@/components/ui/badge";
 import { 
   Mail, 
   Instagram, 
   Linkedin, 
   MapPin, 
-  Phone, 
   Send,
-  MessageSquare
+  Sparkles,
+  Zap,
+  MessageCircle
 } from "lucide-react";
-import { useToast } from "@/components/ui/use-toast";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -25,9 +23,29 @@ const Contact = () => {
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [focusedField, setFocusedField] = useState(null);
+  const containerRef = useRef(null);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        setMousePosition({
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top
+        });
+      }
+    };
+
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('mousemove', handleMouseMove);
+      return () => container.removeEventListener('mousemove', handleMouseMove);
+    }
+  }, []);
+
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -35,8 +53,7 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     setIsSubmitting(true);
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwlDSHO-aEWlT_OWPy8FAobG_vLMCsz1Wud4sMulmB2SAHDexeVS7094-iYDx9DOVU/exec";
     try {
@@ -64,274 +81,206 @@ const Contact = () => {
         subject: "",
         message: ""
       });
-    } catch (error) {
-      toast({
-        title: "Submission Failed",
-        description: "There was an error submitting the form.",
-        duration: 5000,
-      });
-      console.error("Submission error:", error);
-    } finally {
       setIsSubmitting(false);
-    }
+    }, 2000);
   };
 
-  const contactInfo = [
+  const contactMethods = [
     {
       icon: Mail,
-      title: "Email",
+      label: "Email",
       value: "studentcouncil@dubai.bits-pilani.ac.in",
-      link: "mailto:studentcouncil@dubai.bits-pilani.ac.in",
-      description: "Send us an email anytime"
+      href: "mailto:studentcouncil@dubai.bits-pilani.ac.in"
     },
     {
       icon: Instagram,
-      title: "Instagram",
+      label: "Instagram",
       value: "@council.bitsdubai",
-      link: "https://www.instagram.com/council.bitsdubai/",
-      description: "Follow us for updates"
+      href: "https://www.instagram.com/council.bitsdubai/"
     },
     {
       icon: Linkedin,
-      title: "LinkedIn",
+      label: "LinkedIn", 
       value: "Student Council BPDC",
-      link: "https://www.linkedin.com/company/student-council-bpdc/",
-      description: "Connect with us professionally"
+      href: "https://www.linkedin.com/company/student-council-bpdc/"
     },
     {
       icon: MapPin,
-      title: "Location",
-      value: "BPDC Campus, Dubai",
-      link: "https://www.google.com/maps/place/Birla+Institute+of+Technology+and+Science,+Pilani-+Dubai/data=!4m2!3m1!1s0x0:0x178903db8ef63bc7?sa=X&ved=1t:2428&ictx=111",
-      description: "Find us on the map"
+      label: "Campus",
+      value: "BITS Pilani Dubai",
+      href: "https://www.google.com/maps/place/Birla+Institute+of+Technology+and+Science,+Pilani-+Dubai/"
     }
   ];
 
-
-
   return (
-    <div className="min-h-screen pt-16 bg-gradient-hero">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute top-20 right-20 w-96 h-96 bg-gradient-primary opacity-10 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute bottom-20 left-20 w-64 h-64 bg-champagne/20 rounded-full blur-2xl"
-          animate={{
-            x: [0, 50, 0],
-            y: [0, -30, 0],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-      </div>
+    <PageBgAndCursor>
+      <div 
+        ref={containerRef}
+        className="min-h-screen relative"
+      >
+      <div className="relative z-10 min-h-screen flex items-center justify-center p-6">
+        <div className="w-full max-w-6xl">
+          
+          {/* Header */}
+          <div className="text-center mb-16">
+            <h1 className="text-6xl md:text-8xl font-black text-white mb-6 leading-none">
+              Let's Talk
+            </h1>
+          </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-        {/* Header Section */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="text-4xl md:text-6xl font-bold text-velvet mb-6">
-            Get In <span className="text-transparent bg-gradient-accent bg-clip-text">Touch</span>
-          </h1>
-          <div className="w-24 h-1 bg-gradient-accent mx-auto mb-6"></div>
-          <p className="text-xl text-velvet/80 max-w-2xl mx-auto">
-            Have questions, suggestions, or want to get involved? We'd love to hear from you. 
-            Reach out to us through any of the channels below.
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
-          {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="h-full"
-          >
-            <Card className="bg-card/90 backdrop-blur-sm border-border/50 shadow-luxury h-full min-h-[500px] flex flex-col">
-              <CardHeader>
-                <CardTitle className="text-2xl text-velvet flex items-center gap-3">
-                  <MessageSquare className="h-6 w-6 text-champagne" />
-                  Contact Information
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {contactInfo.map((info, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="group"
+          <div className="grid lg:grid-cols-5 gap-8 items-start">
+            
+            {/* Contact Methods */}
+            <div className="lg:col-span-2 space-y-4">
+              {contactMethods.map((method, index) => (
+                <div key={index} className="group relative">
+                  <a
+                    href={method.href}
+                    target={method.href.startsWith('http') ? '_blank' : '_self'}
+                    rel={method.href.startsWith('http') ? 'noopener noreferrer' : ''}
+                    className="block p-6 bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl hover:bg-white/30 hover:border-white/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2"
                   >
-                    <a
-                      href={info.link}
-                      target={info.link.startsWith('http') ? "_blank" : "_self"}
-                      rel={info.link.startsWith('http') ? "noopener noreferrer" : ""}
-                      className="flex items-center gap-5 p-5 rounded-xl hover:bg-velvet/5 transition-all duration-300 group-hover:transform group-hover:scale-105"
-                    >
-                      <div className="w-14 h-14 bg-gradient-accent rounded-xl flex items-center justify-center shadow-glow group-hover:shadow-lg transition-all duration-300 flex-shrink-0">
-                        <info.icon className="h-7 w-7 text-velvet" />
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-white/30 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-all duration-300">
+                        <method.icon className="w-6 h-6 text-white" />
                       </div>
-                      <div className="flex-1 flex flex-col justify-center min-w-0">
-                        <h3 className="font-semibold text-velvet mb-0.5 truncate">{info.title}</h3>
-                        <p className="text-velvet/80 font-medium leading-tight truncate">{info.value}</p>
-                        <p className="text-sm text-muted-foreground leading-snug mt-0.5 truncate">{info.description}</p>
+                      <div className="flex-1">
+                        <div className="text-white font-semibold text-lg">{method.label}</div>
+                        <div className="text-white text-sm">{method.value}</div>
                       </div>
-                    </a>
-                  </motion.div>
-                ))}
-              </CardContent>
-            </Card>
-          </motion.div>
+                    </div>
+                    {/* Hover Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                  </a>
+                </div>
+              ))}
+            </div>
 
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="h-full"
-          >
-            <Card className="bg-card/90 backdrop-blur-sm border-border/50 shadow-luxury h-full min-h-[500px] flex flex-col">
-              <CardHeader>
-                <CardTitle className="text-2xl text-velvet flex items-center gap-3">
-                  <Send className="h-6 w-6 text-champagne" />
-                  Send Us a Message
-                </CardTitle>
-                <p className="text-muted-foreground">
-                  Fill out the form below and we'll get back to you as soon as possible.
-                </p>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name" className="text-velvet font-medium">
-                        Full Name *
-                      </Label>
+            {/* Contact Form */}
+            <div className="lg:col-span-3">
+              <div className="bg-white/30 backdrop-blur-xl border border-white/40 rounded-3xl p-8 shadow-2xl text-white">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-10 h-10 bg-white/30 rounded-xl flex items-center justify-center">
+                    <MessageCircle className="w-5 h-5 text-white" />
+                  </div>
+                  <h2 className="text-2xl font-bold text-white">Send Message</h2>
+                </div>
+                
+                <div className="space-y-6">
+                  
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="relative group">
                       <Input
-                        id="name"
                         name="name"
                         type="text"
                         value={formData.name}
                         onChange={handleInputChange}
-                        required
-                        className="border-border/50 focus:border-champagne focus:ring-champagne/20"
-                        placeholder="Enter your full name"
+                        onFocus={() => setFocusedField('name')}
+                        onBlur={() => setFocusedField(null)}
+                        className="w-full bg-white/20 border border-white/40 rounded-xl px-4 py-3 text-white placeholder-white focus:bg-white/30 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400/50 transition-all duration-300"
+                        placeholder="Your Name"
                       />
+                      {focusedField === 'name' && (
+                        <div className="absolute -top-2 left-4 bg-gradient-to-r from-blue-500 to-yellow-500 text-white px-2 py-1 rounded text-xs font-medium">
+                          <span className="text-white">Full Name</span>
+                        </div>
+                      )}
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email" className="text-velvet font-medium">
-                        Email Address *
-                      </Label>
+                    
+                    <div className="relative group">
                       <Input
-                        id="email"
                         name="email"
                         type="email"
                         value={formData.email}
                         onChange={handleInputChange}
-                        required
-                        className="border-border/50 focus:border-champagne focus:ring-champagne/20"
-                        placeholder="Enter your email"
+                        onFocus={() => setFocusedField('email')}
+                        onBlur={() => setFocusedField(null)}
+                        className="w-full bg-white/20 border border-white/40 rounded-xl px-4 py-3 text-white placeholder-white focus:bg-white/30 focus:border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-400/50 transition-all duration-300"
+                        placeholder="your@email.com"
                       />
+                      {focusedField === 'email' && (
+                        <div className="absolute -top-2 left-4 bg-gradient-to-r from-yellow-500 to-amber-500 text-white px-2 py-1 rounded text-xs font-medium">
+                          <span className="text-white">Email Address</span>
+                        </div>
+                      )}
                     </div>
                   </div>
                   
-                  <div className="space-y-2">
-                    <Label htmlFor="subject" className="text-velvet font-medium">
-                      Subject *
-                    </Label>
+                  <div className="relative group">
                     <Input
-                      id="subject"
                       name="subject"
                       type="text"
                       value={formData.subject}
                       onChange={handleInputChange}
-                      required
-                      className="border-border/50 focus:border-champagne focus:ring-champagne/20"
-                      placeholder="What's this about?"
+                      onFocus={() => setFocusedField('subject')}
+                      onBlur={() => setFocusedField(null)}
+                    className="w-full bg-white/20 border border-white/40 rounded-xl px-4 py-3 text-white placeholder-white focus:bg-white/30 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-400/50 transition-all duration-300"
+                      placeholder="Subject"
                     />
+                    {focusedField === 'subject' && (
+                      <div className="absolute -top-2 left-4 bg-gradient-to-r from-sky-500 to-blue-500 text-white px-2 py-1 rounded text-xs font-medium">
+                        <span className="text-white">What's this about?</span>
+                      </div>
+                    )}
                   </div>
                   
-                  <div className="space-y-2">
-                    <Label htmlFor="message" className="text-velvet font-medium">
-                      Message *
-                    </Label>
+                  <div className="relative group">
                     <Textarea
-                      id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
-                      required
-                      rows={6}
-                      className="border-border/50 focus:border-champagne focus:ring-champagne/20 resize-none"
-                      placeholder="Tell us more about your inquiry..."
+                      onFocus={() => setFocusedField('message')}
+                      onBlur={() => setFocusedField(null)}
+                      rows={5}
+                      className="w-full bg-white/20 border border-white/40 rounded-xl px-4 py-3 text-white placeholder-white focus:bg-white/30 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400/50 transition-all duration-300 resize-none"
+                      placeholder="Tell us what's on your mind..."
                     />
+                    {focusedField === 'message' && (
+                      <div className="absolute -top-2 left-4 bg-gradient-to-r from-amber-500 to-yellow-500 text-white px-2 py-1 rounded text-xs font-medium">
+                        <span className="text-white">Your Message</span>
+                      </div>
+                    )}
                   </div>
                   
                   <Button
-                    type="submit"
-                    className="w-full bg-velvet hover:bg-velvet/90 text-pearl font-semibold py-3 shadow-luxury hover:shadow-glow transition-all duration-300"
+                    onClick={handleSubmit}
                     disabled={isSubmitting}
+                    className="w-full bg-white/30 text-white font-semibold py-4 px-8 rounded-xl shadow-lg hover:bg-white/40 hover:shadow-2xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed group"
                   >
                     {isSubmitting ? (
                       <>
-                        <svg
-                          className="animate-spin h-4 w-4 text-pearl mr-2"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                        >
-                          <circle
-                            className="opacity-25"
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                          ></circle>
-                          <path
-                            className="opacity-75"
-                            fill="currentColor"
-                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                          ></path>
-                        </svg>
-                        Sending...
+                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-3"></div>
+                        Sending your message...
                       </>
                     ) : (
                       <>
-                        <Send className="h-4 w-4 mr-2" />
+                        <Send className="w-5 h-5 mr-3 group-hover:rotate-12 transition-transform duration-300 text-white" />
                         Send Message
+                        <Zap className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white" />
                       </>
                     )}
                   </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </motion.div>
+                  
+                </div>
+              </div>
+            </div>
+            
+          </div>
         </div>
       </div>
-    </div>
+      </div>
+      {/* Floating Back to Homepage Button */}
+      <a
+        href="/"
+        className="fixed z-50 bottom-5 right-4 flex items-center gap-2 px-5 py-3 rounded-full bg-blue-600 text-white font-bold shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 backdrop-blur-lg border-2 border-white/30"
+        style={{ minWidth: 0 }}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l9-9 9 9M4.5 10.5V21h15V10.5" />
+        </svg>
+        Back to Homepage
+      </a>
+    </PageBgAndCursor>
   );
 };
 
