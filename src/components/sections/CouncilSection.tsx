@@ -49,6 +49,7 @@ const councilMembers: CouncilMember[] = [
     instagram: "https://www.instagram.com/isharjotpasricha",
     linkedin: "https://www.linkedin.com/in/isharjotpasricha",
     bio: LOREM
+
   },
   {
     name: "Sivapriya Madhu Pillai",
@@ -57,6 +58,7 @@ const councilMembers: CouncilMember[] = [
     instagram: "https://www.instagram.com/sivapriyamadhupillai/",
     linkedin: "https://www.linkedin.com/in/sivapriya-madhu-pillai-721aa130a/",
     bio: LOREM
+
   },
   {
     name: "Raj Singh",
@@ -81,6 +83,8 @@ const councilMembers: CouncilMember[] = [
     instagram: "https://www.instagram.com/ashmit_dhown",
     linkedin: "https://www.linkedin.com/in/ashmit-dhown",
     bio: LOREM
+    instagram: "https://www.instagram.com/ashmitdhown",
+    linkedin: "https://www.linkedin.com/in/ashmit-dhown-3b5523314/",
   },
   {
     name: "Gurkaran Singh",
@@ -97,6 +101,7 @@ const councilMembers: CouncilMember[] = [
     instagram: "https://www.instagram.com/suhas_simha",
     linkedin: "https://www.linkedin.com/in/suhas-simha",
     bio: LOREM
+    linkedin: "https://www.linkedin.com/in/suhas-simha-s-301931325/",
   },
   {
     name: "Tanisha Handa",
@@ -119,6 +124,7 @@ const councilMembers: CouncilMember[] = [
     image: blankProfileImg,
     linkedin: "https://linkedin.com",
     bio: LOREM
+    instagram: "https://www.instagram.com/txnishx24"
   }
 ];
 

@@ -55,9 +55,26 @@ const Contact = () => {
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
-    
-    setTimeout(() => {
-      alert("🚀 Message sent! We'll get back to you soon.");
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwlDSHO-aEWlT_OWPy8FAobG_vLMCsz1Wud4sMulmB2SAHDexeVS7094-iYDx9DOVU/exec";
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors", // CORS workaround (you won't get response)
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          Name: formData.name,
+          Email: formData.email,
+          Subject: formData.subject,
+          Message: formData.message,
+        }),
+      });
+      toast({
+        title: "Form Submitted",
+        description: "Thank you! We will contact you shortly.",
+        duration: 5000,
+      });
       setFormData({
         name: "",
         email: "",
