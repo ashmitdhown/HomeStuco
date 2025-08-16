@@ -1,83 +1,62 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Menu, X, Home, Users, Calendar, Mail, ShoppingBag } from "lucide-react";
-import { Button } from "@/components/ui/button";
+// Author: Manav Arya & Ashmit Dhown
+import SplineBg from "@/components/SplineBg";
+import { Link, useLocation } from "react-router-dom";
+import React from "react";
 import logo from "@/assets/logo.png";
 
-const Navigation = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const navLinks = [
+  { name: "HOME", to: "/" },
+  { name: "EVENTS", to: "/events" },
+  { name: "MERCH", to: "/merch" },
+  { name: "CLUBS", to: "/CLUBS" },
+  { name: "EMC", to: "/EMC" },
+  { name: "ABOUT US", to: "/about" },
+  { name: "CONTACT US", to: "/contact" },
+  { name: "JASHN'26", to: "/jashn26" },
+];
 
-  const navItems = [
-    { name: "Home", path: "/", icon: Home },
-    { name: "About", path: "/about", icon: Users },
-    { name: "Events", path: "/events", icon: Calendar },
-    { name: "Merch", path: "/merch", icon: ShoppingBag },
-    { name: "Contact", path: "/contact", icon: Mail },
-  ];
+const Navigation = () => {
+  const location = useLocation();
 
   return (
-<nav className="fixed top-0 left-0 right-0 z-50 bg-velvet/95 backdrop-blur-md border-b border-velvet/20">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="flex items-center justify-between h-16">
-      {/* Logo/Brand */}
-      <Link to="/" className="flex items-center space-x-3 group">
-        <img src={logo} alt="Student Council Logo" className="h-12 w-12 object-contain transition-transform duration-300 group-hover:scale-105" />
-        <div className="text-white">
-          <div className="font-bold text-lg tracking-wide">BITS Student Council</div>
-          <div className="text-champagne text-xs font-medium">Excellence in Leadership</div>
-        </div>
-      </Link>
+    <>
+      <SplineBg />
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className="group relative px-3 py-2 text-white hover:text-champagne transition-all duration-300"
-              >
-                <div className="flex items-center space-x-2">
-                  <item.icon className="h-4 w-4" />
-                  <span className="font-medium">{item.name}</span>
-                </div>
-                <div className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-              </Link>
+      {/* Fixed, fully transparent navbar */}
+      <nav
+        className="w-full fixed top-0 left-0 z-50 px-8 pt-6 flex items-center bg-transparent"
+      >
+        {/* Left Logo */}
+        <div className="flex-shrink-0">
+          <img src={logo} alt="Logo" className="h-20 w-auto object-contain" />
+        </div>
+
+        {/* Center Nav Links */}
+        <div className="flex-1 flex justify-center">
+          <ul className="flex items-center justify-evenly w-[70%] text-white font-semibold text-xl tracking-wide">
+            {navLinks.map((link, idx) => (
+              <React.Fragment key={link.name}>
+                <li>
+                  <Link
+                    to={link.to}
+                    className={`whitespace-nowrap transition-colors duration-200 ${
+                      location.pathname === link.to
+                        ? "border-b-2 border-white"
+                        : "hover:text-champagne"
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+                {idx < navLinks.length - 1 && (
+                  <span className="h-6 w-px bg-white/40" />
+                )}
+              </React.Fragment>
             ))}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-white hover:text-champagne hover:bg-velvet/30"
-            >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
-          </div>
+          </ul>
         </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-velvet/98 backdrop-blur-lg border-t border-velvet/20">
-          <div className="px-4 pt-2 pb-6 space-y-1">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                onClick={() => setIsMenuOpen(false)}
-                className="group flex items-center space-x-3 px-3 py-3 text-white hover:text-champagne hover:bg-velvet/30 rounded-lg transition-all duration-300"
-              >
-                <item.icon className="h-5 w-5" />
-                <span className="font-medium">{item.name}</span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
-    </nav>
+      </nav>
+    </>
   );
 };
 

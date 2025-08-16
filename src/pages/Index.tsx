@@ -1,3 +1,4 @@
+// Author: Manav Arya & Ashmit Dhown
 import { HeroSection } from "@/components/sections/HeroSection";
 import { CouncilSection } from "@/components/sections/CouncilSection";
 import { AnnouncementSection } from "@/components/sections/AnnouncementSection";
@@ -7,7 +8,7 @@ const Index = () => {
     <div className="min-h-screen pt-16">
       <HeroSection />
       <CouncilSection />
-      <AnnouncementSection/>
+      <AnnouncementSection />
     </div>
   );
 };

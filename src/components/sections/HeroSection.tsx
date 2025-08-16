@@ -1,74 +1,81 @@
-import { Button } from "@/components/ui/button";
-import { ChevronRight, Users, Calendar, Award } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { Linkedin, Instagram, Mail } from "lucide-react";
 
 export const HeroSection = () => {
-  return (
-    <section className="min-h-screen bg-gradient-hero flex items-center justify-center px-4 py-20">
-      <div className="max-w-6xl mx-auto text-center">
-        <div className="mb-8 animate-fade-in">
-          <h1 className="text-6xl md:text-8xl font-bold text-velvet mb-6 tracking-tight">
-            Student Council
-          </h1>
-          <div className="w-32 h-1 bg-gradient-accent mx-auto mb-8"></div>
-          <p className="text-xl md:text-2xl text-velvet/80 max-w-3xl mx-auto leading-relaxed">
-            Empowering students, fostering community, and creating positive change 
-            through collaborative leadership and innovative initiatives.
-          </p>
-        </div>
-        
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-          <Button 
-            size="lg" 
-            className="bg-velvet hover:bg-velvet/90 text-pearl px-8 py-6 text-lg font-semibold shadow-luxury hover:shadow-glow transition-all duration-300"
-            onClick={() => {
-              document.getElementById('council-section')?.scrollIntoView({ 
-                behavior: 'smooth' 
-              });
-            }}
-          >
-            Know Your Council
-            <ChevronRight className="ml-2 h-5 w-5" />
-          </Button>
-          <Button 
-            variant="outline" 
-            size="lg"
-            className="border-velvet text-velvet hover:bg-velvet hover:text-pearl px-8 py-6 text-lg font-semibold transition-all duration-300"
-            onClick={() => {
-              document.getElementById('announcement-section')?.scrollIntoView({ 
-                behavior: 'smooth' 
-              });
-            }}
-          >
-            Announcements
-          </Button>
-        </div>
+  const [showContact, setShowContact] = useState(false);
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div className="text-center group">
-            <div className="bg-card/70 backdrop-blur-sm rounded-2xl p-8 shadow-card hover:shadow-luxury transition-all duration-300 group-hover:transform group-hover:scale-105">
-              <Users className="h-12 w-12 text-champagne mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-velvet mb-2">Community</h3>
-              <p className="text-muted-foreground">Building connections across all student groups</p>
-            </div>
-          </div>
-          
-          <div className="text-center group">
-            <div className="bg-card/70 backdrop-blur-sm rounded-2xl p-8 shadow-card hover:shadow-luxury transition-all duration-300 group-hover:transform group-hover:scale-105">
-              <Calendar className="h-12 w-12 text-champagne mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-velvet mb-2">Events</h3>
-              <p className="text-muted-foreground">Organizing memorable experiences for students</p>
-            </div>
-          </div>
-          
-          <div className="text-center group">
-            <div className="bg-card/70 backdrop-blur-sm rounded-2xl p-8 shadow-card hover:shadow-luxury transition-all duration-300 group-hover:transform group-hover:scale-105">
-              <Award className="h-12 w-12 text-champagne mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-velvet mb-2">Excellence</h3>
-              <p className="text-muted-foreground">Striving for outstanding student representation</p>
-            </div>
-          </div>
-        </div>
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowContact(window.scrollY > 0); // Instantly toggle
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <section className="w-full h-screen flex items-center justify-center relative overflow-hidden z-30 p-0 m-0 -mt-16">
+      {/* Background */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        <img
+          src={"src/assets/Hero 2.jpg"}
+          alt="Student Council Background"
+          className="w-full h-full object-cover object-center"
+          style={{ filter: "brightness(0.6)" }}
+        />
+        <div className="absolute inset-0 bg-black/40" />
       </div>
+
+      {/* Social Icons */}
+      <div className="hidden md:flex flex-col items-center gap-6 absolute right-12 top-1/2 -translate-y-1/2 z-20">
+        <a href="mailto:studentcouncil@dubai.bits-pilani.ac.in" className="text-white hover:text-champagne transition">
+          <Mail size={28} />
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-champagne transition">
+          <Linkedin size={28} />
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-champagne transition">
+          <Instagram size={28} />
+        </a>
+      </div>
+
+      {/* Main Text */}
+      <div className="w-full max-w-4xl mx-auto text-center relative z-10 flex flex-col items-center justify-center" style={{ minHeight: "100vh" }}>
+        <h1 className="text-[8rem] md:text-[7.5rem] font-extrabold text-white mb-[-2rem] tracking-tight uppercase drop-shadow-lg">
+          STUDENT
+        </h1>
+        <h1 className="text-[8rem] md:text-[7.5rem] font-extrabold text-white mb-[-1rem] tracking-tight uppercase drop-shadow-lg">
+          COUNCIL
+        </h1>
+        <h2 className="text-[4rem] md:text-[3.5rem] font-semibold text-white mb-0 tracking-wide uppercase drop-shadow">
+          BITS PILANI, DUBAI
+        </h2>
+      </div>
+
+      {/* Floating Contact Us Button (Instant show/hide) */}
+      {showContact && (
+        <a
+          href="/contact"
+          className="fixed z-50 bottom-2 right-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2 hover:bg-primary/90 transition-colors text-lg font-semibold"
+          style={{ boxShadow: "0 4px 24px 0 rgba(0,0,0,0.18)" }}
+          aria-label="Contact Us"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-.659 1.591l-7.5 7.5a2.25 2.25 0 01-3.182 0l-7.5-7.5A2.25 2.25 0 012.25 6.993V6.75"
+            />
+          </svg>
+          Contact Us
+        </a>
+      )}
     </section>
   );
 };

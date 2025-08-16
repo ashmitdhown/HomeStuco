@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Calendar, Clock, Users, MapPin, X, ExternalLink } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -62,7 +61,6 @@ export const AnnouncementSection = () => {
   };
 
   const handleJoinEvent = () => {
-    // Replace this URL with your actual Google Form URL for event registration
     window.open('https://forms.google.com/event-registration-form', '_blank');
   };
 
@@ -70,143 +68,84 @@ export const AnnouncementSection = () => {
     <section id="announcement-section" className="py-20 bg-gradient-secondary relative overflow-hidden">
       {/* Luxe Background Elements */}
       <div className="absolute inset-0">
-        <motion.div
-          className="absolute top-20 right-20 w-96 h-96 bg-gradient-primary opacity-10 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute bottom-20 left-20 w-64 h-64 bg-champagne/20 rounded-full blur-2xl"
-          animate={{
-            x: [0, 50, 0],
-            y: [0, -30, 0],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
+        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-primary opacity-10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-20 w-64 h-64 bg-champagne/20 rounded-full blur-2xl" />
       </div>
-
       <div className="max-w-6xl mx-auto px-4 relative z-10">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-velvet mb-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             ANNOUNCEMENTS
           </h2>
           <div className="w-24 h-1 bg-gradient-accent mx-auto mb-6"></div>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Stay connected with our vibrant campus community through engaging events and initiatives
           </p>
-        </motion.div>
-
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {events.map((event, index) => (
-            <motion.div
-              key={event.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ 
-                duration: 0.6, 
-                delay: index * 0.15,
-                ease: "easeOut" 
-              }}
-            >
-              <Card 
-                className="bg-card/90 backdrop-blur-sm border-border/50 shadow-card hover:shadow-luxury transition-all duration-500 group overflow-hidden"
-              >
+            <div key={event.id}>
+              <Card className="bg-[#14213d99] backdrop-blur-md border-border/50 shadow-card hover:shadow-luxury transition-all duration-500 group overflow-hidden text-white">
                 <div className="relative overflow-hidden">
-                  <motion.img
+                  <img
                     src={event.image}
                     alt={event.title}
                     className="w-full h-48 object-cover transition-transform duration-500"
-                    whileHover={{ scale: 1.05 }}
                   />
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-t from-velvet/60 via-transparent to-transparent opacity-0 group-hover:opacity-100"
-                    transition={{ duration: 0.4 }}
-                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-velvet/60 via-transparent to-transparent opacity-0 group-hover:opacity-100" />
                   <div className="absolute top-4 left-4">
-                    <Badge 
-                      variant="secondary" 
+                    <Badge
+                      variant="secondary"
                       className="bg-champagne/90 text-velvet hover:bg-champagne border-none"
                     >
                       {event.category}
                     </Badge>
                   </div>
                 </div>
-
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-xl text-velvet group-hover:text-champagne transition-colors duration-300">
+                  <CardTitle className="text-xl text-white group-hover:text-champagne transition-colors duration-300">
                     {event.title}
                   </CardTitle>
                 </CardHeader>
-                
                 <CardContent className="space-y-4">
-                  <p className="text-muted-foreground text-sm leading-relaxed">
+                  <p className="text-white/80 text-sm leading-relaxed">
                     {event.description}
                   </p>
-                  
                   <div className="grid grid-cols-1 gap-3">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-sm text-white/70">
                       <Calendar className="h-4 w-4 text-champagne" />
                       <span>{event.date}</span>
                     </div>
-                    
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-sm text-white/70">
                       <Clock className="h-4 w-4 text-champagne" />
                       <span>{event.time}</span>
                     </div>
-                    
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-sm text-white/70">
                       <Users className="h-4 w-4 text-champagne" />
                       <span>{event.attendees} attendees</span>
                     </div>
                   </div>
-                  
                   <div className="pt-4 border-t border-border/50">
-                    <Button 
+                    <Button
                       className="w-full bg-velvet hover:bg-velvet/90 text-pearl font-semibold transition-all duration-300 hover:shadow-glow"
                       onClick={() => handleLearnMore(event)}
                     >
-                      <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        LEARN MORE
-                      </motion.button>
+                      Join This Event
                     </Button>
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
-
       {/* Event Details Modal */}
       {isModalOpen && selectedEvent && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           {/* Enhanced Backdrop */}
-          <div 
+          <div
             className="absolute inset-0 bg-black/60 backdrop-blur-md"
             onClick={() => setIsModalOpen(false)}
           ></div>
-          
           {/* Enhanced Modal Content */}
           <div className="relative bg-white/95 backdrop-blur-xl border border-white/20 shadow-2xl max-w-5xl w-full max-h-[92vh] rounded-2xl overflow-hidden flex flex-col">
             {/* Enhanced Close Button */}
@@ -216,7 +155,6 @@ export const AnnouncementSection = () => {
             >
               <X className="h-5 w-5" />
             </button>
-            
             {/* Enhanced Event Image */}
             <div className="relative h-52 md:h-64 overflow-hidden flex-shrink-0">
               <img
@@ -226,15 +164,14 @@ export const AnnouncementSection = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-velvet/80 via-velvet/20 to-transparent"></div>
               <div className="absolute bottom-6 left-6">
-                <Badge 
-                  variant="secondary" 
+                <Badge
+                  variant="secondary"
                   className="bg-champagne/95 text-velvet hover:bg-champagne border-none px-4 py-2 text-sm font-medium shadow-lg"
                 >
                   {selectedEvent.category}
                 </Badge>
               </div>
             </div>
-            
             {/* Enhanced Event Details */}
             <div className="p-6 md:p-8 space-y-6 overflow-y-auto flex-1">
               {/* Enhanced Header */}
@@ -244,14 +181,12 @@ export const AnnouncementSection = () => {
                 </h2>
                 <div className="w-20 h-1 bg-gradient-to-r from-champagne to-velvet mx-auto rounded-full"></div>
               </div>
-              
               {/* Enhanced Description */}
               <div className="text-center max-w-3xl mx-auto">
                 <p className="text-lg md:text-xl text-velvet/80 leading-relaxed font-medium">
                   {selectedEvent.description}
                 </p>
               </div>
-
               {/* Enhanced Additional Information */}
               <div className="bg-gradient-to-br from-champagne/10 to-velvet/5 rounded-2xl p-6 border border-champagne/30 shadow-inner">
                 <h4 className="font-bold text-velvet mb-4 text-lg flex items-center gap-2">
@@ -277,7 +212,6 @@ export const AnnouncementSection = () => {
                   </li>
                 </ul>
               </div>
-
               {/* Enhanced Event Details Grid */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="flex items-center gap-4 p-4 bg-gradient-to-br from-champagne/10 to-velvet/5 rounded-xl border border-champagne/30 shadow-sm hover:shadow-md transition-all duration-300">
@@ -289,7 +223,6 @@ export const AnnouncementSection = () => {
                     <p className="font-bold text-velvet">{selectedEvent.date}</p>
                   </div>
                 </div>
-                
                 <div className="flex items-center gap-4 p-4 bg-gradient-to-br from-champagne/10 to-velvet/5 rounded-xl border border-champagne/30 shadow-sm hover:shadow-md transition-all duration-300">
                   <div className="w-12 h-12 bg-champagne/20 rounded-lg flex items-center justify-center">
                     <Clock className="h-5 w-5 text-champagne" />
@@ -299,7 +232,6 @@ export const AnnouncementSection = () => {
                     <p className="font-bold text-velvet">{selectedEvent.time}</p>
                   </div>
                 </div>
-                
                 <div className="flex items-center gap-4 p-4 bg-gradient-to-br from-champagne/10 to-velvet/5 rounded-xl border border-champagne/30 shadow-sm hover:shadow-md transition-all duration-300">
                   <div className="w-12 h-12 bg-champagne/20 rounded-lg flex items-center justify-center">
                     <Users className="h-5 w-5 text-champagne" />
@@ -310,7 +242,6 @@ export const AnnouncementSection = () => {
                   </div>
                 </div>
               </div>
-
               {/* Enhanced Join Button */}
               <div className="text-center pt-4">
                 <Button
