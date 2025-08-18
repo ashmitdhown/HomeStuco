@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Calendar, Clock, Users, MapPin, X, ExternalLink } from "lucide-react";
+import { Calendar, Clock, MapPin, X, ExternalLink } from "lucide-react"; 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -14,39 +14,35 @@ interface Announcement {
   time: string;
   description: string;
   image: string;
-  attendees: number;
-  category: string;
+  category: string; 
 }
 
 const events: Announcement[] = [
   {
     id: 1,
-    title: "Annual Orientation Fair",
-    date: "March 15, 2024",
-    time: "10:00 AM - 4:00 PM",
-    description: "Welcome new students with club booths, information sessions, and networking opportunities to help them find their community on campus.",
+    title: "Freshers’ Game Night",
+    date: "August 29, 2025",
+    time: "8:00 PM",
+    description: "Start your campus journey with an unforgettable night of games, laughs, and bonding. Hosted by the Student Council, this event is designed to break the ice and bring freshers together in the most fun way possible!",
     image: orientationImg,
-    attendees: 500,
     category: "Orientation"
   },
   {
     id: 2,
-    title: "Leadership Workshop Series",
+    title: "Peer-to-Peer Mentorship",
     date: "March 22, 2024",
     time: "2:00 PM - 5:00 PM",
-    description: "Develop essential leadership skills through interactive workshops, panel discussions, and hands-on activities led by industry professionals.",
+    description: "Connect, learn, and grow together with our Peer-to-Peer Mentorship Programme — a supportive space where students help each other succeed academically and socially.",
     image: workshopImg,
-    attendees: 75,
     category: "Workshop"
   },
   {
     id: 3,
-    title: "Community Service Day",
+    title: "Merch Day",
     date: "March 29, 2024",
     time: "9:00 AM - 3:00 PM",
-    description: "Make a positive impact in our local community through organized volunteer activities, environmental projects, and outreach programs.",
+    description: "Show off your BITS pride! Come dressed in your favourite BITS merch, join fun games, snap group pics, and win cool prizes. It’s all about spirit, colours, and celebrating our campus together.",
     image: serviceImg,
-    attendees: 150,
     category: "Service"
   }
 ];
@@ -81,10 +77,11 @@ export const AnnouncementSection = () => {
             Stay connected with our vibrant campus community through engaging events and initiatives
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {events.map((event, index) => (
-            <div key={event.id}>
-              <Card className="bg-[#14213d99] backdrop-blur-md border-border/50 shadow-card hover:shadow-luxury transition-all duration-500 group overflow-hidden text-white">
+        {/* Grid with equal height cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+          {events.map((event) => (
+            <div key={event.id} className="h-full">
+              <Card className="h-full flex flex-col bg-[#14213d99] backdrop-blur-md border-border/50 shadow-card hover:shadow-luxury transition-all duration-500 group overflow-hidden text-white">
                 <div className="relative overflow-hidden">
                   <img
                     src={event.image}
@@ -106,22 +103,20 @@ export const AnnouncementSection = () => {
                     {event.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-white/80 text-sm leading-relaxed">
-                    {event.description}
-                  </p>
-                  <div className="grid grid-cols-1 gap-3">
-                    <div className="flex items-center gap-2 text-sm text-white/70">
-                      <Calendar className="h-4 w-4 text-champagne" />
-                      <span>{event.date}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-white/70">
-                      <Clock className="h-4 w-4 text-champagne" />
-                      <span>{event.time}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-white/70">
-                      <Users className="h-4 w-4 text-champagne" />
-                      <span>{event.attendees} attendees</span>
+                <CardContent className="space-y-4 flex-1 flex flex-col justify-between">
+                  <div>
+                    <p className="text-white/80 text-sm leading-relaxed text-justify">
+                      {event.description}
+                    </p>
+                    <div className="grid grid-cols-1 gap-3 mt-4">
+                      <div className="flex items-center gap-2 text-sm text-white/70">
+                        <Calendar className="h-4 w-4 text-champagne" />
+                        <span>{event.date}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-white/70">
+                        <Clock className="h-4 w-4 text-champagne" />
+                        <span>{event.time}</span>
+                      </div>
                     </div>
                   </div>
                   <div className="pt-4 border-t border-border/50">
@@ -138,6 +133,7 @@ export const AnnouncementSection = () => {
           ))}
         </div>
       </div>
+
       {/* Event Details Modal */}
       {isModalOpen && selectedEvent && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -148,14 +144,14 @@ export const AnnouncementSection = () => {
           ></div>
           {/* Enhanced Modal Content */}
           <div className="relative bg-white/95 backdrop-blur-xl border border-white/20 shadow-2xl max-w-5xl w-full max-h-[92vh] rounded-2xl overflow-hidden flex flex-col">
-            {/* Enhanced Close Button */}
+            {/* Close Button */}
             <button
               onClick={() => setIsModalOpen(false)}
               className="absolute top-6 right-6 z-10 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-velvet hover:bg-white/30 transition-all duration-300 shadow-lg border border-white/30"
             >
               <X className="h-5 w-5" />
             </button>
-            {/* Enhanced Event Image */}
+            {/* Event Image */}
             <div className="relative h-52 md:h-64 overflow-hidden flex-shrink-0">
               <img
                 src={selectedEvent.image}
@@ -172,22 +168,19 @@ export const AnnouncementSection = () => {
                 </Badge>
               </div>
             </div>
-            {/* Enhanced Event Details */}
+            {/* Event Details */}
             <div className="p-6 md:p-8 space-y-6 overflow-y-auto flex-1">
-              {/* Enhanced Header */}
               <div className="text-center space-y-4">
                 <h2 className="text-3xl md:text-4xl font-bold text-velvet leading-tight">
                   {selectedEvent.title}
                 </h2>
                 <div className="w-20 h-1 bg-gradient-to-r from-champagne to-velvet mx-auto rounded-full"></div>
               </div>
-              {/* Enhanced Description */}
               <div className="text-center max-w-3xl mx-auto">
-                <p className="text-lg md:text-xl text-velvet/80 leading-relaxed font-medium">
+                <p className="text-lg md:text-xl text-velvet/80 leading-relaxed font-medium text-justify">
                   {selectedEvent.description}
                 </p>
               </div>
-              {/* Enhanced Additional Information */}
               <div className="bg-gradient-to-br from-champagne/10 to-velvet/5 rounded-2xl p-6 border border-champagne/30 shadow-inner">
                 <h4 className="font-bold text-velvet mb-4 text-lg flex items-center gap-2">
                   <div className="w-2 h-2 bg-champagne rounded-full"></div>
@@ -212,8 +205,7 @@ export const AnnouncementSection = () => {
                   </li>
                 </ul>
               </div>
-              {/* Enhanced Event Details Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex items-center gap-4 p-4 bg-gradient-to-br from-champagne/10 to-velvet/5 rounded-xl border border-champagne/30 shadow-sm hover:shadow-md transition-all duration-300">
                   <div className="w-12 h-12 bg-champagne/20 rounded-lg flex items-center justify-center">
                     <Calendar className="h-5 w-5 text-champagne" />
@@ -232,17 +224,7 @@ export const AnnouncementSection = () => {
                     <p className="font-bold text-velvet">{selectedEvent.time}</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-4 p-4 bg-gradient-to-br from-champagne/10 to-velvet/5 rounded-xl border border-champagne/30 shadow-sm hover:shadow-md transition-all duration-300">
-                  <div className="w-12 h-12 bg-champagne/20 rounded-lg flex items-center justify-center">
-                    <Users className="h-5 w-5 text-champagne" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-velvet/60 font-medium uppercase tracking-wide">Expected Attendees</p>
-                    <p className="font-bold text-velvet">{selectedEvent.attendees} students</p>
-                  </div>
-                </div>
               </div>
-              {/* Enhanced Join Button */}
               <div className="text-center pt-4">
                 <Button
                   onClick={handleJoinEvent}
@@ -259,4 +241,3 @@ export const AnnouncementSection = () => {
     </section>
   );
 };
-
