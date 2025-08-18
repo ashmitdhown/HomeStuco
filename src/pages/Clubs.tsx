@@ -1,4 +1,3 @@
-// Author: Manav Arya & Ashmit Dhown
 import React from "react";
 import {
   Carousel,
@@ -9,50 +8,32 @@ import {
 } from "@/components/ui/carousel";
 import { clubCarouselImages } from "./ClubCarouselImages";
 import { PageBgAndCursor } from "@/components/PageBgAndCursor";
-
-
-import { useState } from "react";
+import SplineBg from "@/components/SplineBg";
 
 const clubSections = [
   {
     clubs: [
-      { name: "Treble", logo: "/src/assets/logo.png", head: { name: "Aimy", photo: "/src/assets/Club-members/Aimy.jpg", intro: "President" }, description: "" },
-      { name: "Mad", logo: "/src/assets/logo.png", head: { name: "IMG_0212", photo: "/src/assets/Club-members/IMG_0212.JPG", intro: "President" }, description: "" },
-      { name: "Paribhasha", logo: "/src/assets/logo.png", head: { name: "IMG_1011", photo: "/src/assets/Club-members/IMG_1011.jpeg", intro: "President" }, description: "" },
-      { name: "Groove", logo: "/src/assets/logo.png", head: { name: "IMG_1650", photo: "/src/assets/Club-members/IMG_1650_Original.jpeg", intro: "President" }, description: "" },
-      { name: "Expressions", logo: "/src/assets/logo.png", head: { name: "IMG_4046", photo: "/src/assets/Club-members/IMG_4046.jpeg", intro: "President" }, description: "" },
-      { name: "Supernova", logo: "/src/assets/logo.png", head: { name: "IMG_7079", photo: "/src/assets/Club-members/IMG_7079 (1).jpg", intro: "President" }, description: "" },
-      { name: "Allure", logo: "/src/assets/logo.png", head: { name: "1000069296", photo: "/src/assets/Club-members/1000069296.jpg", intro: "President" }, description: "" },
-      { name: "Reflexions", logo: "/src/assets/logo.png", head: { name: "1000121306", photo: "/src/assets/Club-members/1000121306.jpg", intro: "President" }, description: "" },
-      { name: "Shades", logo: "/src/assets/logo.png", head: { name: "Copy of DSC_8828", photo: "/src/assets/Club-members/Copy of DSC_8828.jpeg", intro: "President" }, description: "" },
-      { name: "Oh Crop", logo: "/src/assets/logo.png", head: { name: "WhatsApp Image", photo: "/src/assets/Club-members/WhatsApp Image 2025-05-14 at 5.45.47 PM.jpeg", intro: "President" }, description: "" },
+      { name: "Expressions", logo: "/src/assets/logo.png", head: { name: "Vaibhav", photo: "/src/assets/Club-members/Vaibhav.jpg", intro: "President" }, description: "" },
+      { name: "Reflexions", logo: "/src/assets/logo.png", head: { name: "Sathvik Sreeram", photo: "/src/assets/Club-members/Sathvik.jpeg", intro: "President" }, description: "" },
+      { name: "Paribhasha", logo: "/src/assets/logo.png", head: { name: "Nishit Batwal", photo: "/src/assets/Club-members/Nishit.jpeg", intro: "President" }, description: "" },
+      { name: "Mad", logo: "/src/assets/logo.png", head: { name: "Laksha Malik", photo: "/src/assets/Club-members/Laksha.jpg", intro: "Secretary" }, description: "" },
+      { name: "Groove", logo: "/src/assets/logo.png", head: { name: "Gourisankar Sajith", photo: "/src/assets/Club-members/Gourisankar.jpg", intro: "President" }, description: "" },
+      { name: "Supernova", logo: "/src/assets/logo.png", head: { name: "Rushirajsinh Solanki", photo: "/src/assets/Club-members/Rushirajsinh.jpeg", intro: "President" }, description: "" },
+      { name: "Allure", logo: "/src/assets/logo.png", head: { name: "Vidyullekha V", photo: "/src/assets/Club-members/Vidyullekha.jpeg", intro: "President" }, description: "" },
+      { name: "Oh Crop", logo: "/src/assets/logo.png", head: { name: "Aimy Acksa", photo: "/src/assets/Club-members/Aimy.jpg", intro: "President" }, description: "" },
+      { name: "Shades", logo: "/src/assets/logo.png", head: { name: "Varnikka TM", photo: "/src/assets/Club-members/Varnikka.jpeg", intro: "President" }, description: "" },
+      { name: "Treble", logo: "/src/assets/logo.png", head: { name: "Mevin Mathews", photo: "/src/assets/Club-members/Mevin.jpg", intro: "President" }, description: "" },
     ],
   },
 ];
 
-import SplineBg from "@/components/SplineBg";
-
 export default function Clubs() {
-  const [selectedClub, setSelectedClub] = useState(null);
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const handleCardClick = (club) => {
-    setSelectedClub(club);
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-    setSelectedClub(null);
-  };
-
   return (
     <>
       <SplineBg />
       <PageBgAndCursor>
-        {/* Hero Carousel Section with theme bg and cursor effect */}
+        {/* Hero Carousel */}
         <section className="relative h-[320px] md:h-[420px] lg:h-[520px] w-full overflow-hidden flex items-center justify-center">
-          <div className="absolute inset-0 pointer-events-none z-0" />
           <Carousel className="h-full w-full z-10">
             <CarouselContent>
               {clubCarouselImages.map((img, idx) => (
@@ -65,7 +46,9 @@ export default function Clubs() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
                   <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-                    <h1 className="text-3xl md:text-5xl font-bold mb-2 text-white drop-shadow-lg">{img.caption}</h1>
+                    <h1 className="text-3xl md:text-5xl font-bold mb-2 text-white drop-shadow-lg">
+                      {img.caption}
+                    </h1>
                   </div>
                 </CarouselItem>
               ))}
@@ -74,67 +57,59 @@ export default function Clubs() {
             <CarouselNext className="right-4" />
           </Carousel>
         </section>
+
+        {/* Clubs Section Redesigned */}
         <section className="py-20 min-h-screen">
-          <div className="space-y-16 max-w-6xl mx-auto">
-            {clubSections.map((section, sIdx) => (
-              <div key={sIdx}>
-                {/* No section.title, so omit heading or add a static heading if needed */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {section.clubs.map((club, idx) => (
-                    <div
-                      key={idx}
-                      className="rounded-3xl shadow-xl p-8 flex flex-col items-center cursor-pointer transition-all duration-300 hover:shadow-2xl hover:scale-[1.04] border border-gray-100 hover:border-primary/40 bg-transparent backdrop-blur-md"
-                      onClick={() => handleCardClick(club)}
-                    >
-                      <div className="w-24 h-24 mb-4 rounded-full overflow-hidden border-4 border-primary/20 group-hover:border-primary/60 transition-all">
-                        <img src={club.logo} alt={club.name} className="w-full h-full object-cover" />
-                      </div>
-                      <h4 className="text-xl font-semibold text-white mb-1 text-center">{club.name}</h4>
-                      <p className="text-sm text-muted-foreground mb-2 text-center">{club.description}</p>
-                      {/* President photo hidden on card, only shown in modal */}
+          <div className="max-w-7xl mx-auto px-4 relative z-20">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Clubs</h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 mx-auto mb-6"></div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {clubSections[0].clubs.map((club, index) => (
+                <div
+                  key={index}
+                  className="bg-[#14213d99] rounded-xl shadow-md flex flex-row items-center p-0 overflow-hidden relative min-h-[180px] transition-transform duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer backdrop-blur-md"
+                >
+                  {/* Photo left */}
+                  <div className="flex-shrink-0 w-28 h-36 m-4 rounded-lg overflow-hidden bg-white flex items-center justify-center border border-white/60">
+                    <img
+                      src={club.head.photo}
+                      alt={club.head.name}
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
+
+                  {/* Info right */}
+                  <div className="flex flex-col flex-1 justify-center px-4 py-2">
+                    {/* Club Name at Top */}
+                    <h3 className="text-xl md:text-2xl font-extrabold text-white mb-2 tracking-tight">
+                      {club.name}
+                    </h3>
+
+                    {/* Head Info Below */}
+                    <div className="flex flex-col">
+                      <span className="text-lg md:text-xl font-semibold text-white mb-1">
+                        {club.head.name}
+                      </span>
+                      <span className="text-sm md:text-base font-medium text-white/80">
+                        {club.head.intro}
+                      </span>
                     </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-        {/* Club Details Modal */}
-        {modalOpen && selectedClub && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-            <div className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full p-8 relative flex flex-col">
-              <button
-                className="absolute top-4 right-4 text-gray-500 hover:text-primary text-2xl font-bold"
-                onClick={closeModal}
-                aria-label="Close"
-              >
-                &times;
-              </button>
-              <div className="flex flex-col items-center mb-6">
-                <img src={selectedClub.logo} alt={selectedClub.name} className="w-24 h-24 rounded-full border-4 border-primary/30 mb-2 object-cover" />
-                <h2 className="text-2xl font-bold text-velvet mt-2 mb-1">{selectedClub.name}</h2>
-              </div>
-              <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
-                <div className="md:w-1/3 w-full flex justify-center items-start">
-                  <img src={selectedClub.head.photo} alt={selectedClub.head.name} className="w-[90px] h-[130px] object-cover border-2 border-primary/40 mb-2 shadow-lg bg-white" style={{ borderRadius: '12px' }} />
-                  <div className="ml-4 mt-2 text-left">
-                    <div className="text-lg font-semibold text-primary">{selectedClub.head.name || 'President'}</div>
-                    <div className="text-xs text-muted-foreground">{selectedClub.head.intro}</div>
                   </div>
                 </div>
-                <div className="md:w-2/3 w-full">
-                  <div className="text-base text-gray-700 whitespace-pre-line min-h-[80px]">{selectedClub.description || 'No description available.'}</div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
-        )}
+        </section>
       </PageBgAndCursor>
-            {/* Floating Contact Button */}
-            <a
+
+      {/* Floating Contact Button */}
+      <a
         href="/contact"
         className="fixed z-50 bottom-2 right-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2 hover:bg-primary/90 transition-all text-lg font-semibold"
-        style={{ boxShadow: '0 4px 24px 0 rgba(0,0,0,0.18)' }}
+        style={{ boxShadow: "0 4px 24px 0 rgba(0,0,0,0.18)" }}
         aria-label="Contact Us"
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
