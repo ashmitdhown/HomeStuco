@@ -1,0 +1,131 @@
+import { useState } from "react";
+import { Calendar, Clock, MapPin, X, ExternalLink } from "lucide-react"; 
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import orientationImg from "@/assets/orientation-fair.webp";
+import workshopImg from "@/assets/leadership-workshop.webp";
+import serviceImg from "@/assets/community-service.webp";
+
+interface Announcement {
+  id: number;
+  title: string;
+  date: string;
+  time: string;
+  description: string;
+  image: string;
+  category: string; 
+}
+
+const events: Announcement[] = [
+  {
+    id: 1,
+    title: "Freshers’ Game Night",
+    date: "August 29, 2025",
+    time: "8:00 PM",
+    description: "Start your campus journey with an unforgettable night of games, laughs, and bonding. Hosted by the Student Council, this event is designed to break the ice and bring freshers together in the most fun way possible!",
+    image: '/assets/gamenight.webp',
+    category: "Orientation"
+  },
+  {
+    id: 2,
+    title: "Peer-to-Peer Mentorship",
+    date: "",
+    time: "9:00 AM - 3:00 PM",
+    description: "Peer-to-Peer Mentorship Programme offers a dynamic and supportive environment where students empower one another to thrive. This initiative is dedicated to fostering academic excellence and social integration by creating meaningful connections that guide students through their collegiate journey.",
+    image: '/assets/P2P.webp',
+    category: "Workshop"
+  },
+  {
+    id: 3,
+    title: "Orientation Introduction",
+    date: "August 25, 2025",
+    time: "9:00 AM - 3:00 PM",
+    description: "Welcome to BITS! Get introduced to campus life, meet your peers, and learn everything you need for a smooth start. Join us for ice-breakers, tours, and helpful sessions!",
+    image: '/assets/orientation.webp',
+    category: "Orientation"
+  }
+];
+
+export const AnnouncementSection = () => {
+  // Modal logic removed; clean up unused variables and modal rendering
+
+  return (
+    <section id="announcement-section" className="py-20 bg-gradient-secondary relative overflow-hidden">
+      {/* Luxe Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-primary opacity-10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-20 w-64 h-64 bg-champagne/20 rounded-full blur-2xl" />
+      </div>
+      <div className="max-w-6xl mx-auto px-4 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            ANNOUNCEMENTS
+          </h2>
+          <div className="w-24 h-1 bg-gradient-accent mx-auto mb-6"></div>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Stay connected with our vibrant campus community through engaging events and initiatives
+          </p>
+        </div>
+        {/* Grid with equal height cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+          {events.map((event) => (
+            <div key={event.id} className="h-full">
+              <Card className={`h-full flex flex-col bg-[#14213d99] backdrop-blur-md border-border/50 shadow-card hover:shadow-luxury transition-all duration-500 group overflow-hidden text-white ${event.id === 2 ? 'min-h-[480px]' : ''}`}>
+                <div className="relative overflow-hidden">
+                  <img
+                    src={event.image}
+                    alt={event.title}
+                    className="w-full h-48 object-cover transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-velvet/60 via-transparent to-transparent opacity-0 group-hover:opacity-100" />
+                  <div className="absolute top-4 left-4">
+                    <Badge
+                      variant="secondary"
+                      className="bg-champagne/90 text-velvet hover:bg-champagne border-none"
+                    >
+                      {event.category}
+                    </Badge>
+                  </div>
+                </div>
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-xl text-white group-hover:text-champagne transition-colors duration-300">
+                    {event.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4 flex-1 flex flex-col justify-between">
+                  <div>
+                    <p className="text-white/80 text-sm leading-relaxed text-justify">
+                      {event.description}
+                    </p>
+                    {event.id !== 2 && (
+                      <div className="grid grid-cols-1 gap-3 mt-4">
+                        <div className="flex items-center gap-2 text-sm text-white/70">
+                          <Calendar className="h-4 w-4 text-champagne" />
+                          <span>{event.date}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-white/70">
+                          <Clock className="h-4 w-4 text-champagne" />
+                          <span>{event.time}</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <div className="pt-4 border-t border-border/50">
+                    <Button
+                      className="w-full bg-velvet hover:bg-velvet/90 text-pearl font-semibold transition-all duration-300 hover:shadow-glow"
+                      onClick={() => window.open('https://forms.google.com/event-registration-form', '_blank')}
+                    >
+                      {event.id === 2 ? 'Join As Mentee' : 'Join This Event'}
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </section>
+  );
+};
