@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Linkedin } from "lucide-react";
 import React, { useState } from "react";
 import Spline from "@splinetool/react-spline";
+<<<<<<< HEAD
 import shamsImg from "@/assets/councilphotos/Shams.webp";
 import sivaImg from "@/assets/councilphotos/Siva.webp";
 import isharjotImg from "@/assets/councilphotos/Isharjot.webp";
@@ -12,6 +13,18 @@ import ashmitImg from "@/assets/councilphotos/Ashmit.webp";
 import gurkaranImg from "@/assets/councilphotos/Gurkaran.webp";
 import suhasImg from "@/assets/councilphotos/Suhas.webp";
 import tanishaImg from "@/assets/councilphotos/Tanisha.webp";
+=======
+import shamsImg from "@/assets/councilphotos/Shams.jpeg";
+import sivaImg from "@/assets/councilphotos/Siva.jpeg";
+import isharjotImg from "@/assets/councilphotos/Isharjot.jpeg";
+import sivapriyaImg from "@/assets/councilphotos/Sivapriya.jpeg";
+import mustafaImg from "@/assets/councilphotos/Mustafa.jpeg";
+import rajImg from "@/assets/councilphotos/Raj.jpeg";
+import ashmitImg from "@/assets/councilphotos/Ashmit.jpeg";
+import gurkaranImg from "@/assets/councilphotos/Gurkaran.jpeg";
+import suhasImg from "@/assets/councilphotos/Suhas.jpeg";
+import tanishaImg from "@/assets/councilphotos/Tanisha.jpeg";
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
 import blankProfileImg from "@/assets/councilphotos/blank-profile-picture-973460_1280-2.webp";
 
 interface CouncilMember {
@@ -145,6 +158,7 @@ export const CouncilSection = () => {
               key={index}
               className="bg-[#14213d99] rounded-xl shadow-md flex flex-row items-center p-0 overflow-hidden relative min-h-[180px] transition-transform duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer backdrop-blur-md"
             >
+<<<<<<< HEAD
               {/* Social icons top right */}
               <div className="absolute top-4 right-4 z-10 flex gap-2">
                 {member.instagram && (
@@ -175,6 +189,21 @@ export const CouncilSection = () => {
                   </a>
                 )}
               </div>
+=======
+              {/* LinkedIn icon top right */}
+              {member.linkedin && (
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute top-4 right-4 z-10 w-8 h-8 bg-white/80 rounded-full flex items-center justify-center text-velvet hover:bg-champagne/70 transition shadow border border-white/60"
+                  title="LinkedIn"
+                  onClick={e => e.stopPropagation()}
+                >
+                  <Linkedin className="w-5 h-5" />
+                </a>
+              )}
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
               {/* Photo left, info right */}
               <div className="flex-shrink-0 w-28 h-36 m-4 rounded-lg overflow-hidden bg-white flex items-center justify-center border border-white/60">
                 <img

@@ -4,21 +4,37 @@ import React, { useState } from "react";
 const clubs = [
   {
     name: "Tech Club",
+<<<<<<< HEAD
     logo: "/assets/logo.webp",
     description: "Fostering innovation and technical skills among students.",
     head: {
       name: "Raj Patel",
       photo: "/assets/councilphotos/Raj.webp",
+=======
+    logo: "/src/assets/logo.png",
+    description: "Fostering innovation and technical skills among students.",
+    head: {
+      name: "Raj Patel",
+      photo: "/src/assets/councilphotos/Raj.jpeg",
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
       intro: "Passionate about technology and student growth."
     }
   },
   {
     name: "Arts Club",
+<<<<<<< HEAD
     logo: "/assets/logo.webp",
     description: "Celebrating creativity and artistic expression.",
     head: {
       name: "Sivapriya Reddy",
       photo: "/assets/councilphotos/Sivapriya.webp",
+=======
+    logo: "/src/assets/logo.png",
+    description: "Celebrating creativity and artistic expression.",
+    head: {
+      name: "Sivapriya Reddy",
+      photo: "/src/assets/councilphotos/Sivapriya.jpeg",
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
       intro: "Encouraging every student to find their creative voice."
     }
   },
@@ -45,8 +61,11 @@ export const ClubsSection: React.FC = () => {
           >
             <div className="flex items-center p-6">
               <img src={club.logo} alt={club.name} className="w-16 h-16 rounded-full mr-4" />
+<<<<<<< HEAD
               <img src={club.logo} alt={club.name} className="w-16 h-16 rounded-full mr-4" loading="lazy" />
               <img src={club.logo} alt={club.name} className="w-16 h-16 rounded-full mr-4" loading="lazy" />
+=======
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
               <div>
                 <h3 className="text-xl font-bold text-velvet mb-1">{club.name}</h3>
                 <p className="text-sm text-muted-foreground">{club.head.name}</p>
@@ -59,8 +78,11 @@ export const ClubsSection: React.FC = () => {
                 <p className="mb-2">{club.description}</p>
                 <div className="flex items-center">
                   <img src={club.head.photo} alt={club.head.name} className="w-10 h-10 rounded-full mr-2" />
+<<<<<<< HEAD
                 <img src={club.head.photo} alt={club.head.name} className="w-10 h-10 rounded-full mr-2" loading="lazy" />
                 <img src={club.head.photo} alt={club.head.name} className="w-10 h-10 rounded-full mr-2" loading="lazy" />
+=======
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
                   <span className="text-sm text-muted-foreground">{club.head.intro}</span>
                 </div>
               </div>

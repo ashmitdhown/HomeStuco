@@ -1,12 +1,20 @@
+<<<<<<< HEAD
 
 import InstagramContactBar from "@/components/ui/InstagramContactBar";
+=======
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
 // Author: Manav Arya & Ashmit Dhown
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Users, Award, Heart, Target, Quote } from "lucide-react";
+<<<<<<< HEAD
 import sivaImg from "@/assets/councilphotos/Siva.webp";
 import heroImg from "@/assets/Untitled design-5.webp";
+=======
+import sivaImg from "@/assets/councilphotos/Siva.jpeg";
+import heroImg from "@/assets/Untitled design-5.png";
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
 import { PageBgAndCursor } from "@/components/PageBgAndCursor";
 
 const About = () => {
@@ -25,6 +33,7 @@ const About = () => {
         Contact Us
       </a>
       {/* Hero Section with Background Image */}
+<<<<<<< HEAD
       <section className="w-full h-[45vh] md:h-screen flex items-center justify-center relative overflow-hidden z-30 p-0 m-0">
         {/* Full Background Image */}
         <div className="absolute inset-0 w-full h-full z-0">
@@ -37,6 +46,16 @@ const About = () => {
               style={{ minHeight: '80vh', maxHeight: '100vh' }}
             />
           </picture>
+=======
+      <section className="w-full h-screen flex items-center justify-center relative overflow-hidden z-30 p-0 m-0">
+        {/* Full Background Image */}
+        <div className="absolute inset-0 w-full h-full z-0">
+          <img
+            src={heroImg}
+            alt="About Student Council Background"
+            className="w-full h-full object-fill object-center"
+          />
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
         </div>
         
         {/* Main Content */}
@@ -228,7 +247,10 @@ const About = () => {
 
         </div>
       </PageBgAndCursor>
+<<<<<<< HEAD
     <InstagramContactBar />
+=======
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
     </>
   );
 };export default About;

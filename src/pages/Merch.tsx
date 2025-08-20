@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import InstagramContactBar from "@/components/ui/InstagramContactBar";
+=======
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
 // Author: Manav Arya & Ashmit Dhown
 import { useState } from 'react';
 import { ShoppingCart, Heart, Star, CreditCard } from 'lucide-react';
@@ -8,8 +11,13 @@ import Spline from '@splinetool/react-spline';
 import hoodieImg from "@/assets/MERCH/black-hoodie-mockup-classic-comfortable-stylish-apparel_191095-82052.jpg.avif";
 import toteGirlImg from "@/assets/MERCH/a-beige-cotton-tote-bag-on-a-black-background-png.webp";
 import toteBoyImg from "@/assets/MERCH/a-beige-cotton-tote-bag-on-a-black-background-png.webp";
+<<<<<<< HEAD
 import capImg from "@/assets/MERCH/Black_Baseball_Cap_PNG_Clipart-982.webp";
 import sweatshirtImg from "@/assets/MERCH/5d2ac61c96e7f3691bc68e80ad9a2200.webp";
+=======
+import capImg from "@/assets/MERCH/Black_Baseball_Cap_PNG_Clipart-982.png";
+import sweatshirtImg from "@/assets/MERCH/5d2ac61c96e7f3691bc68e80ad9a2200.jpg";
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
 import poloImg from "@/assets/MERCH/ai-generated-short-sleeves-black-polo-t-shirt-isolated-on-transparent-background-free-png.webp";
 
 interface Product {
@@ -131,9 +139,15 @@ const Merch = () => {
       <PageBgAndCursor>
       <div className="min-h-screen">
         {/* Hero Section - Spline Cover */}
+<<<<<<< HEAD
         <div className="relative w-full overflow-hidden h-[34vh] md:h-screen">
           <div className="absolute inset-0 w-full h-full z-0">
             <Spline scene="https://prod.spline.design/E9Y1f0Wp36HmvzX0/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+=======
+        <div className="relative h-screen w-full overflow-hidden">
+          <div className="absolute inset-0 w-full h-full z-0">
+            <Spline scene="https://prod.spline.design/E9Y1f0Wp36HmvzX0/scene.splinecode" />
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
           </div>
           <div className="absolute z-10 bottom-2 right-1 md:bottom-4 md:right-6">
             <button
@@ -294,7 +308,10 @@ const Merch = () => {
         </svg>
         Contact Us
       </a>
+<<<<<<< HEAD
     <InstagramContactBar />
+=======
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
     </>
   );
 };

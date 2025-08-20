@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import InstagramContactBar from "@/components/ui/InstagramContactBar";
+=======
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
 import React, { useState, useEffect } from "react";
 import { PageBgAndCursor } from "@/components/PageBgAndCursor";
 
@@ -44,7 +47,10 @@ const CodeOfConduct = () => {
         </svg>
         Contact Us
       </a>
+<<<<<<< HEAD
     <InstagramContactBar />
+=======
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
     </>
   );
 };

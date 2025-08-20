@@ -16,7 +16,10 @@ import NotFound from "./pages/NotFound";
 import Jashn26 from "./pages/Jashn26";
 import EMC from "./pages/EMC";
 import Clubs from "./pages/Clubs";
+<<<<<<< HEAD
 import ClubDetail from "./pages/ClubDetail";
+=======
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
 import OurBackbone from "./pages/OurBackbone";
 import TermsOfUse from "./pages/TermsOfUse";
 import CodeOfConduct from "./pages/CodeOfConduct";
@@ -52,7 +55,10 @@ const App = () => {
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/emc" element={<EMC />} />
                   <Route path="/clubs" element={<Clubs />} />
+<<<<<<< HEAD
                   <Route path="/clubs/:clubId" element={<ClubDetail />} />
+=======
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
                   <Route path="/our-backbone" element={<OurBackbone />} />
                   <Route path="/jashn26" element={<Jashn26 />} />
                   <Route path="/terms-of-use" element={<TermsOfUse />} />

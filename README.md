@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 
@@ -82,10 +83,36 @@ Student Council Website is a visually stunning, responsive platform for BITS Pil
 
 ### Prerequisites
 
+=======
+# Student Council Website
+
+A modern, responsive website for the BITS Pilani Dubai Campus Student Council. This site showcases council members, announcements, contact forms, and more, with a beautiful and interactive UI.
+
+## Features
+- Hero landing section
+- Council members with interactive cards and social links
+- Announcements and events
+- Contact form (integrated with Google Sheets via Apps Script)
+- Responsive design for all devices
+- Modern UI with Tailwind CSS and Framer Motion animations
+
+## Tech Stack
+- **React** (with Vite)
+- **TypeScript**
+- **Tailwind CSS**
+- **Framer Motion** (animations)
+- **Google Apps Script** (for contact form backend)
+- **Lucide React** (icons)
+
+## Getting Started
+
+### Prerequisites
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
 - Node.js (v16+ recommended)
 - npm (v8+ recommended)
 
 ### Installation
+<<<<<<< HEAD
 
 ```sh
 git clone https://github.com/Manavarya09/TrendPilot-1.git
@@ -217,6 +244,9 @@ This website does not collect personal data except for information submitted via
 ---
 
 
+=======
+1. **Clone the repository:**
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
    ```sh
    git clone <your-repo-url>
    cd <repo-folder>

@@ -9,11 +9,15 @@ import {
 import { clubCarouselImages } from "./ClubCarouselImages";
 import { PageBgAndCursor } from "@/components/PageBgAndCursor";
 import SplineBg from "@/components/SplineBg";
+<<<<<<< HEAD
 import InstagramContactBar from "@/components/ui/InstagramContactBar";
+=======
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
 
 const clubSections = [
   {
     clubs: [
+<<<<<<< HEAD
       { name: "Expressions", logo: "/assets/logo.webp", head: { name: "Vaibhav", photo: "/assets/Club-members/Vaibhav.webp", intro: "President" }, description: "" },
       { name: "Reflexions", logo: "/assets/logo.webp", head: { name: "Sathvik Sreeram", photo: "/assets/Club-members/Sathvik.webp", intro: "President" }, description: "" },
       { name: "Paribhasha", logo: "/assets/logo.webp", head: { name: "Nishit Batwal", photo: "/assets/Club-members/Nishit.webp", intro: "President" }, description: "" },
@@ -24,6 +28,18 @@ const clubSections = [
       { name: "Oh Crop", logo: "/assets/logo.webp", head: { name: "Aimy Acksa", photo: "/assets/Club-members/Aimy.webp", intro: "President" }, description: "" },
       { name: "Shades", logo: "/assets/logo.webp", head: { name: "Varnikka TM", photo: "/assets/Club-members/Varnikka.webp", intro: "President" }, description: "" },
       { name: "Treble", logo: "/assets/logo.webp", head: { name: "Mevin Mathews", photo: "/assets/Club-members/Mevin.webp", intro: "President" }, description: "" },
+=======
+      { name: "Expressions", logo: "/src/assets/logo.png", head: { name: "Vaibhav", photo: "/src/assets/Club-members/Vaibhav.jpg", intro: "President" }, description: "" },
+      { name: "Reflexions", logo: "/src/assets/logo.png", head: { name: "Sathvik Sreeram", photo: "/src/assets/Club-members/Sathvik.jpeg", intro: "President" }, description: "" },
+      { name: "Paribhasha", logo: "/src/assets/logo.png", head: { name: "Nishit Batwal", photo: "/src/assets/Club-members/Nishit.jpeg", intro: "President" }, description: "" },
+      { name: "Mad", logo: "/src/assets/logo.png", head: { name: "Laksha Malik", photo: "/src/assets/Club-members/Laksha.jpg", intro: "Secretary" }, description: "" },
+      { name: "Groove", logo: "/src/assets/logo.png", head: { name: "Gourisankar Sajith", photo: "/src/assets/Club-members/Gourisankar.jpg", intro: "President" }, description: "" },
+      { name: "Supernova", logo: "/src/assets/logo.png", head: { name: "Rushirajsinh Solanki", photo: "/src/assets/Club-members/Rushirajsinh.jpeg", intro: "President" }, description: "" },
+      { name: "Allure", logo: "/src/assets/logo.png", head: { name: "Vidyullekha V", photo: "/src/assets/Club-members/Vidyullekha.jpeg", intro: "President" }, description: "" },
+      { name: "Oh Crop", logo: "/src/assets/logo.png", head: { name: "Aimy Acksa", photo: "/src/assets/Club-members/Aimy.jpg", intro: "President" }, description: "" },
+      { name: "Shades", logo: "/src/assets/logo.png", head: { name: "Varnikka TM", photo: "/src/assets/Club-members/Varnikka.jpeg", intro: "President" }, description: "" },
+      { name: "Treble", logo: "/src/assets/logo.png", head: { name: "Mevin Mathews", photo: "/src/assets/Club-members/Mevin.jpg", intro: "President" }, description: "" },
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
     ],
   },
 ];
@@ -34,6 +50,7 @@ export default function Clubs() {
       <SplineBg />
       <PageBgAndCursor>
         {/* Hero Carousel */}
+<<<<<<< HEAD
         <section className="relative h-[420px] md:h-[640px] lg:h-[900px] w-full overflow-hidden flex items-center justify-center">
           <div className="w-full h-[640px] md:h-[900px] lg:h-[1100px] flex items-center justify-center relative">
             <img
@@ -60,6 +77,35 @@ export default function Clubs() {
 
         {/* Clubs Section Redesigned */}
         <section id="clubs-section" className="py-20 min-h-screen">
+=======
+        <section className="relative h-[320px] md:h-[420px] lg:h-[520px] w-full overflow-hidden flex items-center justify-center">
+          <Carousel className="h-full w-full z-10">
+            <CarouselContent>
+              {clubCarouselImages.map((img, idx) => (
+                <CarouselItem key={idx} className="h-[320px] md:h-[420px] lg:h-[520px] w-full relative">
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                    <h1 className="text-3xl md:text-5xl font-bold mb-2 text-white drop-shadow-lg">
+                      {img.caption}
+                    </h1>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-4" />
+            <CarouselNext className="right-4" />
+          </Carousel>
+        </section>
+
+        {/* Clubs Section Redesigned */}
+        <section className="py-20 min-h-screen">
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
           <div className="max-w-7xl mx-auto px-4 relative z-20">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Clubs</h2>
@@ -75,10 +121,16 @@ export default function Clubs() {
                   {/* Photo left */}
                   <div className="flex-shrink-0 w-28 h-36 m-4 rounded-lg overflow-hidden bg-white flex items-center justify-center border border-white/60">
                     <img
+<<<<<<< HEAD
               src={club.head.photo}
               alt={club.head.name}
               className="w-full h-full object-cover object-top"
               loading="lazy"
+=======
+                      src={club.head.photo}
+                      alt={club.head.name}
+                      className="w-full h-full object-cover object-top"
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
                     />
                   </div>
 
@@ -118,7 +170,13 @@ export default function Clubs() {
         </svg>
         Contact Us
       </a>
+<<<<<<< HEAD
     <InstagramContactBar />
     </>
   );
 }
+=======
+    </>
+  );
+}
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67

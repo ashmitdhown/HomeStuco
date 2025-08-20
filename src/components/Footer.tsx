@@ -1,6 +1,9 @@
 // Author: Manav Arya & Ashmit Dhown
 import SplineBg from "@/components/SplineBg";
+<<<<<<< HEAD
 import { Mail, Linkedin } from "lucide-react";
+=======
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
 
 const Footer = () => (
   <>
@@ -16,7 +19,11 @@ const Footer = () => (
                 GET IN TOUCH
               </h3>
               <div className="mb-5 flex items-center gap-3 font-semibold text-white">
+<<<<<<< HEAD
                 <Mail className="w-6 h-6 text-gray-500" />
+=======
+                <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M21 10.5V6.75A2.25 2.25 0 0018.75 4.5h-13.5A2.25 2.25 0 003 6.75v10.5A2.25 2.25 0 005.25 19.5h13.5A2.25 2.25 0 0021 17.25V13.5" /></svg>
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
                 <span>Contact</span>
               </div>
               <div className="mb-3 text-base text-white">
@@ -41,7 +48,11 @@ const Footer = () => (
               <div className="w-full h-40 rounded-lg overflow-hidden mt-3">
                 <iframe
                   title="BITS Pilani Dubai Map"
+<<<<<<< HEAD
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3600.2595640381276!2d55.418083015775154!3d25.131489325771056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f63ecaf0b7683%3A0x178903db8ef63bc7!2sBirla%20Institute%20of%20Technology%20and%20Science%2C%20Pilani%2C%20Dubai!5e0!3m2!1sen!2sus!4v1692486823456"
+=======
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.073073289889!2d55.41030731501044!3d25.0925359839497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f62e2e2e2e2e2%3A0x2e2e2e2e2e2e2e2e!2sBITS%20Pilani%2C%20Dubai%20Campus!5e0!3m2!1sen!2sae!4v1691500000000!5m2!1sen!2sae"
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -57,7 +68,11 @@ const Footer = () => (
               <a href="mailto:studentcouncil@dubai.bits-pilani.ac.in" target="_blank" rel="noopener noreferrer"
                 className="w-full rounded-2xl bg-gray-700/20 backdrop-blur-lg p-4 flex items-center gap-4 shadow-md hover:bg-gray-700/40 transition-colors duration-300">
                 <div className="bg-gray-500/40 rounded-xl p-3 flex items-center justify-center">
+<<<<<<< HEAD
                   <Mail className="w-8 h-8 text-white" />
+=======
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M21 10.5V6.75A2.25 2.25 0 0018.75 4.5h-13.5A2.25 2.25 0 003 6.75v10.5A2.25 2.25 0 005.25 19.5h13.5A2.25 2.25 0 0021 17.25V13.5" /></svg>
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
                 </div>
                 <div>
                   <div className="font-bold text-xl text-white">Email</div>
@@ -81,7 +96,11 @@ const Footer = () => (
               <a href="https://www.linkedin.com/company/student-council-bpdc/" target="_blank" rel="noopener noreferrer"
                 className="w-full rounded-2xl bg-gray-700/20 backdrop-blur-lg p-4 flex items-center gap-4 shadow-md hover:bg-gray-700/40 transition-colors duration-300">
                 <div className="bg-gray-500/40 rounded-xl p-3 flex items-center justify-center">
+<<<<<<< HEAD
                   <Linkedin className="w-8 h-8 text-white" />
+=======
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M16 8a6 6 0 01-12 0 6 6 0 0112 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M2 20h20M7 10v6M17 10v6" /></svg>
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
                 </div>
                 <div>
                   <div className="font-bold text-xl text-white">LinkedIn</div>

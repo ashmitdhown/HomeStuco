@@ -2,8 +2,12 @@
 import SplineBg from "@/components/SplineBg";
 import { Link, useLocation } from "react-router-dom";
 import React from "react";
+<<<<<<< HEAD
 import logo from "@/assets/logo.webp";
 import { Menu } from "lucide-react";
+=======
+import logo from "@/assets/logo.png";
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
 
 const navLinks = [
   { name: "HOME", to: "/" },
@@ -18,6 +22,7 @@ const navLinks = [
 
 const Navigation = () => {
   const location = useLocation();
+<<<<<<< HEAD
   const [scrolled, setScrolled] = React.useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
@@ -35,10 +40,13 @@ const Navigation = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+=======
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
 
   return (
     <>
       <SplineBg />
+<<<<<<< HEAD
       {/* Fixed navbar, changes bg on scroll */}
       <nav
         className={`w-full fixed top-0 left-0 z-50 px-8 pt-6 flex items-center navbar-optimized transition-all duration-300 ease-out ${
@@ -55,6 +63,21 @@ const Navigation = () => {
         {/* Desktop Nav Links */}
         <div className="flex-1 flex justify-center">
           <ul className="hidden md:flex items-center justify-evenly w-[70%] text-white font-semibold text-xl tracking-wide">
+=======
+
+      {/* Fixed, fully transparent navbar */}
+      <nav
+        className="w-full fixed top-0 left-0 z-50 px-8 pt-6 flex items-center bg-transparent"
+      >
+        {/* Left Logo */}
+        <div className="flex-shrink-0">
+          <img src={logo} alt="Logo" className="h-20 w-auto object-contain" />
+        </div>
+
+        {/* Center Nav Links */}
+        <div className="flex-1 flex justify-center">
+          <ul className="flex items-center justify-evenly w-[70%] text-white font-semibold text-xl tracking-wide">
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
             {navLinks.map((link, idx) => (
               <React.Fragment key={link.name}>
                 <li>
@@ -76,6 +99,7 @@ const Navigation = () => {
             ))}
           </ul>
         </div>
+<<<<<<< HEAD
 
         {/* Hamburger Icon for Mobile */}
         <div className="md:hidden ml-auto">
@@ -125,6 +149,8 @@ const Navigation = () => {
             </div>
           </>
         )}
+=======
+>>>>>>> df32317b40431adca3251afd0946278b0c3dde67
       </nav>
     </>
   );
