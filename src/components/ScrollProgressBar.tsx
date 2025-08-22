@@ -4,15 +4,23 @@ const ScrollProgressBar: React.FC = () => {
   const [scroll, setScroll] = useState(0);
 
   useEffect(() => {
+    let throttleTimeout: NodeJS.Timeout | null = null;
     const onScroll = () => {
-      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = window.scrollY;
-      const progress = docHeight > 0 ? (scrolled / docHeight) * 100 : 0;
-      setScroll(progress);
+      if (throttleTimeout) return;
+      throttleTimeout = setTimeout(() => {
+        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = window.scrollY;
+        const progress = docHeight > 0 ? (scrolled / docHeight) * 100 : 0;
+        setScroll(progress);
+        throttleTimeout = null;
+      }, 100); // 100ms throttle
     };
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
     onScroll(); // set initial
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (throttleTimeout) clearTimeout(throttleTimeout);
+    };
   }, []);
 
   return (

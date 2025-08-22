@@ -1,3 +1,23 @@
+/* Enable smooth scrolling for all browsers */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Performance optimizations for Chrome */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* GPU acceleration for specific elements only */
+.navbar-optimized {
+  transform: translateZ(0);
+  will-change: transform;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

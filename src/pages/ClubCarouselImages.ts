@@ -2,27 +2,27 @@
 // Images for the Clubs page carousel
 export const clubCarouselImages = [
   {
-    src: "/src/assets/orientation-fair.jpg",
+    src: "/assets/orientation-fair.webp",
     alt: "Orientation Fair",
     caption: "Student Clubs"
   },
   {
-    src: "/src/assets/community-service.jpg",
+    src: "/assets/community-service.webp",
     alt: "Community Service",
     caption: "Student Clubs"
   },
   {
-    src: "/src/assets/leadership-workshop.jpg",
+    src: "/assets/leadership-workshop.webp",
     alt: "Leadership Workshop",
     caption: "Student Clubs"
   },
   {
-    src: "/src/assets/pic (493).jpg",
+    src: "/assets/pic (493).webp",
     alt: "Clubs Social",
     caption: "Clubs Social: Fun, friends, and memories."
   },
   {
-    src: "/src/assets/logo.png",
+    src: "/assets/logo.webp",
     alt: "BITS Clubs Logo",
     caption: "BITS Pilani Dubai Campus Clubs: United in diversity."
   },

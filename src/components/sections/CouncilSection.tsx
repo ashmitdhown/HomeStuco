@@ -1,18 +1,9 @@
-import { Card, CardContent } from "@/components/ui/card";
+// ...existing code...
 import { Linkedin } from "lucide-react";
-import React, { useState } from "react";
-import Spline from "@splinetool/react-spline";
-import shamsImg from "@/assets/councilphotos/Shams.jpeg";
-import sivaImg from "@/assets/councilphotos/Siva.jpeg";
-import isharjotImg from "@/assets/councilphotos/Isharjot.jpeg";
-import sivapriyaImg from "@/assets/councilphotos/Sivapriya.jpeg";
-import mustafaImg from "@/assets/councilphotos/Mustafa.jpeg";
-import rajImg from "@/assets/councilphotos/Raj.jpeg";
-import ashmitImg from "@/assets/councilphotos/Ashmit.jpeg";
-import gurkaranImg from "@/assets/councilphotos/Gurkaran.jpeg";
-import suhasImg from "@/assets/councilphotos/Suhas.jpeg";
-import tanishaImg from "@/assets/councilphotos/Tanisha.jpeg";
-import blankProfileImg from "@/assets/councilphotos/blank-profile-picture-973460_1280-2.webp";
+import React from "react";
+import { useTranslation } from "react-i18next";
+// ...existing code...
+// ...existing code...
 
 interface CouncilMember {
   name: string;
@@ -29,7 +20,7 @@ const councilMembers: CouncilMember[] = [
   {
     name: "Mohammad Shamshuddin Gangavali",
     position: "Ex-Officio",
-    image: shamsImg,
+    image: "/assets/councilphotos/Shams.webp",
     instagram: "https://www.instagram.com/shamshuddin_gangavali",
     linkedin: "https://www.linkedin.com/in/shamshuddin-gangavali",
     bio: LOREM
@@ -37,7 +28,7 @@ const councilMembers: CouncilMember[] = [
   {
     name: "Sivaa Balamurugan",
     position: "President",
-    image: sivaImg,
+    image: "/assets/councilphotos/Siva.webp",
     instagram: "https://www.instagram.com/siva_balamurugan",
     linkedin: "https://www.linkedin.com/in/siva-balamurugan",
     bio: LOREM
@@ -45,7 +36,7 @@ const councilMembers: CouncilMember[] = [
   {
     name: "Isharjot Singh Pasricha",
     position: "Vice President",
-    image: isharjotImg,
+    image: "/assets/councilphotos/Isharjot.webp",
     instagram: "https://www.instagram.com/isharjotpasricha",
     linkedin: "https://www.linkedin.com/in/isharjotpasricha",
     bio: LOREM
@@ -54,7 +45,7 @@ const councilMembers: CouncilMember[] = [
   {
     name: "Sivapriya Madhu Pillai",
     position: "Secretary",
-    image: sivapriyaImg,
+    image: "/assets/councilphotos/Sivapriya.webp",
     instagram: "https://www.instagram.com/sivapriyamadhupillai/",
     linkedin: "https://www.linkedin.com/in/sivapriya-madhu-pillai-721aa130a/",
     bio: LOREM
@@ -63,7 +54,7 @@ const councilMembers: CouncilMember[] = [
   {
     name: "Raj Singh",
     position: "4th Year HR",
-    image: rajImg,
+    image: "/assets/councilphotos/Raj.webp",
     instagram: "https://www.instagram.com/raj_singh",
     linkedin: "https://www.linkedin.com/in/raj-singh",
     bio: LOREM
@@ -71,7 +62,7 @@ const councilMembers: CouncilMember[] = [
   {
     name: "Mustafa Fatehi",
     position: "4th Year DSR",
-    image: mustafaImg,
+    image: "/assets/councilphotos/Mustafa.webp",
     instagram: "https://www.instagram.com/mustafatehi",
     linkedin: "https://www.linkedin.com/in/mustafa-fatehi",
     bio: LOREM
@@ -79,7 +70,7 @@ const councilMembers: CouncilMember[] = [
   {
     name: "Ashmit Dhown",
     position: "3rd Year HR",
-    image: ashmitImg,
+    image: "/assets/councilphotos/Ashmit.webp",
     instagram: "https://www.instagram.com/ashmitdhown",
     linkedin: "https://www.linkedin.com/in/ashmit-dhown-3b5523314/",
     bio: LOREM
@@ -88,7 +79,7 @@ const councilMembers: CouncilMember[] = [
   {
     name: "Gurkaran Singh",
     position: "3rd Year DSR",
-    image: gurkaranImg,
+    image: "/assets/councilphotos/Gurkaran.webp",
     instagram: "https://www.instagram.com/gurkaran_singh",
     linkedin: "https://www.linkedin.com/in/gurkaran-singh",
     bio: LOREM
@@ -96,47 +87,43 @@ const councilMembers: CouncilMember[] = [
   {
     name: "Suhas Simha S",
     position: "2nd Year HR",
-    image: suhasImg,
-    instagram: "https://www.instagram.com/suhas_simha",
+    image: "/assets/councilphotos/Suhas.webp",
     linkedin: "https://www.linkedin.com/in/suhas-simha-s-301931325/",
     bio: LOREM
   },
   {
     name: "Tanisha Handa",
     position: "2nd Year DSR",
-    image: tanishaImg,
+    image: "/assets/councilphotos/Tanisha.webp",
     instagram: "https://www.instagram.com/tanisha_handa",
-    linkedin: "https://www.linkedin.com/in/tanisha-handa",
     bio: LOREM
   },
   {
     name: "To be announced",
     position: "1st Year HR",
-    image: blankProfileImg,
-    linkedin: "https://linkedin.com",
+    image: "/assets/councilphotos/blank-profile-picture-973460_1280-2.webp",
     bio: LOREM
   },
   {
     name: "To be announced",
     position: "1st Year DSR",
-    image: blankProfileImg,
-    instagram: "https://www.instagram.com/txnishx24",
-    linkedin: "https://linkedin.com",
+    image: "/assets/councilphotos/blank-profile-picture-973460_1280-2.webp",
     bio: LOREM
   }
 ];
 
 export const CouncilSection = () => {
+  const { t } = useTranslation();
   return (
     <section id="council-section" className="py-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 relative z-20">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Meet Your Council
+            {t("meetCouncil")}
           </h2>
           <div className="w-24 h-1 bg-gradient-accent mx-auto mb-6"></div>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Dedicated leaders committed to representing your voice and making a difference
+            {t("councilDesc")}
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -145,19 +132,36 @@ export const CouncilSection = () => {
               key={index}
               className="bg-[#14213d99] rounded-xl shadow-md flex flex-row items-center p-0 overflow-hidden relative min-h-[180px] transition-transform duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer backdrop-blur-md"
             >
-              {/* LinkedIn icon top right */}
-              {member.linkedin && (
-                <a
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute top-4 right-4 z-10 w-8 h-8 bg-white/80 rounded-full flex items-center justify-center text-velvet hover:bg-champagne/70 transition shadow border border-white/60"
-                  title="LinkedIn"
-                  onClick={e => e.stopPropagation()}
-                >
-                  <Linkedin className="w-5 h-5" />
-                </a>
-              )}
+              {/* Social icons top right */}
+              <div className="absolute top-4 right-4 z-10 flex gap-2">
+                {member.instagram && (
+                  <a
+                    href={member.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 bg-white/80 rounded-full flex items-center justify-center text-pink-500 hover:bg-champagne/70 transition shadow border border-white/60"
+                    title="Instagram"
+                    onClick={e => e.stopPropagation()}
+                  >
+                    {/* Simple Instagram SVG icon */}
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                      <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 3.25a5.25 5.25 0 1 1 0 10.5 5.25 5.25 0 0 1 0-10.5zm0 1.5a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5zm5.25.75a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                    </svg>
+                  </a>
+                )}
+                {member.linkedin && (
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 bg-white/80 rounded-full flex items-center justify-center text-velvet hover:bg-champagne/70 transition shadow border border-white/60"
+                    title="LinkedIn"
+                    onClick={e => e.stopPropagation()}
+                  >
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                )}
+              </div>
               {/* Photo left, info right */}
               <div className="flex-shrink-0 w-28 h-36 m-4 rounded-lg overflow-hidden bg-white flex items-center justify-center border border-white/60">
                 <img

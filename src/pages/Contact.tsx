@@ -14,8 +14,10 @@ import {
   MessageCircle
 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import { useTranslation } from 'react-i18next';
 
 const Contact = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -52,8 +54,8 @@ const Contact = () => {
         }),
       });
       toast({
-        title: "Form Submitted",
-        description: "Thank you! We will contact you shortly.",
+        title: t('formSubmitted', 'Form Submitted'),
+        description: t('thankYouMessage', 'Thank you! We will contact you shortly.'),
         duration: 5000,
       });
       setFormData({
@@ -64,8 +66,8 @@ const Contact = () => {
       });
     } catch (error) {
       toast({
-        title: "Submission Failed",
-        description: "There was an error submitting the form.",
+        title: t('submissionFailed', 'Submission Failed'),
+        description: t('submissionError', 'There was an error submitting the form.'),
         duration: 5000,
       });
       console.error("Submission error:", error);
@@ -77,26 +79,26 @@ const Contact = () => {
   const contactMethods = [
     {
       icon: Mail,
-      label: "Email",
+      label: t('email', 'Email'),
       value: "studentcouncil@dubai.bits-pilani.ac.in",
       href: "mailto:studentcouncil@dubai.bits-pilani.ac.in"
     },
     {
       icon: Instagram,
-      label: "Instagram",
+      label: t('instagram', 'Instagram'),
       value: "@council.bitsdubai",
       href: "https://www.instagram.com/council.bitsdubai/"
     },
     {
       icon: Linkedin,
-      label: "LinkedIn", 
-      value: "Student Council BPDC",
+      label: t('linkedIn', 'LinkedIn'), 
+      value: t('studentCouncilBPDC', 'Student Council BPDC'),
       href: "https://www.linkedin.com/company/student-council-bpdc/"
     },
     {
       icon: MapPin,
-      label: "Campus",
-      value: "BITS Pilani Dubai",
+      label: t('campus', 'Campus'),
+      value: t('bitsPilaniDubai', 'BITS Pilani Dubai'),
       href: "https://www.google.com/maps/place/Birla+Institute+of+Technology+and+Science,+Pilani-+Dubai/"
     }
   ];
@@ -111,7 +113,7 @@ const Contact = () => {
               {/* Header */}
               <div className="text-center mb-16">
                 <h1 className="text-6xl md:text-8xl font-black text-white mb-6 leading-none">
-                  Let's Talk
+                  {t('letsTalk', "Let's Talk")}
                 </h1>
               </div>
 
@@ -151,7 +153,7 @@ const Contact = () => {
                       <div className="w-12 h-12 bg-white/30 rounded-xl flex items-center justify-center">
                         <MessageCircle className="w-6 h-6 text-white" />
                       </div>
-                      <h2 className="text-3xl font-bold text-white">Send Message</h2>
+                      <h2 className="text-3xl font-bold text-white">{t('sendMessage', 'Send Message')}</h2>
                     </div>
                     
                     <div className="space-y-7 flex-1 flex flex-col">
@@ -165,12 +167,12 @@ const Contact = () => {
                             onChange={handleInputChange}
                             onFocus={() => setFocusedField('name')}
                             onBlur={() => setFocusedField(null)}
-                            className="w-full bg-white/20 border border-white/40 rounded-xl px-5 py-4 text-white placeholder-white focus:bg-white/30 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400/50 transition-all duration-300 text-base"
-                            placeholder="Your Name"
+                            className="w-full bg-white/20 border border-white/40 rounded-xl px-5 py-4 text-white placeholder:text-white focus:bg-white/30 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400/50 transition-all duration-300 text-base"
+                            placeholder={t('yourName', 'Your Name')}
                           />
                           {focusedField === 'name' && (
                             <div className="absolute -top-2 left-4 bg-gradient-to-r from-blue-500 to-yellow-500 text-white px-2 py-1 rounded text-xs font-medium">
-                              <span className="text-white">Full Name</span>
+                              <span className="text-white">{t('fullName', 'Full Name')}</span>
                             </div>
                           )}
                         </div>
@@ -183,12 +185,12 @@ const Contact = () => {
                             onChange={handleInputChange}
                             onFocus={() => setFocusedField('email')}
                             onBlur={() => setFocusedField(null)}
-                            className="w-full bg-white/20 border border-white/40 rounded-xl px-5 py-4 text-white placeholder-white focus:bg-white/30 focus:border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-400/50 transition-all duration-300 text-base"
-                            placeholder="your@email.com"
+                            className="w-full bg-white/20 border border-white/40 rounded-xl px-5 py-4 text-white placeholder:text-white focus:bg-white/30 focus:border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-400/50 transition-all duration-300 text-base"
+                            placeholder={t('yourEmail', 'your@email.com')}
                           />
                           {focusedField === 'email' && (
                             <div className="absolute -top-2 left-4 bg-gradient-to-r from-yellow-500 to-amber-500 text-white px-2 py-1 rounded text-xs font-medium">
-                              <span className="text-white">Email Address</span>
+                              <span className="text-white">{t('emailAddress', 'Email Address')}</span>
                             </div>
                           )}
                         </div>
@@ -202,12 +204,12 @@ const Contact = () => {
                           onChange={handleInputChange}
                           onFocus={() => setFocusedField('subject')}
                           onBlur={() => setFocusedField(null)}
-                          className="w-full bg-white/20 border border-white/40 rounded-xl px-5 py-4 text-white placeholder-white focus:bg-white/30 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-400/50 transition-all duration-300 text-base"
-                          placeholder="Subject"
+                          className="w-full bg-white/20 border border-white/40 rounded-xl px-5 py-4 text-white placeholder:text-white focus:bg-white/30 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-400/50 transition-all duration-300 text-base"
+                          placeholder={t('subject', 'Subject')}
                         />
                         {focusedField === 'subject' && (
                           <div className="absolute -top-2 left-4 bg-gradient-to-r from-sky-500 to-blue-500 text-white px-2 py-1 rounded text-xs font-medium">
-                            <span className="text-white">What's this about?</span>
+                            <span className="text-white">{t('whatsThisAbout', "What's this about?")}</span>
                           </div>
                         )}
                       </div>
@@ -219,12 +221,12 @@ const Contact = () => {
                           onChange={handleInputChange}
                           onFocus={() => setFocusedField('message')}
                           onBlur={() => setFocusedField(null)}
-                          className="w-full h-full min-h-[140px] bg-white/20 border border-white/40 rounded-xl px-5 py-4 text-white placeholder-white focus:bg-white/30 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400/50 transition-all duration-300 resize-none text-base"
-                          placeholder="Tell us what's on your mind..."
+                          className="w-full h-full min-h-[140px] bg-white/20 border border-white/40 rounded-xl px-5 py-4 text-white placeholder:text-white focus:bg-white/30 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400/50 transition-all duration-300 resize-none text-base"
+                          placeholder={t('tellUsWhatsOnYourMind', "Tell us what's on your mind...")}
                         />
                         {focusedField === 'message' && (
                           <div className="absolute -top-2 left-4 bg-gradient-to-r from-amber-500 to-yellow-500 text-white px-2 py-1 rounded text-xs font-medium">
-                            <span className="text-white">Your Message</span>
+                            <span className="text-white">{t('yourMessage', 'Your Message')}</span>
                           </div>
                         )}
                       </div>
@@ -237,12 +239,12 @@ const Contact = () => {
                         {isSubmitting ? (
                           <>
                             <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-3"></div>
-                            Sending your message...
+                            {t('sendingYourMessage', 'Sending your message...')}
                           </>
                         ) : (
                           <>
                             <Send className="w-5 h-5 mr-3 group-hover:rotate-12 transition-transform duration-300 text-white" />
-                            Send Message
+                            {t('sendMessageButton', 'Send Message')}
                             <Zap className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white" />
                           </>
                         )}
@@ -267,7 +269,7 @@ const Contact = () => {
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
       <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l9-9 9 9M4.5 10.5V21h15V10.5" />
       </svg>
-       Back to Homepage
+       {t('backToHomepage', 'Back to Homepage')}
     </a>
 
     </>

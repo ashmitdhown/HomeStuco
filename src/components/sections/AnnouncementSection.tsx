@@ -1,11 +1,10 @@
-import { useState } from "react";
-import { Calendar, Clock, MapPin, X, ExternalLink } from "lucide-react"; 
+// ...existing code...
+import { Calendar, Clock } from "lucide-react"; 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import orientationImg from "@/assets/orientation-fair.jpg";
-import workshopImg from "@/assets/leadership-workshop.jpg";
-import serviceImg from "@/assets/community-service.jpg";
+import { useTranslation } from "react-i18next";
+// ...existing code...
 
 interface Announcement {
   id: number;
@@ -14,51 +13,44 @@ interface Announcement {
   time: string;
   description: string;
   image: string;
-  category: string; 
+  category: string;
+  intro?: string;
 }
 
 const events: Announcement[] = [
   {
     id: 1,
-    title: "Freshers’ Game Night",
-    date: "August 29, 2025",
-    time: "8:00 PM",
-    description: "Start your campus journey with an unforgettable night of games, laughs, and bonding. Hosted by the Student Council, this event is designed to break the ice and bring freshers together in the most fun way possible!",
-    image: orientationImg,
-    category: "Orientation"
+    title: "p2pTitle",
+    date: "",
+    time: "9:00 AM - 3:00 PM",
+    description: "p2pDesc",
+    image: '/assets/P2P.webp',
+    category: "workshopCat"
   },
   {
     id: 2,
-    title: "Peer-to-Peer Mentorship",
-    date: "March 22, 2024",
-    time: "2:00 PM - 5:00 PM",
-    description: "Connect, learn, and grow together with our Peer-to-Peer Mentorship Programme — a supportive space where students help each other succeed academically and socially.",
-    image: workshopImg,
-    category: "Workshop"
+    title: "gameNightTitle",
+    date: "August 29, 2025",
+    time: "8:00 PM",
+    description: "gameNightDesc",
+    image: '/assets/gamenight.webp',
+    category: "orientationCat"
   },
   {
     id: 3,
-    title: "Merch Day",
-    date: "March 29, 2024",
+    title: "orientationTitle",
+    date: "August 25, 2025",
     time: "9:00 AM - 3:00 PM",
-    description: "Show off your BITS pride! Come dressed in your favourite BITS merch, join fun games, snap group pics, and win cool prizes. It’s all about spirit, colours, and celebrating our campus together.",
-    image: serviceImg,
-    category: "Service"
+    description: "orientationDesc",
+    image: '/assets/orientation.webp',
+    category: "orientationCat",
+    intro: "Hey freshers, welcome to bits. Come meet us on ice breakers day and learn everything you need for a smooth start to your university life. Join us ……"
   }
 ];
 
 export const AnnouncementSection = () => {
-  const [selectedEvent, setSelectedEvent] = useState<Announcement | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleLearnMore = (event: Announcement) => {
-    setSelectedEvent(event);
-    setIsModalOpen(true);
-  };
-
-  const handleJoinEvent = () => {
-    window.open('https://forms.google.com/event-registration-form', '_blank');
-  };
+  const { t } = useTranslation();
+  // Modal logic removed; clean up unused variables and modal rendering
 
   return (
     <section id="announcement-section" className="py-20 bg-gradient-secondary relative overflow-hidden">
@@ -70,18 +62,18 @@ export const AnnouncementSection = () => {
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            ANNOUNCEMENTS
+            {t("announcements")}
           </h2>
           <div className="w-24 h-1 bg-gradient-accent mx-auto mb-6"></div>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Stay connected with our vibrant campus community through engaging events and initiatives
+            {t("announcementDesc")}
           </p>
         </div>
         {/* Grid with equal height cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
           {events.map((event) => (
             <div key={event.id} className="h-full">
-              <Card className="h-full flex flex-col bg-[#14213d99] backdrop-blur-md border-border/50 shadow-card hover:shadow-luxury transition-all duration-500 group overflow-hidden text-white">
+              <Card className={`h-full flex flex-col bg-[#14213d99] backdrop-blur-md border-border/50 shadow-card hover:shadow-luxury transition-all duration-500 group overflow-hidden text-white ${event.id === 2 ? 'min-h-[480px]' : ''}`}>
                 <div className="relative overflow-hidden">
                   <img
                     src={event.image}
@@ -94,38 +86,49 @@ export const AnnouncementSection = () => {
                       variant="secondary"
                       className="bg-champagne/90 text-velvet hover:bg-champagne border-none"
                     >
-                      {event.category}
+                      {t(event.category)}
                     </Badge>
                   </div>
                 </div>
                 <CardHeader className="pb-3">
                   <CardTitle className="text-xl text-white group-hover:text-champagne transition-colors duration-300">
-                    {event.title}
+                    {t(event.title)}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4 flex-1 flex flex-col justify-between">
                   <div>
                     <p className="text-white/80 text-sm leading-relaxed text-justify">
-                      {event.description}
+                      {event.id === 3 && event.intro ? event.intro : t(event.description)}
                     </p>
-                    <div className="grid grid-cols-1 gap-3 mt-4">
-                      <div className="flex items-center gap-2 text-sm text-white/70">
-                        <Calendar className="h-4 w-4 text-champagne" />
-                        <span>{event.date}</span>
+                    {(event.id !== 1) && (
+                      <div className="grid grid-cols-1 gap-3 mt-4">
+                        <div className="flex items-center gap-2 text-sm text-white/70">
+                          <Calendar className="h-4 w-4 text-champagne" />
+                          <span>{event.date}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-white/70">
+                          <Clock className="h-4 w-4 text-champagne" />
+                          <span>{event.time}</span>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-white/70">
-                        <Clock className="h-4 w-4 text-champagne" />
-                        <span>{event.time}</span>
-                      </div>
-                    </div>
+                    )}
                   </div>
                   <div className="pt-4 border-t border-border/50">
-                    <Button
-                      className="w-full bg-velvet hover:bg-velvet/90 text-pearl font-semibold transition-all duration-300 hover:shadow-glow"
-                      onClick={() => handleLearnMore(event)}
-                    >
-                      Join This Event
-                    </Button>
+                    {event.id === 1 ? (
+                      <Button
+                        className="w-full bg-velvet hover:bg-velvet/90 text-pearl font-semibold transition-all duration-300 hover:shadow-glow"
+                        onClick={() => window.open('https://forms.google.com/event-registration-form', '_blank')}
+                      >
+                        {t('joinMentee', 'Join as Mentee')}
+                      </Button>
+                    ) : (
+                      <Button
+                        className="w-full bg-velvet hover:bg-velvet/90 text-pearl font-semibold transition-all duration-300 hover:shadow-glow"
+                        onClick={() => window.open(`/events/${event.id}`, '_blank')}
+                      >
+                        {t('learnMore', 'Learn more')}
+                      </Button>
+                    )}
                   </div>
                 </CardContent>
               </Card>
@@ -134,110 +137,6 @@ export const AnnouncementSection = () => {
         </div>
       </div>
 
-      {/* Event Details Modal */}
-      {isModalOpen && selectedEvent && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          {/* Enhanced Backdrop */}
-          <div
-            className="absolute inset-0 bg-black/60 backdrop-blur-md"
-            onClick={() => setIsModalOpen(false)}
-          ></div>
-          {/* Enhanced Modal Content */}
-          <div className="relative bg-white/95 backdrop-blur-xl border border-white/20 shadow-2xl max-w-5xl w-full max-h-[92vh] rounded-2xl overflow-hidden flex flex-col">
-            {/* Close Button */}
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-6 right-6 z-10 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-velvet hover:bg-white/30 transition-all duration-300 shadow-lg border border-white/30"
-            >
-              <X className="h-5 w-5" />
-            </button>
-            {/* Event Image */}
-            <div className="relative h-52 md:h-64 overflow-hidden flex-shrink-0">
-              <img
-                src={selectedEvent.image}
-                alt={selectedEvent.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-velvet/80 via-velvet/20 to-transparent"></div>
-              <div className="absolute bottom-6 left-6">
-                <Badge
-                  variant="secondary"
-                  className="bg-champagne/95 text-velvet hover:bg-champagne border-none px-4 py-2 text-sm font-medium shadow-lg"
-                >
-                  {selectedEvent.category}
-                </Badge>
-              </div>
-            </div>
-            {/* Event Details */}
-            <div className="p-6 md:p-8 space-y-6 overflow-y-auto flex-1">
-              <div className="text-center space-y-4">
-                <h2 className="text-3xl md:text-4xl font-bold text-velvet leading-tight">
-                  {selectedEvent.title}
-                </h2>
-                <div className="w-20 h-1 bg-gradient-to-r from-champagne to-velvet mx-auto rounded-full"></div>
-              </div>
-              <div className="text-center max-w-3xl mx-auto">
-                <p className="text-lg md:text-xl text-velvet/80 leading-relaxed font-medium text-justify">
-                  {selectedEvent.description}
-                </p>
-              </div>
-              <div className="bg-gradient-to-br from-champagne/10 to-velvet/5 rounded-2xl p-6 border border-champagne/30 shadow-inner">
-                <h4 className="font-bold text-velvet mb-4 text-lg flex items-center gap-2">
-                  <div className="w-2 h-2 bg-champagne rounded-full"></div>
-                  What to Expect:
-                </h4>
-                <ul className="space-y-3 text-velvet/80">
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-champagne rounded-full mt-2 flex-shrink-0"></div>
-                    <span className="font-medium">Engaging activities and interactive sessions</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-champagne rounded-full mt-2 flex-shrink-0"></div>
-                    <span className="font-medium">Networking opportunities with fellow students</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-champagne rounded-full mt-2 flex-shrink-0"></div>
-                    <span className="font-medium">Valuable insights and learning experiences</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-champagne rounded-full mt-2 flex-shrink-0"></div>
-                    <span className="font-medium">Refreshments and social interaction</span>
-                  </li>
-                </ul>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="flex items-center gap-4 p-4 bg-gradient-to-br from-champagne/10 to-velvet/5 rounded-xl border border-champagne/30 shadow-sm hover:shadow-md transition-all duration-300">
-                  <div className="w-12 h-12 bg-champagne/20 rounded-lg flex items-center justify-center">
-                    <Calendar className="h-5 w-5 text-champagne" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-velvet/60 font-medium uppercase tracking-wide">Date</p>
-                    <p className="font-bold text-velvet">{selectedEvent.date}</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 p-4 bg-gradient-to-br from-champagne/10 to-velvet/5 rounded-xl border border-champagne/30 shadow-sm hover:shadow-md transition-all duration-300">
-                  <div className="w-12 h-12 bg-champagne/20 rounded-lg flex items-center justify-center">
-                    <Clock className="h-5 w-5 text-champagne" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-velvet/60 font-medium uppercase tracking-wide">Time</p>
-                    <p className="font-bold text-velvet">{selectedEvent.time}</p>
-                  </div>
-                </div>
-              </div>
-              <div className="text-center pt-4">
-                <Button
-                  onClick={handleJoinEvent}
-                  className="bg-gradient-to-r from-velvet to-velvet/90 hover:from-velvet/90 hover:to-velvet text-pearl font-bold px-10 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 rounded-xl"
-                >
-                  <ExternalLink className="h-5 w-5 mr-3" />
-                  Join This Event
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 };
