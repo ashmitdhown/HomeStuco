@@ -78,7 +78,7 @@ const Contact = () => {
         description: t('thankYouMessage', 'Thank you! We will contact you shortly.'),
         duration: 5000,
       });
-      setTimeout(() => setShowBackButton(true), 7000);
+      setTimeout(() => setShowBackButton(true), 8000);
 
       setFormData({
         name: "",

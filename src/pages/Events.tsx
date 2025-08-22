@@ -8,10 +8,6 @@ import 'slick-carousel/slick/slick-theme.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PageBgAndCursor } from "@/components/PageBgAndCursor";
 import SplineBg from "@/components/SplineBg";
-import {
-// ...existing code...
-} from "@/components/ui/carousel";
-
 
 interface EventCardProps {
   id: number;
@@ -25,6 +21,8 @@ interface EventCardProps {
   gradient: string;
   image: string;
   featured?: boolean;
+  buttonLabel?: string;  
+  buttonLink?: string;   
 }
 
 const categories = [
@@ -35,8 +33,12 @@ const categories = [
   { id: 'social', nameKey: 'social' },
 ];
 
-const EventCard = ({ title, description, date, time, location, category, icon, gradient, image, featured = false }: EventCardProps) => {
+const EventCard = ({ 
+  title, description, date, time, location, category, icon, gradient, image, 
+  featured = false, buttonLabel = 'Register Now', buttonLink = '#' 
+}: EventCardProps) => {
   const { t } = useTranslation();
+
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
@@ -63,6 +65,7 @@ const EventCard = ({ title, description, date, time, location, category, icon, g
           </span>
         </div>
       </div>
+
       <div className={`h-1 ${gradient}`}></div>
       <div className="p-6 flex-grow flex flex-col">
         <div className="flex items-center mb-4">
@@ -71,7 +74,9 @@ const EventCard = ({ title, description, date, time, location, category, icon, g
           </div>
           <h3 className="text-2xl font-bold text-white">{t(title, title)}</h3>
         </div>
+
         <p className="text-white/80 mb-6 flex-grow">{t(description, description)}</p>
+
         <div className="space-y-3 mt-auto">
           <div className="flex items-center text-white/70">
             <Calendar className="w-5 h-5 mr-2 text-indigo-300" />
@@ -86,10 +91,17 @@ const EventCard = ({ title, description, date, time, location, category, icon, g
             <span>{location}</span>
           </div>
         </div>
+
+        {/* 👇 Each Event Has Its Own Button */}
         <div className="mt-6 flex justify-center">
-          <button className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-[1.02] shadow-md hover:shadow-lg">
-            {t('registerNow', 'Register Now')}
-          </button>
+          <a 
+            href={buttonLink} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-[1.02] shadow-md hover:shadow-lg"
+          >
+            {t(buttonLabel, buttonLabel)}
+          </a>
         </div>
       </div>
     </motion.div>
@@ -115,7 +127,9 @@ const Events = () => {
       icon: <PartyPopper className="w-6 h-6" />,
       gradient: 'bg-gradient-to-r from-yellow-400 to-orange-500',
       image: '/assets/gamenight.webp',
-      featured: true
+      featured: true,
+      buttonLabel: 'Join Game Night 🎮',
+      buttonLink: '#'
     },
     {
       id: 2,
@@ -128,7 +142,9 @@ const Events = () => {
       icon: <BookOpen className="w-6 h-6" />,
       gradient: 'bg-gradient-to-r from-blue-500 to-indigo-600',
       image: '/assets/P2P.webp',
-      featured: true
+      featured: true,
+      buttonLabel: 'Mentorship 📘',
+      buttonLink: ''
     },
     {
       id: 5,
@@ -140,7 +156,9 @@ const Events = () => {
       category: 'Cultural',
       icon: <PartyPopper className="w-6 h-6" />,
       gradient: 'bg-gradient-to-r from-pink-500 to-rose-500',
-      image: '/assets/jashn.webp'
+      image: '/assets/jashn.webp',
+      buttonLabel: 'Celebrate at Jashn 🎉',
+      buttonLink: ''
     },
     {
       id: 6,
@@ -152,7 +170,9 @@ const Events = () => {
       category: 'Cultural',
       icon: <Sparkles className="w-6 h-6" />,
       gradient: 'bg-gradient-to-r from-orange-400 to-yellow-500',
-      image: '/assets/sparks.webp'
+      image: '/assets/sparks.webp',
+      buttonLabel: 'Coming Soon... ✨',
+      buttonLink: '/Events/'
     },
     {
       id: 7,
@@ -164,7 +184,9 @@ const Events = () => {
       category: 'Cultural',
       icon: <PartyPopper className="w-6 h-6" />,
       gradient: 'bg-gradient-to-r from-green-400 to-emerald-500',
-      image: '/assets/ethnic.webp'
+      image: '/assets/ethnic.webp',
+      buttonLabel: 'Celebrate Ethnic Day 🎊',
+      buttonLink: ''
     }
   ];
 
@@ -182,7 +204,7 @@ const Events = () => {
     <>
       <SplineBg />
       <PageBgAndCursor>
-        {/* Hero Carousel - Clubs style */}
+        {/* Hero Carousel */}
         <section className="relative h-[420px] md:h-[640px] lg:h-[900px] w-full overflow-hidden flex items-center justify-center">
           <div className="w-full h-[640px] md:h-[900px] lg:h-[1100px] flex items-center justify-center relative">
             <img
@@ -191,7 +213,6 @@ const Events = () => {
               className="w-full h-full object-cover"
               loading="lazy"
             />
-            {/* Floating View Events Button - only on large screens */}
             <button
               onClick={() => {
                 window.scrollBy({ top: 500, left: 0, behavior: 'smooth' });
@@ -204,146 +225,147 @@ const Events = () => {
           </div>
         </section>
       
-      {/* Search and Filter */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-black rounded-xl shadow-sm p-6 mb-8">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div className="relative flex-1 max-w-2xl">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Search className="h-5 w-5 text-gray-300" />
-              </div>
-              <input
-                type="text"
-                className="block w-full pl-10 pr-3 py-3 border border-gray-700 rounded-lg bg-gray-900 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                placeholder={t('searchEvents', 'Search events...')}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </div>
-            
-            <div className="flex items-center space-x-2">
-              <button
-                onClick={() => setViewMode('grid')}
-                className={`p-2 rounded-lg ${viewMode === 'grid' ? 'bg-indigo-700 text-white' : 'text-gray-300 hover:bg-gray-800'}`}
-                aria-label="Grid view"
-              >
-                <Grid className="w-5 h-5" />
-              </button>
-              <button
-                onClick={() => setViewMode('list')}
-                className={`p-2 rounded-lg ${viewMode === 'list' ? 'bg-indigo-700 text-white' : 'text-gray-300 hover:bg-gray-800'}`}
-                aria-label="List view"
-              >
-                <List className="w-5 h-5" />
-              </button>
-              <button
-                onClick={() => setIsFilterOpen(!isFilterOpen)}
-                className="flex items-center space-x-2 px-4 py-2 border border-gray-700 rounded-lg text-gray-200 hover:bg-gray-800 transition-colors"
-              >
-                <Filter className="w-5 h-5" />
-                <span>{t('filter', 'Filter')}</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Category Filters */}
-          <AnimatePresence>
-            {isFilterOpen && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="overflow-hidden mt-4"
-              >
-                <div className="pt-4 border-t border-gray-200">
-                  <h3 className="text-sm font-medium text-gray-700 mb-3">{t('categories', 'Categories')}</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {categories.map((category) => (
-                      <button
-                        key={category.id}
-                        onClick={() => setActiveCategory(category.id)}
-                        className={`px-3 py-1.5 text-sm rounded-full transition-colors ${
-                          activeCategory === category.id
-                            ? 'bg-indigo-600 text-white'
-                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                        }`}
-                      >
-                        {t(category.nameKey, category.nameKey)}
-                      </button>
-                    ))}
-                  </div>
+        {/* Search and Filter */}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="bg-black rounded-xl shadow-sm p-6 mb-8">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div className="relative flex-1 max-w-2xl">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Search className="h-5 w-5 text-gray-300" />
                 </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
-        {/* Featured Events */}
-        {featuredEvents.length > 0 && (
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-white mb-6">{t('featuredEvents', 'Featured Events')}</h2>
-            <Slider
-              dots
-              infinite
-              speed={500}
-              slidesToShow={Math.min(2, featuredEvents.length)}
-              slidesToScroll={1}
-              responsive={[
-                { breakpoint: 1024, settings: { slidesToShow: Math.min(2, featuredEvents.length) } },
-                { breakpoint: 768, settings: { slidesToShow: 1 } }
-              ]}
-              className="px-2"
-            >
-              {featuredEvents.map((event) => (
-                <div key={event.id} className="px-2 py-4">
-                  <EventCard {...event} />
-                </div>
-              ))}
-            </Slider>
-          </div>
-        )}
-
-        {/* All Events */}
-        <div className="mb-12" id="events-section">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-white">{t('allEvents', 'All Events')}</h2>
-          </div>
-
-          {filteredEvents.length === 0 ? (
-            <div className="text-center py-12 bg-white rounded-xl shadow-sm">
-              <div className="text-gray-400 mb-2">
-                <svg className="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+                <input
+                  type="text"
+                  className="block w-full pl-10 pr-3 py-3 border border-gray-700 rounded-lg bg-gray-900 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  placeholder={t('searchEvents', 'Search events...')}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
               </div>
-              <h3 className="text-lg font-medium text-gray-900">{t('noEventsFound', 'No events found')}</h3>
-              <p className="mt-1 text-gray-500">{t('tryAdjusting', 'Try adjusting your search or filter criteria')}</p>
-              <div className="mt-6">
-                <button 
-                  onClick={() => {
-                    setSearchQuery('');
-                    setActiveCategory('all');
-                  }}
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              
+              <div className="flex items-center space-x-2">
+                <button
+                  onClick={() => setViewMode('grid')}
+                  className={`p-2 rounded-lg ${viewMode === 'grid' ? 'bg-indigo-700 text-white' : 'text-gray-300 hover:bg-gray-800'}`}
+                  aria-label="Grid view"
                 >
-                  {t('clearFilters', 'Clear filters')}
+                  <Grid className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={() => setViewMode('list')}
+                  className={`p-2 rounded-lg ${viewMode === 'list' ? 'bg-indigo-700 text-white' : 'text-gray-300 hover:bg-gray-800'}`}
+                  aria-label="List view"
+                >
+                  <List className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={() => setIsFilterOpen(!isFilterOpen)}
+                  className="flex items-center space-x-2 px-4 py-2 border border-gray-700 rounded-lg text-gray-200 hover:bg-gray-800 transition-colors"
+                >
+                  <Filter className="w-5 h-5" />
+                  <span>{t('filter', 'Filter')}</span>
                 </button>
               </div>
             </div>
-          ) : (
-            <div className={`${viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-6'}`}>
-              {regularEvents.map((event) => (
-                <div key={event.id} className={viewMode === 'grid' ? 'h-full' : ''}>
-                  <EventCard {...event} />
-                </div>
-              ))}
+
+            {/* Category Filters */}
+            <AnimatePresence>
+              {isFilterOpen && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="overflow-hidden mt-4"
+                >
+                  <div className="pt-4 border-t border-gray-200">
+                    <h3 className="text-sm font-medium text-gray-700 mb-3">{t('categories', 'Categories')}</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {categories.map((category) => (
+                        <button
+                          key={category.id}
+                          onClick={() => setActiveCategory(category.id)}
+                          className={`px-3 py-1.5 text-sm rounded-full transition-colors ${
+                            activeCategory === category.id
+                              ? 'bg-indigo-600 text-white'
+                              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          }`}
+                        >
+                          {t(category.nameKey, category.nameKey)}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* Featured Events */}
+          {featuredEvents.length > 0 && (
+            <div className="mb-12">
+              <h2 className="text-2xl font-bold text-white mb-6">{t('featuredEvents', 'Featured Events')}</h2>
+              <Slider
+                dots
+                infinite
+                speed={500}
+                slidesToShow={Math.min(2, featuredEvents.length)}
+                slidesToScroll={1}
+                responsive={[
+                  { breakpoint: 1024, settings: { slidesToShow: Math.min(2, featuredEvents.length) } },
+                  { breakpoint: 768, settings: { slidesToShow: 1 } }
+                ]}
+                className="px-2"
+              >
+                {featuredEvents.map((event) => (
+                  <div key={event.id} className="px-2 py-4">
+                    <EventCard {...event} />
+                  </div>
+                ))}
+              </Slider>
             </div>
           )}
+
+          {/* All Events */}
+          <div className="mb-12" id="events-section">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-bold text-white">{t('allEvents', 'All Events')}</h2>
+            </div>
+
+            {filteredEvents.length === 0 ? (
+              <div className="text-center py-12 bg-white rounded-xl shadow-sm">
+                <div className="text-gray-400 mb-2">
+                  <svg className="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-medium text-gray-900">{t('noEventsFound', 'No events found')}</h3>
+                <p className="mt-1 text-gray-500">{t('tryAdjusting', 'Try adjusting your search or filter criteria')}</p>
+                <div className="mt-6">
+                  <button 
+                    onClick={() => {
+                      setSearchQuery('');
+                      setActiveCategory('all');
+                    }}
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  >
+                    {t('clearFilters', 'Clear filters')}
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className={`${viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-6'}`}>
+                {regularEvents.map((event) => (
+                  <div key={event.id} className={viewMode === 'grid' ? 'h-full' : ''}>
+                    <EventCard {...event} />
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
-      </div>
       </PageBgAndCursor>
-       {/* Floating Contact Button*/}
-       <a
+
+      {/* Floating Contact Button*/}
+      <a
         href="/Contact"
         className="fixed z-[9999] bottom-4 right-4 bg-primary text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2 hover:bg-primary/90 transition-all text-lg font-semibold"
         style={{ boxShadow: '0 4px 24px 0 rgba(0,0,0,0.18)' }}
@@ -354,7 +376,8 @@ const Events = () => {
         </svg>
         {t('contactUs', 'Contact Us')}
       </a>
-    <InstagramContactBar />
+
+      <InstagramContactBar />
     </>
   );
 };

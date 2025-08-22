@@ -50,7 +50,6 @@ const events: Announcement[] = [
 
 export const AnnouncementSection = () => {
   const { t } = useTranslation();
-  // Modal logic removed; clean up unused variables and modal rendering
 
   return (
     <section id="announcement-section" className="py-20 bg-gradient-secondary relative overflow-hidden">
@@ -124,7 +123,7 @@ export const AnnouncementSection = () => {
                     ) : (
                       <Button
                         className="w-full bg-velvet hover:bg-velvet/90 text-pearl font-semibold transition-all duration-300 hover:shadow-glow"
-                        onClick={() => window.open(`/events/${event.id}`, '_blank')}
+                        onClick={() => window.open(`/Events/`, '_blank')}
                       >
                         {t('learnMore', 'Learn more')}
                       </Button>
