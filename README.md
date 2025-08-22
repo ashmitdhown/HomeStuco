@@ -1,13 +1,4 @@
-<<<<<<< HEAD
 
-
-
-
-<div align="center">
-  <h2 style="color:red; background:#ffeaea; border:2px solid #ff0000; padding:16px; border-radius:8px;">
-    🚫 <b>Forking, Pull Requests, and Contributions are NOT Allowed</b> 🚫<br>
-    <span style="font-size:1.1em; color:#b30000;">This is an official Student Council website. For privacy, security, and authenticity, please do not fork, clone, or submit PRs.</span>
-<div align="center">
   <h2 style="color:red; background:#ffeaea; border:2px solid #ff0000; padding:16px; border-radius:8px;">
     🚫 <b>Forking, Pull Requests, and Contributions are NOT Allowed</b> 🚫<br>
     <span style="font-size:1.1em; color:#b30000;">This is an official Student Council website. For privacy, security, and authenticity, please do not fork, clone, or submit PRs.</span>
