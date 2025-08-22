@@ -7,6 +7,10 @@
   <h2 style="color:red; background:#ffeaea; border:2px solid #ff0000; padding:16px; border-radius:8px;">
     🚫 <b>Forking, Pull Requests, and Contributions are NOT Allowed</b> 🚫<br>
     <span style="font-size:1.1em; color:#b30000;">This is an official Student Council website. For privacy, security, and authenticity, please do not fork, clone, or submit PRs.</span>
+<div align="center">
+  <h2 style="color:red; background:#ffeaea; border:2px solid #ff0000; padding:16px; border-radius:8px;">
+    🚫 <b>Forking, Pull Requests, and Contributions are NOT Allowed</b> 🚫<br>
+    <span style="font-size:1.1em; color:#b30000;">This is an official Student Council website. For privacy, security, and authenticity, please do not fork, clone, or submit PRs.</span>
   </h2>
 </div>
 
@@ -14,18 +18,18 @@
 
 <p align="center">
   <b>Authors</b><br>
-  <a href="https://github.com/Manavarya09"><b>Manav Arya Singh</b></a><br>
+  <a href="https://github.com/Manavarya09"><b>Manav Arya Singh</b></a>
   <a href="https://github.com/Manavarya09">
     <img src="https://img.shields.io/github/followers/Manavarya09?label=Followers&style=social" alt="Followers"/>
     <img src="https://img.shields.io/github/stars/Manavarya09?label=Stars&style=social" alt="Stars"/>
-    <img src="https://img.shields.io/github/commit-activity/y/Manavarya09/TrendPilot-1?label=Commits" alt="Commits"/>
+    <img src="https://img.shields.io/github/commit-activity/y/Manavarya09/HomeStuco?label=Commits" alt="Commits"/>
   </a>
   <br>
-  <a href="https://github.com/ashmitdhown"><b>Ashmit Dhown</b></a><br>
+  <a href="https://github.com/ashmitdhown"><b>Ashmit Dhown</b></a>
   <a href="https://github.com/ashmitdhown">
     <img src="https://img.shields.io/github/followers/ashmitdhown?label=Followers&style=social" alt="Followers"/>
     <img src="https://img.shields.io/github/stars/ashmitdhown?label=Stars&style=social" alt="Stars"/>
-    <img src="https://img.shields.io/github/commit-activity/y/ashmitdhown/TrendPilot-1?label=Commits" alt="Commits"/>
+    <img src="https://img.shields.io/github/commit-activity/y/ashmitdhown/HomeStuco?label=Commits" alt="Commits"/>
   </a>
 </p>
 
@@ -34,30 +38,16 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Manavarya09/TrendPilot-1/actions"><img src="https://img.shields.io/github/actions/workflow/status/Manavarya09/TrendPilot-1/CI.yml?branch=main&style=for-the-badge" alt="Build Status"></a>
-  <a href="https://github.com/Manavarya09/TrendPilot-1/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Manavarya09/TrendPilot-1?style=for-the-badge" alt="License"></a>
-  <a href="https://github.com/Manavarya09/TrendPilot-1/releases"><img src="https://img.shields.io/github/v/release/Manavarya09/TrendPilot-1?style=for-the-badge" alt="Version"></a>
-  <a href="https://github.com/Manavarya09/TrendPilot-1/stargazers"><img src="https://img.shields.io/github/stars/Manavarya09/TrendPilot-1?style=for-the-badge" alt="Stars"></a>
-  <a href="https://github.com/Manavarya09/TrendPilot-1/issues"><img src="https://img.shields.io/github/issues/Manavarya09/TrendPilot-1?style=for-the-badge" alt="Issues"></a>
-  <a href="https://github.com/Manavarya09/TrendPilot-1/network/members"><img src="https://img.shields.io/github/forks/Manavarya09/TrendPilot-1?style=for-the-badge" alt="Forks"></a>
-  <a href="https://github.com/Manavarya09/TrendPilot-1/graphs/contributors"><img src="https://img.shields.io/github/contributors/Manavarya09/TrendPilot-1?style=for-the-badge" alt="Contributors"></a>
+  <a href="https://github.com/Manavarya09/HomeStuco/actions"><img src="https://img.shields.io/github/actions/workflow/status/Manavarya09/HomeStuco/CI.yml?branch=main&style=for-the-badge" alt="Build Status"></a>
+  <a href="https://github.com/Manavarya09/HomeStuco/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Manavarya09/HomeStuco?style=for-the-badge" alt="License"></a>
+  <a href="https://github.com/Manavarya09/HomeStuco/releases"><img src="https://img.shields.io/github/v/release/Manavarya09/HomeStuco?style=for-the-badge" alt="Version"></a>
+  <a href="https://github.com/Manavarya09/HomeStuco/stargazers"><img src="https://img.shields.io/github/stars/Manavarya09/HomeStuco?style=for-the-badge" alt="Stars"></a>
+  <a href="https://github.com/Manavarya09/HomeStuco/issues"><img src="https://img.shields.io/github/issues/Manavarya09/HomeStuco?style=for-the-badge" alt="Issues"></a>
+  <a href="https://github.com/Manavarya09/HomeStuco/network/members"><img src="https://img.shields.io/github/forks/Manavarya09/HomeStuco?style=for-the-badge" alt="Forks"></a>
+  <a href="https://github.com/Manavarya09/HomeStuco/graphs/contributors"><img src="https://img.shields.io/github/contributors/Manavarya09/HomeStuco?style=for-the-badge" alt="Contributors"></a>
 </p>
 
 ---
-
-## 🚀 About the Project
-
-<details>
-<summary><b>What is this?</b></summary>
-
-Student Council Website is a visually stunning, responsive platform for BITS Pilani Dubai Campus. It showcases council members, events, announcements, and enables direct contact via forms. Built for engagement, transparency, and community.
-
-<b>Problem Solved:</b> Centralizes council info, events, and communication, making student life more connected and informed.
-
-</details>
-
----
-
 
 ## 🛠️ Tech Stack
 
