@@ -27,6 +27,7 @@ const Contact = () => {
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const containerRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showBackButton, setShowBackButton] = useState(true); // NEW STATE
   const { toast } = useToast();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -37,8 +38,25 @@ const Contact = () => {
     }));
   };
 
+  const validateEmail = (email: string) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validateEmail(formData.email)) {
+      setShowBackButton(false);
+      toast({
+        title: t('invalidEmail', 'Invalid Email'),
+        description: t('enterValidEmail', 'Please enter a valid email address.'),
+        duration: 4000,
+      });
+      setTimeout(() => setShowBackButton(true), 4000);
+      return;
+    }
+
     setIsSubmitting(true);
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwlDSHO-aEWlT_OWPy8FAobG_vLMCsz1Wud4sMulmB2SAHDexeVS7094-iYDx9DOVU/exec";
     try {
@@ -53,11 +71,15 @@ const Contact = () => {
           Message: formData.message,
         }),
       });
+
+      setShowBackButton(false);
       toast({
         title: t('formSubmitted', 'Form Submitted'),
         description: t('thankYouMessage', 'Thank you! We will contact you shortly.'),
         duration: 5000,
       });
+      setTimeout(() => setShowBackButton(true), 7000);
+
       setFormData({
         name: "",
         email: "",
@@ -65,11 +87,13 @@ const Contact = () => {
         message: ""
       });
     } catch (error) {
+      setShowBackButton(false);
       toast({
         title: t('submissionFailed', 'Submission Failed'),
         description: t('submissionError', 'There was an error submitting the form.'),
         duration: 5000,
       });
+      setTimeout(() => setShowBackButton(true), 5000);
       console.error("Submission error:", error);
     } finally {
       setIsSubmitting(false);
@@ -109,8 +133,6 @@ const Contact = () => {
         <div ref={containerRef} className="min-h-screen relative">
           <div className="relative z-10 min-h-screen flex items-center justify-center p-6">
             <div className="w-full max-w-6xl">
-              
-              {/* Header */}
               <div className="text-center mb-16">
                 <h1 className="text-6xl md:text-8xl font-black text-white mb-6 leading-none">
                   {t('letsTalk', "Let's Talk")}
@@ -118,7 +140,6 @@ const Contact = () => {
               </div>
 
               <div className="grid lg:grid-cols-5 gap-10">
-                
                 {/* Contact Methods */}
                 <div className="lg:col-span-2">
                   <div className="h-full flex flex-col justify-between space-y-5">
@@ -157,7 +178,6 @@ const Contact = () => {
                     </div>
                     
                     <div className="space-y-7 flex-1 flex flex-col">
-                      
                       <div className="grid md:grid-cols-2 gap-5">
                         <div className="relative group">
                           <Input
@@ -171,7 +191,7 @@ const Contact = () => {
                             placeholder={t('yourName', 'Your Name')}
                           />
                           {focusedField === 'name' && (
-                            <div className="absolute -top-2 left-4 bg-gradient-to-r from-blue-500 to-yellow-500 text-white px-2 py-1 rounded text-xs font-medium">
+                            <div className="absolute -top-5 left-4 bg-gradient-to-r from-blue-500 to-yellow-500 text-white px-2 py-1 rounded text-xs font-medium">
                               <span className="text-white">{t('fullName', 'Full Name')}</span>
                             </div>
                           )}
@@ -189,7 +209,7 @@ const Contact = () => {
                             placeholder={t('yourEmail', 'your@email.com')}
                           />
                           {focusedField === 'email' && (
-                            <div className="absolute -top-2 left-4 bg-gradient-to-r from-yellow-500 to-amber-500 text-white px-2 py-1 rounded text-xs font-medium">
+                            <div className="absolute -top-5 left-4 bg-gradient-to-r from-yellow-500 to-amber-500 text-white px-2 py-1 rounded text-xs font-medium">
                               <span className="text-white">{t('emailAddress', 'Email Address')}</span>
                             </div>
                           )}
@@ -208,7 +228,7 @@ const Contact = () => {
                           placeholder={t('subject', 'Subject')}
                         />
                         {focusedField === 'subject' && (
-                          <div className="absolute -top-2 left-4 bg-gradient-to-r from-sky-500 to-blue-500 text-white px-2 py-1 rounded text-xs font-medium">
+                          <div className="absolute -top-5 left-4 bg-gradient-to-r from-sky-500 to-blue-500 text-white px-2 py-1 rounded text-xs font-medium">
                             <span className="text-white">{t('whatsThisAbout', "What's this about?")}</span>
                           </div>
                         )}
@@ -225,7 +245,7 @@ const Contact = () => {
                           placeholder={t('tellUsWhatsOnYourMind', "Tell us what's on your mind...")}
                         />
                         {focusedField === 'message' && (
-                          <div className="absolute -top-2 left-4 bg-gradient-to-r from-amber-500 to-yellow-500 text-white px-2 py-1 rounded text-xs font-medium">
+                          <div className="absolute -top-3 left-4 bg-gradient-to-r from-amber-500 to-yellow-500 text-white px-2 py-1 rounded text-xs font-medium">
                             <span className="text-white">{t('yourMessage', 'Your Message')}</span>
                           </div>
                         )}
@@ -249,29 +269,28 @@ const Contact = () => {
                           </>
                         )}
                       </Button>
-                      
                     </div>
                   </div>
                 </div>
-                
               </div>
             </div>
           </div>
         </div>
       </PageBgAndCursor>
 
-      {/* Floating Back to Homepage Button */}
-      <a
-      href="/"
-      className="fixed z-[9999] bottom-4 right-3 bg-primary text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2 hover:bg-primary/90 transition-all text-lg font-semibold"
-      style={{ minWidth: 0, boxShadow: '0 4px 24px 0 rgba(0,0,0,0.18)' }}
+      {/* Back to Homepage button (conditionally rendered) */}
+      {showBackButton && (
+        <a
+          href="/"
+          className="fixed z-[9999] bottom-4 right-3 bg-primary text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2 hover:bg-primary/90 transition-all text-lg font-semibold"
+          style={{ minWidth: 0, boxShadow: '0 4px 24px 0 rgba(0,0,0,0.18)' }}
         >
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l9-9 9 9M4.5 10.5V21h15V10.5" />
-      </svg>
-       {t('backToHomepage', 'Back to Homepage')}
-    </a>
-
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l9-9 9 9M4.5 10.5V21h15V10.5" />
+          </svg>
+          {t('backToHomepage', 'Back to Homepage')}
+        </a>
+      )}
     </>
   );
 };
