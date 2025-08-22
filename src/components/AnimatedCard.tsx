@@ -1,5 +1,5 @@
 // AnimatedCard.tsx
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import AnimeJSComponent from "./AnimeJSComponent";
 
 interface AnimatedCardProps {

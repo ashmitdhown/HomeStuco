@@ -9,7 +9,7 @@ const ANIMATION_SPEED = 300; // ms
 const Welcome = () => {
   const [dotCount, setDotCount] = useState(0);
   const [barProgress, setBarProgress] = useState(0);
-  const [show, setShow] = useState(true);
+  const [show] = useState(true);
 
   useEffect(() => {
     const dotTimer = setInterval(() => {

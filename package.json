@@ -40,10 +40,7 @@
     "@radix-ui/react-toggle-group": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.4",
     "@splinetool/react-spline": "^4.1.0",
-<<<<<<< HEAD
     "@splinetool/runtime": "^1.10.48",
-=======
->>>>>>> df32317b40431adca3251afd0946278b0c3dde67
     "@tanstack/react-query": "^5.56.2",
     "@types/react-slick": "^0.23.13",
     "animejs": "^4.1.2",
@@ -53,6 +50,8 @@
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.3.0",
     "framer-motion": "^12.23.6",
+    "i18next": "^25.4.0",
+    "i18next-browser-languagedetector": "^8.2.0",
     "input-otp": "^1.2.4",
     "lucide-react": "^0.462.0",
     "next-themes": "^0.3.0",
@@ -61,6 +60,7 @@
     "react-day-picker": "^8.10.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.0",
+    "react-i18next": "^15.7.1",
     "react-resizable-panels": "^2.1.3",
     "react-router-dom": "^6.26.2",
     "react-slick": "^0.30.3",
@@ -84,13 +84,10 @@
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
-<<<<<<< HEAD
     "imagemin": "^9.0.1",
     "imagemin-mozjpeg": "^10.0.0",
     "imagemin-pngquant": "^10.0.0",
     "imagemin-webp": "^8.0.0",
-=======
->>>>>>> df32317b40431adca3251afd0946278b0c3dde67
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.11",
     "typescript": "^5.5.3",

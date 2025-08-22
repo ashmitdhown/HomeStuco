@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { throttle } from "../lib/throttle";
 import { PageBgAndCursor } from "@/components/PageBgAndCursor";
 
 const TermsOfUse = () => {
   const [fade, setFade] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setFade(window.scrollY > 100);
-    };
+    const handleScroll = throttle(() => {
+      requestAnimationFrame(() => {
+        setFade(window.scrollY > 100);
+      });
+    }, 30);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);

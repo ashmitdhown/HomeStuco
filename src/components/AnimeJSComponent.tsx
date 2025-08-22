@@ -31,8 +31,8 @@ function convertToKeyframes(animation: any) {
   const otherProps: Record<string, any> = {};
   for (const key in animation) {
     if (Array.isArray(animation[key]) && animation[key].length === 2 &&
-        (typeof animation[key][0] !== 'object' && typeof animation[key][1] !== 'object')) {
-      keyframeProps[key] = animation[key];
+      typeof animation[key][0] !== 'object' && typeof animation[key][1] !== 'object') {
+      keyframeProps[key] = [animation[key][0], animation[key][1]];
     } else {
       otherProps[key] = animation[key];
     }

@@ -1,25 +1,16 @@
-import { useState, useEffect } from 'react';
-<<<<<<< HEAD
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import InstagramContactBar from "@/components/ui/InstagramContactBar";
-=======
->>>>>>> df32317b40431adca3251afd0946278b0c3dde67
-import { Calendar, Clock, MapPin, BookOpen, Sparkles, PartyPopper, Zap, Search, Filter, Grid, List } from 'lucide-react';
+import { Calendar, Clock, MapPin, BookOpen, Sparkles, PartyPopper, Search, Filter, Grid, List } from 'lucide-react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PageBgAndCursor } from "@/components/PageBgAndCursor";
 import SplineBg from "@/components/SplineBg";
-<<<<<<< HEAD
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
+// ...existing code...
 } from "@/components/ui/carousel";
-=======
->>>>>>> df32317b40431adca3251afd0946278b0c3dde67
 
 
 interface EventCardProps {
@@ -37,14 +28,15 @@ interface EventCardProps {
 }
 
 const categories = [
-  { id: 'all', name: 'All Events' },
-  { id: 'academic', name: 'Academic' },
-  { id: 'cultural', name: 'Cultural' },
-  { id: 'workshop', name: 'Workshops' },
-  { id: 'social', name: 'Social' },
+  { id: 'all', nameKey: 'allEvents' },
+  { id: 'academic', nameKey: 'academic' },
+  { id: 'cultural', nameKey: 'cultural' },
+  { id: 'workshop', nameKey: 'workshops' },
+  { id: 'social', nameKey: 'social' },
 ];
 
 const EventCard = ({ title, description, date, time, location, category, icon, gradient, image, featured = false }: EventCardProps) => {
+  const { t } = useTranslation();
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
@@ -56,33 +48,30 @@ const EventCard = ({ title, description, date, time, location, category, icon, g
       <div className="relative h-48 overflow-hidden">
         <img 
           src={image} 
-          alt={title}
+          alt={t(title, title)}
           className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
           loading="lazy"
         />
         {featured && (
           <div className="absolute top-3 right-3 bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-1 rounded-full">
-            Featured
+            {t('featured', 'Featured')}
           </div>
         )}
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#14213d]/90 to-transparent p-4">
           <span className="text-white text-sm font-medium bg-[#14213d]/80 px-2 py-1 rounded">
-            {category}
+            {t(category, category)}
           </span>
         </div>
       </div>
-      
       <div className={`h-1 ${gradient}`}></div>
       <div className="p-6 flex-grow flex flex-col">
         <div className="flex items-center mb-4">
           <div className={`p-3 rounded-lg ${gradient.replace('bg-gradient-to-r', 'bg-gradient-to-br')} text-white mr-4`}>
             {icon}
           </div>
-          <h3 className="text-2xl font-bold text-white">{title}</h3>
+          <h3 className="text-2xl font-bold text-white">{t(title, title)}</h3>
         </div>
-        
-        <p className="text-white/80 mb-6 flex-grow">{description}</p>
-        
+        <p className="text-white/80 mb-6 flex-grow">{t(description, description)}</p>
         <div className="space-y-3 mt-auto">
           <div className="flex items-center text-white/70">
             <Calendar className="w-5 h-5 mr-2 text-indigo-300" />
@@ -97,10 +86,9 @@ const EventCard = ({ title, description, date, time, location, category, icon, g
             <span>{location}</span>
           </div>
         </div>
-        
         <div className="mt-6 flex justify-center">
           <button className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-[1.02] shadow-md hover:shadow-lg">
-            Register Now
+            {t('registerNow', 'Register Now')}
           </button>
         </div>
       </div>
@@ -109,6 +97,7 @@ const EventCard = ({ title, description, date, time, location, category, icon, g
 };
 
 const Events = () => {
+  const { t } = useTranslation();
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -117,7 +106,6 @@ const Events = () => {
   const events: EventCardProps[] = [
     {
       id: 1,
-<<<<<<< HEAD
       title: 'Freshers’ Game Night',
       description: 'Start your campus journey with an unforgettable night of games, laughs, and bonding. Hosted by the Student Council, this event is designed to break the ice !',
       date: 'Friday, 29th August',
@@ -127,22 +115,10 @@ const Events = () => {
       icon: <PartyPopper className="w-6 h-6" />,
       gradient: 'bg-gradient-to-r from-yellow-400 to-orange-500',
       image: '/assets/gamenight.webp',
-=======
-      title: 'Peer-Peer Mentorship',
-      description: 'Connect with experienced mentors and peers to enhance your academic and personal growth through structured guidance.',
-      date: 'August 15, 2025',
-      time: '15:00',
-      location: 'Student Center, Room 205',
-      category: 'Academic',
-      icon: <BookOpen className="w-6 h-6" />,
-      gradient: 'bg-gradient-to-r from-blue-500 to-indigo-600',
-      image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
->>>>>>> df32317b40431adca3251afd0946278b0c3dde67
       featured: true
     },
     {
       id: 2,
-<<<<<<< HEAD
       title: 'Peer-to-Peer Mentorship',
       description: 'Connect, learn, and grow together with our Peer-to-Peer Mentorship Programme — a supportive space where students help each other succeed academically and socially.',
       date: 'TBA',
@@ -189,64 +165,12 @@ const Events = () => {
       icon: <PartyPopper className="w-6 h-6" />,
       gradient: 'bg-gradient-to-r from-green-400 to-emerald-500',
       image: '/assets/ethnic.webp'
-=======
-      title: 'Sparks',
-      description: 'An electrifying talent showcase where students light up the stage with their unique abilities and creative performances.',
-      date: 'August 22, 2025',
-      time: '18:00',
-      location: 'Main Auditorium',
-      category: 'Cultural',
-      icon: <Sparkles className="w-6 h-6" />,
-      gradient: 'bg-gradient-to-r from-yellow-400 to-orange-500',
-      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80',
-      featured: true
-    },
-    {
-      id: 3,
-      title: 'Jashn',
-      description: 'A vibrant cultural festival celebrating diversity through music, dance, and art from around the world.',
-      date: 'September 5, 2025',
-      time: '16:00',
-      location: 'University Grounds',
-      category: 'Cultural',
-      icon: <PartyPopper className="w-6 h-6" />,
-      gradient: 'bg-gradient-to-r from-pink-500 to-rose-500',
-      image: 'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
-    },
-    {
-      id: 4,
-      title: 'Recharge',
-      description: 'A wellness retreat focused on mental health, self-care, and recharging your energy for the semester ahead.',
-      date: 'September 12, 2025',
-      time: '10:00',
-      location: 'Campus Lawn & Wellness Center',
-      category: 'Workshop',
-      icon: <Zap className="w-6 h-6" />,
-      gradient: 'bg-gradient-to-r from-green-400 to-emerald-500',
-      image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1420&q=80'
-    },
-    {
-      id: 5,
-      title: 'Tech Symposium',
-      description: 'A day of tech talks, workshops, and networking with industry professionals and innovators.',
-      date: 'October 3, 2025',
-      time: '09:00',
-      location: 'Engineering Building',
-      category: 'Workshop',
-      icon: <Zap className="w-6 h-6" />,
-      gradient: 'bg-gradient-to-r from-purple-500 to-blue-500',
-      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80'
->>>>>>> df32317b40431adca3251afd0946278b0c3dde67
     }
   ];
 
   const filteredEvents = events.filter(event => {
     const matchesSearch = event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-<<<<<<< HEAD
       event.description.toLowerCase().includes(searchQuery.toLowerCase());
-=======
-                         event.description.toLowerCase().includes(searchQuery.toLowerCase());
->>>>>>> df32317b40431adca3251afd0946278b0c3dde67
     const matchesCategory = activeCategory === 'all' || event.category.toLowerCase() === activeCategory.toLowerCase();
     return matchesSearch && matchesCategory;
   });
@@ -258,7 +182,6 @@ const Events = () => {
     <>
       <SplineBg />
       <PageBgAndCursor>
-<<<<<<< HEAD
         {/* Hero Carousel - Clubs style */}
         <section className="relative h-[420px] md:h-[640px] lg:h-[900px] w-full overflow-hidden flex items-center justify-center">
           <div className="w-full h-[640px] md:h-[900px] lg:h-[1100px] flex items-center justify-center relative">
@@ -276,32 +199,11 @@ const Events = () => {
               className="hidden lg:flex absolute bottom-36 left-1/2 -translate-x-1/2 bg-white/30 backdrop-blur-lg text-2xl font-bold text-white px-10 py-5 rounded-full shadow-2xl border-2 border-white/40 hover:bg-white/40 transition-all duration-300"
               style={{ letterSpacing: '0.05em' }}
             >
-              View Events
+              {t('viewEvents', 'View Events')}
             </button>
           </div>
         </section>
       
-=======
-      <div className="min-h-screen pt-16 -mt-16">
-      
-      {/* Hero Section */}
-      {featuredEvents.length > 0 && (
-        <Slider dots infinite speed={500} slidesToShow={1} slidesToScroll={1} className="h-[420px] md:h-[520px] lg:h-[600px] w-full">
-          {featuredEvents.map((event) => (
-            <div key={event.id} className="relative h-[420px] md:h-[520px] lg:h-[600px] w-full">
-              <img src={event.image} alt={event.title} className="absolute inset-0 w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-                <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white drop-shadow-lg">
-                  Upcoming <span className="text-yellow-300">Events</span>
-                </h1>
-              </div>
-            </div>
-          ))}
-        </Slider>
-      )}
-
->>>>>>> df32317b40431adca3251afd0946278b0c3dde67
       {/* Search and Filter */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="bg-black rounded-xl shadow-sm p-6 mb-8">
@@ -313,7 +215,7 @@ const Events = () => {
               <input
                 type="text"
                 className="block w-full pl-10 pr-3 py-3 border border-gray-700 rounded-lg bg-gray-900 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                placeholder="Search events..."
+                placeholder={t('searchEvents', 'Search events...')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -339,7 +241,7 @@ const Events = () => {
                 className="flex items-center space-x-2 px-4 py-2 border border-gray-700 rounded-lg text-gray-200 hover:bg-gray-800 transition-colors"
               >
                 <Filter className="w-5 h-5" />
-                <span>Filter</span>
+                <span>{t('filter', 'Filter')}</span>
               </button>
             </div>
           </div>
@@ -354,7 +256,7 @@ const Events = () => {
                 className="overflow-hidden mt-4"
               >
                 <div className="pt-4 border-t border-gray-200">
-                  <h3 className="text-sm font-medium text-gray-700 mb-3">Categories</h3>
+                  <h3 className="text-sm font-medium text-gray-700 mb-3">{t('categories', 'Categories')}</h3>
                   <div className="flex flex-wrap gap-2">
                     {categories.map((category) => (
                       <button
@@ -366,7 +268,7 @@ const Events = () => {
                             : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                         }`}
                       >
-                        {category.name}
+                        {t(category.nameKey, category.nameKey)}
                       </button>
                     ))}
                   </div>
@@ -379,7 +281,7 @@ const Events = () => {
         {/* Featured Events */}
         {featuredEvents.length > 0 && (
           <div className="mb-12">
-            <h2 className="text-2xl font-bold text-white mb-6">Featured Events</h2>
+            <h2 className="text-2xl font-bold text-white mb-6">{t('featuredEvents', 'Featured Events')}</h2>
             <Slider
               dots
               infinite
@@ -402,28 +304,20 @@ const Events = () => {
         )}
 
         {/* All Events */}
-<<<<<<< HEAD
         <div className="mb-12" id="events-section">
-=======
-        <div className="mb-12">
->>>>>>> df32317b40431adca3251afd0946278b0c3dde67
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-white">All Events</h2>
+            <h2 className="text-2xl font-bold text-white">{t('allEvents', 'All Events')}</h2>
           </div>
 
           {filteredEvents.length === 0 ? (
             <div className="text-center py-12 bg-white rounded-xl shadow-sm">
               <div className="text-gray-400 mb-2">
-<<<<<<< HEAD
                 <svg className="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-=======
-                <svg className="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
->>>>>>> df32317b40431adca3251afd0946278b0c3dde67
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-medium text-gray-900">No events found</h3>
-              <p className="mt-1 text-gray-500">Try adjusting your search or filter criteria</p>
+              <h3 className="text-lg font-medium text-gray-900">{t('noEventsFound', 'No events found')}</h3>
+              <p className="mt-1 text-gray-500">{t('tryAdjusting', 'Try adjusting your search or filter criteria')}</p>
               <div className="mt-6">
                 <button 
                   onClick={() => {
@@ -432,7 +326,7 @@ const Events = () => {
                   }}
                   className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                  Clear filters
+                  {t('clearFilters', 'Clear filters')}
                 </button>
               </div>
             </div>
@@ -447,10 +341,6 @@ const Events = () => {
           )}
         </div>
       </div>
-<<<<<<< HEAD
-=======
-      </div>
->>>>>>> df32317b40431adca3251afd0946278b0c3dde67
       </PageBgAndCursor>
        {/* Floating Contact Button*/}
        <a
@@ -462,12 +352,9 @@ const Events = () => {
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
           <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-.659 1.591l-7.5 7.5a2.25 2.25 0 01-3.182 0l-7.5-7.5A2.25 2.25 0 012.25 6.993V6.75" />
         </svg>
-        Contact Us
+        {t('contactUs', 'Contact Us')}
       </a>
-<<<<<<< HEAD
     <InstagramContactBar />
-=======
->>>>>>> df32317b40431adca3251afd0946278b0c3dde67
     </>
   );
 };
