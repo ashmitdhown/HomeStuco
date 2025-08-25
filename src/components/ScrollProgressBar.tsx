@@ -37,8 +37,8 @@ const ScrollProgressBar: React.FC = () => {
         style={{
           height: '100%',
           width: `${scroll}%`,
-          background: 'linear-gradient(90deg, #FFD700 0%, #FFF8DC 100%)',
-          boxShadow: '0 2px 8px 0 rgba(255, 215, 0, 0.2)',
+          background: 'linear-gradient(90deg, #8B0000 0%, #B22222 100%)',
+          boxShadow: '0 2px 8px 0 rgba(139, 0, 0, 0.2)',
           borderRadius: '0 2px 2px 0',
           transition: 'width 0.15s cubic-bezier(0.4,0,0.2,1)',
         }}

@@ -93,7 +93,6 @@ A modern, responsive website for the BITS Pilani Dubai Campus Student Council. T
 - npm (v8+ recommended)
 
 ### Installation
-<<<<<<< HEAD
 
 ```sh
 git clone https://github.com/Manavarya09/TrendPilot-1.git
@@ -225,9 +224,6 @@ This website does not collect personal data except for information submitted via
 ---
 
 
-=======
-1. **Clone the repository:**
->>>>>>> df32317b40431adca3251afd0946278b0c3dde67
    ```sh
    git clone <your-repo-url>
    cd <repo-folder>

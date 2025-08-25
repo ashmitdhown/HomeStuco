@@ -1,4 +1,7 @@
 import { useRef, useEffect, useState, ReactNode } from "react";
+
+const CURSOR_SCROLL = '/assets/cursor-scroll.svg'; // Replace with your scroll cursor SVG
+const CURSOR_CLICK = '/assets/cursor-click.svg';   // Replace with your click cursor SVG
 import SplineBg from "@/components/SplineBg";
 
 interface PageBgAndCursorProps {
@@ -19,12 +22,11 @@ export const PageBgAndCursor = ({ children }: PageBgAndCursorProps) => {
         });
       }
     };
-    const container = containerRef.current;
-    if (container) {
-      container.addEventListener("mousemove", handleMouseMove);
-      return () => container.removeEventListener("mousemove", handleMouseMove);
-    }
+    document.addEventListener('mousemove', handleMouseMove);
+    return () => document.removeEventListener('mousemove', handleMouseMove);
   }, []);
+
+  // ...existing code...
 
   return (
     <div
