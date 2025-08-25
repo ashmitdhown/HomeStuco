@@ -1,4 +1,3 @@
-
 import InstagramContactBar from "@/components/ui/InstagramContactBar";
 // Author: Manav Arya & Ashmit Dhown
 import { motion } from "framer-motion";
@@ -33,14 +32,26 @@ const About = () => {
           <picture>
             <source media="(max-width: 640px)" srcSet="/assets/aboutsmall.png" />
             <img
-                  src="/assets/Untitled design-5.webp"
+              src="/assets/Untitled design-5.webp"
               alt="About Student Council Background"
-              className="w-full h-full object-contain object-top"
+              className="w-full h-full object-cover object-center"
               style={{ minHeight: '80vh', maxHeight: '100vh' }}
             />
           </picture>
         </div>
-        
+
+        {/* Floating Learn More Button */}
+        <a
+          href="#about-content"
+          className="absolute left-1/2 -translate-x-1/2 bottom-8 bg-gray-700/60 text-white px-8 py-3 rounded-full shadow-lg flex items-center gap-2 hover:bg-gray-700/80 transition-all text-lg font-semibold backdrop-blur-md"
+          style={{ boxShadow: '0 4px 24px 0 rgba(0,0,0,0.18)' }}
+          aria-label="Learn More"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 13l-5 5m0 0l-5-5m5 5V6" />
+          </svg>
+          Learn More
+        </a>
         {/* Main Content */}
         <div className="w-full max-w-4xl mx-auto text-center relative z-10 flex flex-col items-center justify-center">
           <motion.div
@@ -54,7 +65,7 @@ const About = () => {
 
       {/* Content Section */}
       <PageBgAndCursor>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+        <div id="about-content" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
         {/* Mission & Vision - moved above Who We Are */}
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20"
