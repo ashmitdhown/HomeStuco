@@ -128,7 +128,7 @@ const Events = () => {
       gradient: 'bg-gradient-to-r from-yellow-400 to-orange-500',
       image: '/assets/gamenight.webp',
       featured: true,
-      buttonLabel: 'Join Game Night 🎮',
+      buttonLabel: 'Join Game Night',
       buttonLink: '#'
     },
     {
@@ -143,7 +143,7 @@ const Events = () => {
       gradient: 'bg-gradient-to-r from-blue-500 to-indigo-600',
       image: '/assets/P2P.webp',
       featured: true,
-      buttonLabel: 'Mentorship 📘',
+      buttonLabel: 'Mentorship',
       buttonLink: ''
     },
     {
@@ -157,7 +157,7 @@ const Events = () => {
       icon: <PartyPopper className="w-6 h-6" />,
       gradient: 'bg-gradient-to-r from-pink-500 to-rose-500',
       image: '/assets/jashn.webp',
-      buttonLabel: 'Celebrate at Jashn 🎉',
+      buttonLabel: 'Coming Soon... ',
       buttonLink: ''
     },
     {
@@ -171,7 +171,7 @@ const Events = () => {
       icon: <Sparkles className="w-6 h-6" />,
       gradient: 'bg-gradient-to-r from-orange-400 to-yellow-500',
       image: '/assets/sparks.webp',
-      buttonLabel: 'Coming Soon... ✨',
+      buttonLabel: 'Coming Soon... ',
       buttonLink: '/Events/'
     },
     {
@@ -185,7 +185,7 @@ const Events = () => {
       icon: <PartyPopper className="w-6 h-6" />,
       gradient: 'bg-gradient-to-r from-green-400 to-emerald-500',
       image: '/assets/ethnic.webp',
-      buttonLabel: 'Celebrate Ethnic Day 🎊',
+      buttonLabel: 'Coming Soon... ',
       buttonLink: ''
     }
   ];

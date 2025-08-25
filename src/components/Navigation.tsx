@@ -24,6 +24,11 @@ const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const { t } = useTranslation();
 
+  // Scroll to top on route change
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   React.useEffect(() => {
     const handleScroll = throttle(() => {
       requestAnimationFrame(() => {

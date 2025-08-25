@@ -17,13 +17,20 @@ const NotFound = () => {
   return (
     <PageBgAndCursor>
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center bg-white/80 p-10 rounded-2xl shadow-xl">
-          <h1 className="text-4xl font-bold mb-4">404</h1>
-          <p className="text-xl text-gray-600 mb-4">Oops! Page not found</p>
+        <div className="text-center bg-white/80 p-10 rounded-2xl shadow-xl flex flex-col items-center">
+          <img
+            src="/assets/IMG_4185 3.JPG"
+            alt="Lost baby gurl"
+            className="mx-auto mb-6 rounded-xl shadow-lg max-w-xs w-full h-auto object-cover"
+            style={{ maxHeight: "300px" }}
+          />
+          <h1 className="text-3xl font-bold mb-4">Are you lost baby gurl?</h1>
           <a href="/" className="text-blue-500 hover:text-blue-700 underline">
             Return to Home
           </a>
+          
         </div>
+        
       </div>
     </PageBgAndCursor>
   );
