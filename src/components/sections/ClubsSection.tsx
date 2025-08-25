@@ -1,4 +1,4 @@
-import SplineBg from "@/components/SplineBg";
+import SplineBgLazy from "@/components/SplineBgLazy";
 import React, { useState } from "react";
 
 const clubs = [
@@ -30,7 +30,7 @@ export const ClubsSection: React.FC = () => {
 
   return (
     <>
-      <SplineBg />
+      <SplineBgLazy />
       <section id="clubs-section" className="py-20 bg-pearl/40">
       <div className="max-w-5xl mx-auto text-center mb-12">
         <h2 className="text-4xl md:text-5xl font-bold text-velvet mb-4">Our Backbone → Student Clubs & EMC</h2>

@@ -1,5 +1,5 @@
 // Author: Manav Arya & Ashmit Dhown
-import SplineBg from "@/components/SplineBg";
+import SplineBgLazy from "@/components/SplineBgLazy";
 import { Mail, Linkedin } from "lucide-react";
 
 import { useTranslation } from 'react-i18next';
@@ -13,7 +13,7 @@ const Footer = () => {
 
   return (
     <>
-      <SplineBg />
+      <SplineBgLazy />
       <footer className="w-full bg-gray-900/20 backdrop-blur-md border-t border-gray-800 mt-16">
         <div className="w-full px-6 md:px-16 py-0 flex justify-center">
           <div className="w-full max-w-7xl bg-gray-900/10 backdrop-blur-lg shadow-xl p-6 md:p-8 flex flex-col gap-6 md:gap-8 rounded-none mx-auto">

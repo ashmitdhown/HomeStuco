@@ -4,7 +4,7 @@ import {
 } from "@/components/ui/carousel";
 // ...existing code...
 import { PageBgAndCursor } from "@/components/PageBgAndCursor";
-import SplineBg from "@/components/SplineBg";
+import SplineBgLazy from "@/components/SplineBgLazy";
 import InstagramContactBar from "@/components/ui/InstagramContactBar";
 import { useTranslation } from 'react-i18next';
 
@@ -30,7 +30,7 @@ export default function Clubs() {
 
   return (
     <>
-      <SplineBg />
+      <SplineBgLazy />
       <PageBgAndCursor>
         {/* Hero Carousel */}
         <section className="relative h-[420px] md:h-[640px] lg:h-[900px] w-full overflow-hidden flex items-center justify-center">

@@ -2,6 +2,7 @@
 import { HeroSection } from "@/components/sections/HeroSection";
 import { CouncilSection } from "@/components/sections/CouncilSection";
 import { AnnouncementSection } from "@/components/sections/AnnouncementSection";
+import React from 'react';
 
 const Index = () => {
   return (

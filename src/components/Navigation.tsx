@@ -1,5 +1,5 @@
 // Author: Manav Arya & Ashmit Dhown
-import SplineBg from "@/components/SplineBg";
+import SplineBgLazy from "@/components/SplineBgLazy";
 import { Link, useLocation } from "react-router-dom";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslation } from "react-i18next";
@@ -43,7 +43,7 @@ const Navigation = () => {
 
   return (
     <>
-      <SplineBg />
+      <SplineBgLazy />
       
       {/* Main Navigation Bar */}
       <div style={{ position: "absolute", top: 10, right: 20, zIndex: 1000 }}>

@@ -10,24 +10,21 @@ import ScrollProgressBar from "@/components/ScrollProgressBar";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import Index from "./pages/Index";
-// ...existing code...
-import About from "./pages/About";
-import Events from "./pages/Events";
-import Merch from "./pages/Merch";
-import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
-import Jashn26 from "./pages/Jashn26";
-import EMC from "./pages/EMC";
-import Clubs from "./pages/Clubs";
-import ClubDetail from "./pages/ClubDetail";
-import OurBackbone from "./pages/OurBackbone";
-import TermsOfUse from "./pages/TermsOfUse";
-import CodeOfConduct from "./pages/CodeOfConduct";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-// ...existing code...
+import React, { Suspense } from "react";
 
-
-
+const About = React.lazy(() => import("./pages/About"));
+const Events = React.lazy(() => import("./pages/Events"));
+const Merch = React.lazy(() => import("./pages/Merch"));
+const Contact = React.lazy(() => import("./pages/Contact"));
+const NotFound = React.lazy(() => import("./pages/NotFound"));
+const Jashn26 = React.lazy(() => import("./pages/Jashn26"));
+const EMC = React.lazy(() => import("./pages/EMC"));
+const Clubs = React.lazy(() => import("./pages/Clubs"));
+const ClubDetail = React.lazy(() => import("./pages/ClubDetail"));
+const OurBackbone = React.lazy(() => import("./pages/OurBackbone"));
+const TermsOfUse = React.lazy(() => import("./pages/TermsOfUse"));
+const CodeOfConduct = React.lazy(() => import("./pages/CodeOfConduct"));
+const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy"));
 
 const queryClient = new QueryClient();
 
@@ -57,20 +54,20 @@ const App = () => {
               <div className="flex-grow">
                 <Routes>
                   <Route path="/" element={<Index />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/events" element={<Events />} />
-                  <Route path="/merch" element={<Merch />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/emc" element={<EMC />} />
-                  <Route path="/clubs" element={<Clubs />} />
-                  <Route path="/clubs/:clubId" element={<ClubDetail />} />
-                  <Route path="/our-backbone" element={<OurBackbone />} />
-                  <Route path="/jashn26" element={<Jashn26 />} />
-                  <Route path="/terms-of-use" element={<TermsOfUse />} />
-                  <Route path="/code-of-conduct" element={<CodeOfConduct />} />
-                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                  <Route path="/about" element={<Suspense fallback={<div>Loading...</div>}><About /></Suspense>} />
+                  <Route path="/events" element={<Suspense fallback={<div>Loading...</div>}><Events /></Suspense>} />
+                  <Route path="/merch" element={<Suspense fallback={<div>Loading...</div>}><Merch /></Suspense>} />
+                  <Route path="/contact" element={<Suspense fallback={<div>Loading...</div>}><Contact /></Suspense>} />
+                  <Route path="/emc" element={<Suspense fallback={<div>Loading...</div>}><EMC /></Suspense>} />
+                  <Route path="/clubs" element={<Suspense fallback={<div>Loading...</div>}><Clubs /></Suspense>} />
+                  <Route path="/clubs/:clubId" element={<Suspense fallback={<div>Loading...</div>}><ClubDetail /></Suspense>} />
+                  <Route path="/our-backbone" element={<Suspense fallback={<div>Loading...</div>}><OurBackbone /></Suspense>} />
+                  <Route path="/jashn26" element={<Suspense fallback={<div>Loading...</div>}><Jashn26 /></Suspense>} />
+                  <Route path="/terms-of-use" element={<Suspense fallback={<div>Loading...</div>}><TermsOfUse /></Suspense>} />
+                  <Route path="/code-of-conduct" element={<Suspense fallback={<div>Loading...</div>}><CodeOfConduct /></Suspense>} />
+                  <Route path="/privacy-policy" element={<Suspense fallback={<div>Loading...</div>}><PrivacyPolicy /></Suspense>} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                  <Route path="*" element={<NotFound />} />
+                  <Route path="*" element={<Suspense fallback={<div>Loading...</div>}><NotFound /></Suspense>} />
                 </Routes>
               </div>
               <Footer />

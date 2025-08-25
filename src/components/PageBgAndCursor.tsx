@@ -1,8 +1,5 @@
 import { useRef, useEffect, useState, ReactNode } from "react";
-
-const CURSOR_SCROLL = '/assets/cursor-scroll.svg'; // Replace with your scroll cursor SVG
-const CURSOR_CLICK = '/assets/cursor-click.svg';   // Replace with your click cursor SVG
-import SplineBg from "@/components/SplineBg";
+import SplineBgLazy from "@/components/SplineBgLazy";
 
 interface PageBgAndCursorProps {
   children: ReactNode;
@@ -26,14 +23,12 @@ export const PageBgAndCursor = ({ children }: PageBgAndCursorProps) => {
     return () => document.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // ...existing code...
-
   return (
     <div
       ref={containerRef}
       className="min-h-screen relative overflow-hidden"
     >
-      <SplineBg />
+      <SplineBgLazy />
       {/* Animated Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Gradient Orbs */}
