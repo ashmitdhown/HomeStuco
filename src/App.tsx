@@ -10,7 +10,6 @@ import ScrollProgressBar from "@/components/ScrollProgressBar";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import Index from "./pages/Index";
-// ...existing code...
 import About from "./pages/About";
 import Events from "./pages/Events";
 import Merch from "./pages/Merch";
@@ -19,12 +18,11 @@ import NotFound from "./pages/NotFound";
 import Jashn26 from "./pages/Jashn26";
 import EMC from "./pages/EMC";
 import Clubs from "./pages/Clubs";
-import ClubDetail from "./pages/ClubDetail";
 import OurBackbone from "./pages/OurBackbone";
 import TermsOfUse from "./pages/TermsOfUse";
 import CodeOfConduct from "./pages/CodeOfConduct";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
-// ...existing code...
+
 
 
 
@@ -63,7 +61,6 @@ const App = () => {
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/emc" element={<EMC />} />
                   <Route path="/clubs" element={<Clubs />} />
-                  <Route path="/clubs/:clubId" element={<ClubDetail />} />
                   <Route path="/our-backbone" element={<OurBackbone />} />
                   <Route path="/jashn26" element={<Jashn26 />} />
                   <Route path="/terms-of-use" element={<TermsOfUse />} />
