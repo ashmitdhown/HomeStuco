@@ -115,8 +115,5 @@ const NavigationMenuIndicator = React.forwardRef<
 NavigationMenuIndicator.displayName =
   NavigationMenuPrimitive.Indicator.displayName
 
-// ...existing code...
-
-// ...existing code...
-
+// eslint-disable-next-line react-refresh/only-export-components
 export { navigationMenuTriggerStyle, NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuContent, NavigationMenuTrigger, NavigationMenuLink };

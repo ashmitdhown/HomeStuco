@@ -14,13 +14,13 @@ export default function Clubs() {
       clubs: [
         { name: t('expressions', 'Expressions'), logo: "/assets/logo.webp", head: { name: "Vaibhav", photo: "/assets/Club-members/Vaibhav.webp", intro: t('president', 'President') }, description: "" },
         { name: t('reflexions', 'Reflexions'), logo: "/assets/logo.webp", head: { name: "Sathvik Sreeram", photo: "/assets/Club-members/Sathvik.webp", intro: t('president', 'President') }, description: "" },
-        { name: t('paribhasha', 'Paribhasha'), logo: "/assets/logo.webp", head: { name: "Nishit Batwal", photo: "/assets/Club-members/Nishit.webp", intro: t('president', 'President') }, description: "" },
+        { name: t('paribhasha', 'Paribhasha'), logo: "/assets/logo.webp", head: { name: "Nishit Batwal", photo: "/assets/compressed/Nishit.webp", intro: t('president', 'President') }, description: "" },
         { name: t('secMAD', 'SEC MAD'), logo: "/assets/logo.webp", head: { name: "Laksha Malik", photo: "/assets/Club-members/Laksha.webp", intro: t('president', 'President') }, description: "" },
         { name: t('groove', 'Groove'), logo: "/assets/logo.webp", head: { name: "Gourisankar Sajith", photo: "/assets/Club-members/Gourisankar.webp", intro: t('president', 'President') }, description: "" },
         { name: t('supernova', 'Supernova'), logo: "/assets/logo.webp", head: { name: "Rushirajsinh Solanki", photo: "/assets/Club-members/Rushirajsinh.webp", intro: t('president', 'President') }, description: "" },
-        { name: t('allure', 'Allure'), logo: "/assets/logo.webp", head: { name: "Vidyullekha V", photo: "/assets/Club-members/Vidyullekha.jpeg", intro: t('president', 'President') }, description: "" },
+        { name: t('allure', 'Allure'), logo: "/assets/logo.webp", head: { name: "Vidyullekha V", photo: "/assets/compressed/Vidyullekha.webp", intro: t('president', 'President') }, description: "" },
         { name: t('ohCrop', 'Oh Crop'), logo: "/assets/logo.webp", head: { name: "Aimy Acksa", photo: "/assets/Club-members/Aimy.webp", intro: t('president', 'President') }, description: "" },
-        { name: t('shades', 'Shades'), logo: "/assets/logo.webp", head: { name: "Varnikka TM", photo: "/assets/Club-members/Varnikka_rotated.webp", intro: t('president', 'President') }, description: "" },
+        { name: t('shades', 'Shades'), logo: "/assets/logo.webp", head: { name: "Varnikka TM", photo: "/assets/compressed/Varnikka_rotated.webp", intro: t('president', 'President') }, description: "" },
         { name: t('treble', 'Treble'), logo: "/assets/logo.webp", head: { name: "Mevin Mathews", photo: "/assets/Club-members/Mevin.webp", intro: t('president', 'President') }, description: "" },
       ],
     },
@@ -31,8 +31,8 @@ export default function Clubs() {
       <SplineBg />
       <PageBgAndCursor>
         {/* Hero Carousel */}
-        <section className="relative h-[420px] md:h-[640px] lg:h-[900px] w-full overflow-hidden flex items-center justify-center">
-          <div className="w-full h-[640px] md:h-[900px] lg:h-[1100px] flex items-center justify-center relative">
+        <section className="relative h-[420px] md:h-[640px] lg:h-[900px] w-full overflow-hidden flex items-center justify-center pointer-events-none">
+          <div className="w-full h-[640px] md:h-[900px] lg:h-[1100px] flex items-center justify-center relative" style={{ willChange: 'transform' }}>
             <img
               src="/assets/clubs2carousel.jpg"
               alt={t('clubCarousel', 'Club Carousel')}
@@ -49,6 +49,7 @@ export default function Clubs() {
               }}
               className="hidden lg:flex absolute bottom-36 left-1/2 -translate-x-1/2 bg-white/30 backdrop-blur-lg text-2xl font-bold text-white px-10 py-5 rounded-full shadow-2xl border-2 border-white/40 hover:bg-white/40 transition-all duration-300"
               style={{ letterSpacing: '0.05em', zIndex: 30 }}
+              aria-label={t('viewClubs', 'View Clubs')}
             >
               {t('viewClubs', 'View Clubs')}
             </button>

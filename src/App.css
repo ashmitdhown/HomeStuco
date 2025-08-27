@@ -1,3 +1,6 @@
+html, body {
+  scroll-behavior: smooth;
+}
 /* Slide Up Animation for Mobile Menu */
 @keyframes slide-up {
   from {

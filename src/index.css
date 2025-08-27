@@ -1,3 +1,6 @@
+/* Import Chrome localhost optimizations */
+@import './lib/localhost-optimizations.css';
+
 /* Enable smooth scrolling for all browsers */
 html {
   scroll-behavior: smooth;
