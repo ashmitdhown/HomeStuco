@@ -6,14 +6,16 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Performance optimizations for Chrome */
+/* Performance optimizations for Chrome & Firefox */
 * {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased; /* Chrome, Safari */
+  -moz-osx-font-smoothing: grayscale;  /* macOS Firefox */
+  text-rendering: optimizeLegibility;  /* Cross-browser font rendering */
 }
 
 body {
   overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
 /* GPU acceleration for specific elements only */
@@ -21,6 +23,7 @@ body {
   transform: translateZ(0);
   will-change: transform;
 }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -74,9 +77,9 @@ All colors MUST be HSL.
     --gradient-accent: linear-gradient(90deg, hsl(var(--champagne)), hsl(var(--accent)));
 
     /* Elegant shadows */
-    --shadow-luxury: 0 10px 40px -10px hsl(var(--velvet) / 0.1);
-    --shadow-card: 0 4px 20px -4px hsl(var(--velvet) / 0.1);
-    --shadow-glow: 0 0 30px hsl(var(--champagne) / 0.3);
+    --shadow-luxury: 0 10px 40px -10px hsla(226, 69%, 25%, 0.1); /* Firefox-safe */
+    --shadow-card: 0 4px 20px -4px hsla(226, 69%, 25%, 0.1);    /* Firefox-safe */
+    --shadow-glow: 0 0 30px hsla(45, 52%, 62%, 0.3);             /* Firefox-safe */
 
     /* Animations */
     --transition-luxury: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
@@ -85,19 +88,12 @@ All colors MUST be HSL.
     --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -129,6 +125,7 @@ All colors MUST be HSL.
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -148,4 +145,9 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Firefox-specific fixes for semi-transparent backgrounds */
+.bg-gray-900\/20 {
+  background-color: rgba(17, 24, 39, 0.2); /* fallback for Firefox opacity */
 }
