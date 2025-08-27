@@ -2,25 +2,19 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import InstagramContactBar from "@/components/ui/InstagramContactBar";
 import { Linkedin, Instagram, Mail } from "lucide-react";
+import { throttle } from "@/lib/throttle";
 
 export const HeroSection = () => {
   const [showContact, setShowContact] = useState(false);
   const { t } = useTranslation();
 
   useEffect(() => {
-    let throttleTimeout: NodeJS.Timeout | null = null;
-    const handleScroll = () => {
-      if (throttleTimeout) return;
-      throttleTimeout = setTimeout(() => {
-        setShowContact(window.scrollY > 0);
-        throttleTimeout = null;
-      }, 100); // 100ms throttle
-    };
+    const handleScroll = throttle(() => {
+      setShowContact(window.scrollY > 0);
+    }, 100);
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (throttleTimeout) clearTimeout(throttleTimeout);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return ( 

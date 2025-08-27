@@ -1,5 +1,6 @@
 // Author: Manav Arya & Ashmit Dhown
 import React, { Suspense, useState, useEffect, useRef } from "react";
+import { throttle } from "lodash";
 
 const Spline = React.lazy(() => import("@splinetool/react-spline"));
 
@@ -8,23 +9,68 @@ const SplineBg = () => {
   const splineRef = useRef(null);
   const animationRef = useRef(null);
   const paused = useRef(false);
+  const idle = useRef(false);
+  const lastActivity = useRef(Date.now());
+  const scrolling = useRef(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowSpline(true), 1000); // Delay load
-    return () => clearTimeout(timer);
+    setShowSpline(true); // Load immediately
+  }, []);
+
+  // Track user activity for idle detection and debounce scroll
+  useEffect(() => {
+    let scrollTimeout;
+    const activityHandler = () => {
+      lastActivity.current = Date.now();
+      idle.current = false;
+    };
+    const scrollHandler = throttle(() => {
+      activityHandler();
+      scrolling.current = true;
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+      scrollTimeout = setTimeout(() => {
+        scrolling.current = false;
+      }, 300); // Reduced from 500ms to 300ms for better responsiveness
+    }, 100); // Throttle scroll events
+
+    window.addEventListener('mousemove', activityHandler);
+    window.addEventListener('scroll', scrollHandler, { passive: true });
+    return () => {
+      window.removeEventListener('mousemove', activityHandler);
+      window.removeEventListener('scroll', scrollHandler);
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+    };
   }, []);
 
   useEffect(() => {
-    if (!splineRef.current) return;
+    if (!splineRef.current) {
+      return;
+    }
 
     let last = 0;
-    const fps = 30; // clamp FPS
-    const interval = 1000 / fps;
+    let currentFps = 12; // Increased from 8 to 12 for smoother animation
+    const normalFps = 12;
 
     const loop = (now) => {
+      // Aggressively pause animation when idle or scrolling
+      if (Date.now() - lastActivity.current > 3000 || paused.current || scrolling.current) { // Reduced from 5000ms to 3000ms
+        idle.current = true;
+        // Do not render or request next frame
+        return;
+      } else {
+        idle.current = false;
+        currentFps = normalFps;
+      }
+      const interval = 1000 / currentFps;
       if (!paused.current && now - last >= interval) {
         last = now;
-        splineRef.current.requestRender();
+        if (splineRef.current?.requestRender) {
+          splineRef.current.requestRender();
+        }
       }
       animationRef.current = requestAnimationFrame(loop);
     };
@@ -39,7 +85,6 @@ const SplineBg = () => {
     const handleVisibilityChange = () => {
       paused.current = document.hidden;
     };
-
     document.addEventListener("visibilitychange", handleVisibilityChange);
     return () =>
       document.removeEventListener("visibilitychange", handleVisibilityChange);
@@ -47,7 +92,10 @@ const SplineBg = () => {
 
   return (
     <>
-      <div className="fixed inset-0 z-0 pointer-events-none">
+      <div
+        className="fixed inset-0 z-0 pointer-events-none"
+        style={{ willChange: 'transform' }}
+      >
         <Suspense fallback={<div className="w-full h-full bg-gray-100" />}>
           {showSpline && (
             <Spline

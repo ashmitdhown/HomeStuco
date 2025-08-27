@@ -1,7 +1,6 @@
 import { Toaster } from "@/components/ui/toaster";
 import "./i18n";
 import { I18nextProvider } from "react-i18next";
-import i18n from "./i18n";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -9,28 +8,26 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
-import Index from "./pages/Index";
-import About from "./pages/About";
-import Events from "./pages/Events";
-import Merch from "./pages/Merch";
-import Contact from "./pages/Contact";
+import { lazy, Suspense, useEffect } from 'react';
 import NotFound from "./pages/NotFound";
-import Jashn26 from "./pages/Jashn26";
-import EMC from "./pages/EMC";
-import Clubs from "./pages/Clubs";
-import OurBackbone from "./pages/OurBackbone";
-import TermsOfUse from "./pages/TermsOfUse";
-import CodeOfConduct from "./pages/CodeOfConduct";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
+import LoadingSpinner from "@/components/LoadingSpinner";
+import { useTranslation } from 'react-i18next';
 
-
-
-
+// Lazy-loaded page components
+const Index = lazy(() => import("./pages/Index"));
+const About = lazy(() => import("./pages/About"));
+const Events = lazy(() => import("./pages/Events"));
+const Merch = lazy(() => import("./pages/Merch"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Jashn26 = lazy(() => import("./pages/Jashn26"));
+const EMC = lazy(() => import("./pages/EMC"));
+const Clubs = lazy(() => import("./pages/Clubs"));
+const OurBackbone = lazy(() => import("./pages/OurBackbone"));
+const TermsOfUse = lazy(() => import("./pages/TermsOfUse"));
+const CodeOfConduct = lazy(() => import("./pages/CodeOfConduct"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 
 const queryClient = new QueryClient();
-
-import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 
 const App = () => {
   const { i18n } = useTranslation();
@@ -54,18 +51,66 @@ const App = () => {
             <div className="flex flex-col min-h-screen">
               <div className="flex-grow">
                 <Routes>
-                  <Route path="/" element={<Index />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/events" element={<Events />} />
-                  <Route path="/merch" element={<Merch />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/emc" element={<EMC />} />
-                  <Route path="/clubs" element={<Clubs />} />
-                  <Route path="/our-backbone" element={<OurBackbone />} />
-                  <Route path="/jashn26" element={<Jashn26 />} />
-                  <Route path="/terms-of-use" element={<TermsOfUse />} />
-                  <Route path="/code-of-conduct" element={<CodeOfConduct />} />
-                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                  <Route path="/" element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <Index />
+                    </Suspense>
+                  } />
+                  <Route path="/about" element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <About />
+                    </Suspense>
+                  } />
+                  <Route path="/events" element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <Events />
+                    </Suspense>
+                  } />
+                  <Route path="/merch" element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <Merch />
+                    </Suspense>
+                  } />
+                  <Route path="/contact" element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <Contact />
+                    </Suspense>
+                  } />
+                  <Route path="/emc" element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <EMC />
+                    </Suspense>
+                  } />
+                  <Route path="/clubs" element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <Clubs />
+                    </Suspense>
+                  } />
+                  <Route path="/our-backbone" element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <OurBackbone />
+                    </Suspense>
+                  } />
+                  <Route path="/jashn26" element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <Jashn26 />
+                    </Suspense>
+                  } />
+                  <Route path="/terms-of-use" element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <TermsOfUse />
+                    </Suspense>
+                  } />
+                  <Route path="/code-of-conduct" element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <CodeOfConduct />
+                    </Suspense>
+                  } />
+                  <Route path="/privacy-policy" element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <PrivacyPolicy />
+                    </Suspense>
+                  } />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />
                 </Routes>

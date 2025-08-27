@@ -1,0 +1,42 @@
+/* Chrome-specific optimizations for localhost connections */
+
+/* Reduce animation complexity for localhost connections */
+.localhost-optimized * {
+  /* Use hardware acceleration for all elements */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Use simpler animations for localhost */
+.localhost-optimized .transition-all {
+  transition-property: opacity, transform !important;
+  transition-duration: 0.2s !important;
+}
+
+/* Optimize rendering on localhost */
+.localhost-optimized .overflow-hidden {
+  /* Prevent unnecessary repaints */
+  contain: strict;
+}
+
+/* Disable hover effects that might cause performance issues */
+@media (hover: hover) {
+  .localhost-optimized .hover\:scale-105:hover {
+    /* Use a less demanding transform */
+    transform: scale(1.03) !important;
+  }
+}
+
+/* Optimize images on localhost */
+.localhost-optimized img {
+  /* Improve image rendering performance */
+  image-rendering: optimizeSpeed;
+  /* Force compositing */
+  will-change: transform;
+}
+
+/* Minimize box-shadow calculations which can be expensive */
+.localhost-optimized .shadow-lg {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}

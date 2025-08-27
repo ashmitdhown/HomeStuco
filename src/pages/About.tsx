@@ -30,7 +30,7 @@ const About = () => {
         {/* Full Background Image */}
         <div className="absolute inset-0 w-full h-full z-0">
           <picture>
-            <source media="(max-width: 640px)" srcSet="/assets/aboutsmall.png" />
+            <source media="(max-width: 640px)" srcSet="/assets/compressed/aboutsmall.webp" />
             <img
               src="/assets/Untitled design-5.webp"
               alt="About Student Council Background"

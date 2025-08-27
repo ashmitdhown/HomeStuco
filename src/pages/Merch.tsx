@@ -2,6 +2,7 @@ import InstagramContactBar from "@/components/ui/InstagramContactBar";
 // Author: Manav Arya & Ashmit Dhown
 import { useState } from 'react';
 import { Heart, Star, CreditCard } from 'lucide-react';
+import { FixedSizeList as ProductList } from 'react-window';
 
 import { PageBgAndCursor } from "@/components/PageBgAndCursor";
 import Spline from '@splinetool/react-spline';
@@ -169,110 +170,120 @@ const Merch = () => {
           </div>
 
           {/* Products Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProducts.map(product => (
-              <div key={product.id} className="bg-black/80 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full text-white">
-                <div className="relative h-80 flex items-center justify-center bg-black/60">
-                  <img 
-                    src={product.image} 
-                    alt={product.name}
-                    className="max-h-full max-w-full p-4 object-contain"
-                  />
-                  <div className="absolute top-3 left-3 flex flex-col space-y-2">
-                    {product.isNew && (
-                      <span className="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-                        NEW
-                      </span>
-                    )}
-                    {product.isSale && (
-                      <span className="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-                        SALE
-                      </span>
-                    )}
-                  </div>
-                  <button 
-                    onClick={() => toggleWishlist(product.id)}
-                    className={`absolute top-3 right-3 p-2 rounded-full ${
-                      wishlist.includes(product.id) 
-                        ? 'text-red-500 bg-white/90' 
-                        : 'text-gray-400 bg-white/80 hover:text-red-500'
-                    }`}
-                  >
-                    <Heart className={`w-5 h-5 ${wishlist.includes(product.id) ? 'fill-current' : ''}`} />
-                  </button>
-                </div>
-
-                <div className="p-5 flex-grow flex flex-col">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="text-lg font-semibold text-white">{product.name}</h3>
-                      <div className="flex items-center mt-1">
-                        {[...Array(5)].map((_, i) => (
-                          <Star 
-                            key={i}
-                            className={`w-4 h-4 ${
-                              i < Math.floor(product.rating)
-                                ? 'text-yellow-400 fill-current'
-                                : 'text-gray-300'
-                            }`}
-                          />
-                        ))}
-                        <span className="text-sm text-gray-200 ml-1">
-                          ({product.reviews})
-                        </span>
+          <div className="w-full">
+            <ProductList
+              height={900}
+              itemCount={filteredProducts.length}
+              itemSize={400}
+              width={"100%"}
+            >
+              {({ index, style }) => {
+                const product = filteredProducts[index];
+                return (
+                  <div key={product.id} style={style} className="bg-black/80 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full text-white mb-8">
+                    <div className="relative h-80 flex items-center justify-center bg-black/60">
+                      <img 
+                        src={product.image} 
+                        alt={product.name}
+                        className="max-h-full max-w-full p-4 object-contain"
+                      />
+                      <div className="absolute top-3 left-3 flex flex-col space-y-2">
+                        {product.isNew && (
+                          <span className="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                            NEW
+                          </span>
+                        )}
+                        {product.isSale && (
+                          <span className="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                            SALE
+                          </span>
+                        )}
                       </div>
+                      <button 
+                        onClick={() => toggleWishlist(product.id)}
+                        className={`absolute top-3 right-3 p-2 rounded-full ${
+                          wishlist.includes(product.id) 
+                            ? 'text-red-500 bg-white/90' 
+                            : 'text-gray-400 bg-white/80 hover:text-red-500'
+                        }`}
+                      >
+                        <Heart className={`w-5 h-5 ${wishlist.includes(product.id) ? 'fill-current' : ''}`} />
+                      </button>
                     </div>
-                    <div className="text-right">
-                      <div className="text-xl font-bold text-indigo-400">
-                        AED {usdToAed(product.price)}
-                      </div>
-                    </div>
-                  </div>
 
-                  {product.colors.length > 0 && (
-                    <div className="mt-3">
-                      <p className="text-sm text-gray-200">Colors:</p>
-                      <div className="flex space-x-2 mt-1">
-                        {product.colors.map(color => (
-                          <button
-                            key={color}
-                            className={`w-5 h-5 rounded-full border border-gray-200`}
-                            style={{ backgroundColor: color }}
-                            title={color}
-                          />
-                        ))}
+                    <div className="p-5 flex-grow flex flex-col">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <h3 className="text-lg font-semibold text-white">{product.name}</h3>
+                          <div className="flex items-center mt-1">
+                            {[...Array(5)].map((_, i) => (
+                              <Star 
+                                key={i}
+                                className={`w-4 h-4 ${
+                                  i < Math.floor(product.rating)
+                                    ? 'text-yellow-400 fill-current'
+                                    : 'text-gray-300'
+                                }`}
+                              />
+                            ))}
+                            <span className="text-sm text-gray-200 ml-1">
+                              ({product.reviews})
+                            </span>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-xl font-bold text-indigo-400">
+                            AED {usdToAed(product.price)}
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  )}
 
-                  <div className="mt-3">
-                    <p className="text-sm text-gray-200">Sizes:</p>
-                    <div className="flex space-x-2 mt-1">
-                      {product.sizes.map(size => (
-                        <button
-                          key={size}
-                          className="w-8 h-8 flex items-center justify-center text-sm font-medium border border-gray-200 rounded hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      {product.colors.length > 0 && (
+                        <div className="mt-3">
+                          <p className="text-sm text-gray-200">Colors:</p>
+                          <div className="flex space-x-2 mt-1">
+                            {product.colors.map(color => (
+                              <button
+                                key={color}
+                                className={`w-5 h-5 rounded-full border border-gray-200`}
+                                style={{ backgroundColor: color }}
+                                title={color}
+                              />
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      <div className="mt-3">
+                        <p className="text-sm text-gray-200">Sizes:</p>
+                        <div className="flex space-x-2 mt-1">
+                          {product.sizes.map(size => (
+                            <button
+                              key={size}
+                              className="w-8 h-8 flex items-center justify-center text-sm font-medium border border-gray-200 rounded hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            >
+                              {size}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="mt-auto pt-4">
+                        <a
+                          href="https://forms.gle/your-google-form-link"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full flex items-center justify-center bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors duration-200 font-medium"
                         >
-                          {size}
-                        </button>
-                      ))}
+                          <CreditCard className="w-5 h-5 mr-2" />
+                          Buy Now
+                        </a>
+                      </div>
                     </div>
                   </div>
-
-                  <div className="mt-auto pt-4">
-                    <a
-                      href="https://forms.gle/your-google-form-link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full flex items-center justify-center bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors duration-200 font-medium"
-                    >
-                      <CreditCard className="w-5 h-5 mr-2" />
-                      Buy Now
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
+                );
+              }}
+            </ProductList>
           </div>
         </div>
       </div>

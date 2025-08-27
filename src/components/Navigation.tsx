@@ -1,7 +1,7 @@
 // Author: Manav Arya & Ashmit Dhown
 import SplineBg from "@/components/SplineBg";
 import { Link, useLocation } from "react-router-dom";
-import LanguageSwitcher from "./LanguageSwitcher";
+// ...existing code...
 import { useTranslation } from "react-i18next";
 import React from "react";
 import { throttle } from "../lib/throttle";
@@ -23,6 +23,31 @@ const Navigation = () => {
   const [scrolled, setScrolled] = React.useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const { t } = useTranslation();
+  
+  // Force removal of any language switcher from DOM
+  React.useEffect(() => {
+    // Remove any lingering language switchers
+    const removeLanguageSwitchers = () => {
+      const possibleSwitchers = document.querySelectorAll('[style*="position: absolute"][style*="top: 10"][style*="right: 20"]');
+      possibleSwitchers.forEach(el => {
+        if (el.innerHTML.includes('EN') || el.innerHTML.includes('العربية')) {
+          el.remove();
+        }
+      });
+    };
+    
+    // Run on mount and whenever route changes
+    removeLanguageSwitchers();
+    
+    // Create an observer to detect and remove any language switchers that might be added dynamically
+    const observer = new MutationObserver(() => {
+      removeLanguageSwitchers();
+    });
+    
+    observer.observe(document.body, { childList: true, subtree: true });
+    
+    return () => observer.disconnect();
+  }, [location]);
 
   // Scroll to top on route change
   React.useEffect(() => {
@@ -35,7 +60,7 @@ const Navigation = () => {
         const shouldBeScrolled = window.scrollY > 0;
         setScrolled(prev => (prev !== shouldBeScrolled ? shouldBeScrolled : prev));
       });
-    }, 30);
+    }, 100); // Increased from 30ms to 100ms for better performance
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -46,13 +71,11 @@ const Navigation = () => {
       <SplineBg />
       
       {/* Main Navigation Bar */}
-      <div style={{ position: "absolute", top: 10, right: 20, zIndex: 1000 }}>
-        <LanguageSwitcher />
-      </div>
       <nav
         className={`w-full fixed top-0 left-0 z-50 px-8 pt-6 flex items-center transition-all duration-300 ease-out ${
           scrolled ? "bg-black/90 backdrop-blur-sm" : "bg-transparent"
         }`}
+        style={{ willChange: 'transform' }}
       >
         {/* Logo */}
         <div className="flex-shrink-0">
@@ -68,8 +91,8 @@ const Navigation = () => {
 
         {/* Desktop Navigation Links */}
         <div className="flex-1 flex justify-center">
-          <ul className="hidden md:flex items-center justify-evenly w-[70%] text-white font-semibold text-xl tracking-wide">
-            {navLinks.map((link, idx) => (
+          <ul className="hidden md:flex items-center justify-evenly w-[70%] text-white font-semibold text-xl tracking-wide navbar-optimized">
+            {React.useMemo(() => navLinks.map((link, idx) => (
               <React.Fragment key={link.name}>
                 <li>
                   <Link
@@ -79,6 +102,7 @@ const Navigation = () => {
                         ? "border-b-2 border-white"
                         : "hover:text-red-300"
                     }`}
+                    aria-label={t(link.name)}
                   >
                     {t(link.name)}
                   </Link>
@@ -87,7 +111,7 @@ const Navigation = () => {
                   <span className="h-6 w-px bg-white/40" />
                 )}
               </React.Fragment>
-            ))}
+            )), [location.pathname, t])}
           </ul>
         </div>
 

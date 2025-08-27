@@ -133,8 +133,8 @@ const Contact = () => {
         <div ref={containerRef} className="min-h-screen relative">
           <div className="relative z-10 min-h-screen flex items-center justify-center p-6">
             <div className="w-full max-w-6xl">
-              <div className="text-center mb-16">
-                <h1 className="text-6xl md:text-8xl font-black text-white mb-6 leading-none">
+              <div className="text-center mb-16 mt-14">
+                <h1 className="text-4xl md:text-7xl font-black text-white mb-6 leading-none">
                   {t('letsTalk', "Let's Talk")}
                 </h1>
               </div>

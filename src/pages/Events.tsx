@@ -170,7 +170,7 @@ const Events = () => {
       category: 'Cultural',
       icon: <Sparkles className="w-6 h-6" />,
       gradient: 'bg-gradient-to-r from-orange-400 to-yellow-500',
-      image: '/assets/sparks.webp',
+      image: '/assets/compressed/sparks.webp',
       buttonLabel: 'Coming Soon... ',
       buttonLink: '/Events/'
     },
@@ -205,8 +205,8 @@ const Events = () => {
       <SplineBg />
       <PageBgAndCursor>
         {/* Hero Carousel */}
-        <section className="relative h-[420px] md:h-[640px] lg:h-[900px] w-full overflow-hidden flex items-center justify-center">
-          <div className="w-full h-[640px] md:h-[900px] lg:h-[1100px] flex items-center justify-center relative">
+        <section className="relative h-[420px] md:h-[640px] lg:h-[900px] w-full overflow-hidden flex items-center justify-center pointer-events-none">
+          <div className="w-full h-[640px] md:h-[900px] lg:h-[1100px] flex items-center justify-center relative" style={{ willChange: 'transform' }}>
             <img
               src="/assets/eventcarosuel.jpg"
               alt="Events Carousel"
@@ -219,6 +219,7 @@ const Events = () => {
               }}
               className="hidden lg:flex absolute bottom-36 left-1/2 -translate-x-1/2 bg-white/30 backdrop-blur-lg text-2xl font-bold text-white px-10 py-5 rounded-full shadow-2xl border-2 border-white/40 hover:bg-white/40 transition-all duration-300"
               style={{ letterSpacing: '0.05em' }}
+              aria-label={t('viewEvents', 'View Events')}
             >
               {t('viewEvents', 'View Events')}
             </button>
@@ -235,6 +236,7 @@ const Events = () => {
                 </div>
                 <input
                   type="text"
+                  name="searchEvents"
                   className="block w-full pl-10 pr-3 py-3 border border-gray-700 rounded-lg bg-gray-900 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                   placeholder={t('searchEvents', 'Search events...')}
                   value={searchQuery}
