@@ -56,7 +56,7 @@ const PrivacyPolicy = () => {
         </div>
       </PageBgAndCursor>
 
-      {/* Instagram/Contact Us Bar for small screens only */}
+
     <InstagramContactBar />
     </>
   );

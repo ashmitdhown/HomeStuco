@@ -53,7 +53,7 @@ export const AnnouncementSection = () => {
 
   return (
     <section id="announcement-section" className="py-20 bg-gradient-secondary relative overflow-hidden">
-      {/* Luxe Background Elements */}
+
       <div className="absolute inset-0">
         <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-primary opacity-10 rounded-full blur-3xl" />
         <div className="absolute bottom-20 left-20 w-64 h-64 bg-champagne/20 rounded-full blur-2xl" />
@@ -68,7 +68,7 @@ export const AnnouncementSection = () => {
             {t("announcementDesc")}
           </p>
         </div>
-        {/* Grid with equal height cards */}
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
           {events.map((event) => (
             <div key={event.id} className="h-full">

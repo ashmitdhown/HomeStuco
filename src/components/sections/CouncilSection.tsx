@@ -132,7 +132,7 @@ export const CouncilSection = () => {
               key={index}
               className="bg-[#14213d99] rounded-xl shadow-md flex flex-row items-center p-0 overflow-hidden relative min-h-[180px] transition-transform duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer backdrop-blur-md"
             >
-              {/* Social icons top right */}
+
               <div className="absolute top-4 right-4 z-10 flex gap-2">
                 {member.instagram && (
                   <a
@@ -143,7 +143,7 @@ export const CouncilSection = () => {
                     title="Instagram"
                     onClick={e => e.stopPropagation()}
                   >
-                    {/* Simple Instagram SVG icon */}
+
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
                       <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 3.25a5.25 5.25 0 1 1 0 10.5 5.25 5.25 0 0 1 0-10.5zm0 1.5a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5zm5.25.75a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
                     </svg>
@@ -162,7 +162,7 @@ export const CouncilSection = () => {
                   </a>
                 )}
               </div>
-              {/* Photo left, info right */}
+
               <div className="flex-shrink-0 w-28 h-36 m-4 rounded-lg overflow-hidden bg-white flex items-center justify-center border border-white/60">
                 <img
                   src={member.image}

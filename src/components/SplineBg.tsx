@@ -106,12 +106,12 @@ const SplineBg = () => {
         </Suspense>
       </div>
 
-      {/* Contact Us Button */}
+
       <div className="fixed bottom-4 right-5 z-20 pointer-events-auto">
-        {/* Your button here */}
+
       </div>
 
-      {/* Overlay */}
+
       <div className="fixed inset-0 z-10 bg-black/10 pointer-events-none" />
     </>
   );

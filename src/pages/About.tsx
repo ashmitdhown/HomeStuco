@@ -1,3 +1,4 @@
+
 import InstagramContactBar from "@/components/ui/InstagramContactBar";
 // Author: Manav Arya & Ashmit Dhown
 import { motion } from "framer-motion";
@@ -12,7 +13,7 @@ const About = () => {
   const { t } = useTranslation();
   return (
     <>
-      {/* Floating Contact Us Button */}
+
       <a
         href="/contact"
         className="fixed z-50 bottom-2 right-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2 hover:bg-primary/90 transition-all text-lg font-semibold"
@@ -24,9 +25,9 @@ const About = () => {
         </svg>
         {t('contactUs', 'Contact Us')}
       </a>
-      {/* Hero Section with Background Image */}
+
       <section className="w-full h-[60vh] md:h-screen flex items-center justify-center relative overflow-hidden z-30 p-0 m-0">
-        {/* Full Background Image */}
+
         <div className="absolute inset-0 w-full h-full z-0">
           <picture>
             <source media="(max-width: 640px)" srcSet="/assets/compressed/aboutsmall.webp" />
@@ -39,7 +40,7 @@ const About = () => {
           </picture>
         </div>
 
-        {/* Floating Learn More Button */}
+
         <a
           href="#about-content"
           className="absolute left-1/2 -translate-x-1/2 bottom-8 bg-gray-700/60 text-white px-8 py-3 rounded-full shadow-lg flex items-center gap-2 hover:bg-gray-700/80 transition-all text-lg font-semibold backdrop-blur-md"
@@ -51,7 +52,7 @@ const About = () => {
           </svg>
           Learn More
         </a>
-        {/* Main Content */}
+
         <div className="w-full max-w-4xl mx-auto text-center relative z-10 flex flex-col items-center justify-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -62,10 +63,10 @@ const About = () => {
         </div>
       </section>
 
-      {/* Content Section */}
+
       <PageBgAndCursor>
         <div id="about-content" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-        {/* Mission & Vision - moved above Who We Are */}
+
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20"
           initial={{ opacity: 0, y: 30 }}
@@ -105,7 +106,7 @@ const About = () => {
           </Card>
         </motion.div>
 
-        {/* Student Council Description - now below Mission & Vision */}
+
         <motion.div
           className="mb-20"
           initial={{ opacity: 0, y: 30 }}
@@ -157,7 +158,7 @@ const About = () => {
           </Card>
         </motion.div>
 
-        {/* President's Note */}
+
         <motion.div
           className="mb-20"
           initial={{ opacity: 0, y: 30 }}
@@ -178,7 +179,7 @@ const About = () => {
                 <div className="w-16 h-1 bg-gradient-accent mx-auto"></div>
               </div>
               <div className="flex flex-col lg:flex-row gap-10 items-center">
-                {/* President Portrait - card container fills card height on large screens */}
+
                 <div className="w-full lg:w-1/3 h-auto lg:h-full flex flex-col items-center justify-center">
                   <div className="w-60 h-[350px] md:h-[420px] lg:w-full lg:h-full rounded-2xl overflow-hidden shadow-xl border-4 border-champagne/30 bg-white mb-6 flex flex-col items-center justify-center">
                     <img
@@ -192,7 +193,7 @@ const About = () => {
                     </Badge>
                   </div>
                 </div>
-                {/* President's Message */}
+
                 <div className="flex-1 space-y-6">
                   <p className="text-lg text-white leading-relaxed italic">
                     {t('presidentMsg1', '"Dear fellow students,')}
@@ -216,11 +217,12 @@ const About = () => {
           </Card>
         </motion.div>
 
-        {/* Mission & Vision */}
+
 
         </div>
       </PageBgAndCursor>
     <InstagramContactBar />
     </>
   );
-};export default About;
+};
+export default About;

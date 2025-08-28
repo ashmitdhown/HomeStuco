@@ -17,9 +17,9 @@ const Footer = () => {
       <footer className="w-full bg-gray-900/20 backdrop-blur-md border-t border-gray-800 mt-16">
         <div className="w-full px-6 md:px-16 py-0 pb-12 md:pb-0 flex justify-center">
           <div className="w-full max-w-7xl bg-gray-900/10 backdrop-blur-lg shadow-xl p-6 md:p-8 flex flex-col gap-6 md:gap-8 rounded-none mx-auto">
-          {/* Contact & Address */}
+
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 w-full md:w-full">
-            {/* Contact */}
+
             <div className="flex-1 min-w-[240px]">
               <h3 className="text-4xl font-bold text-center md:text-left text-white mb-8 tracking-tight">
                 {t('getInTouch', 'GET IN TOUCH')}
@@ -36,7 +36,7 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Address */}
+
             <div className="flex-1 min-w-[240px] flex flex-col items-center md:items-start">
               <div className="mb-5 flex items-center gap-3 font-semibold text-white">
                 <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
@@ -60,9 +60,9 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Social Media - Interactive Cards */}
+
             <div className="flex-1 min-w-[240px] flex flex-col items-center md:items-start mt-12 md:mt-0 md:ml-14 gap-6">
-              {/* Email Card */}
+
               <a href="mailto:studentcouncil@dubai.bits-pilani.ac.in" target="_blank" rel="noopener noreferrer"
                 className="w-full rounded-2xl bg-gray-700/20 backdrop-blur-lg p-4 flex items-center gap-4 shadow-md hover:bg-gray-700/40 transition-colors duration-300">
                 <div className="bg-gray-500/40 rounded-xl p-3 flex items-center justify-center">
@@ -74,7 +74,7 @@ const Footer = () => {
                 </div>
               </a>
 
-              {/* Instagram Card */}
+
               <a href="https://www.instagram.com/council.bitsdubai/" target="_blank" rel="noopener noreferrer"
                 className="w-full rounded-2xl bg-gray-700/20 backdrop-blur-lg p-4 flex items-center gap-4 shadow-md hover:bg-gray-700/40 transition-colors duration-300">
                 <div className="bg-gray-500/40 rounded-xl p-3 flex items-center justify-center">
@@ -86,7 +86,7 @@ const Footer = () => {
                 </div>
               </a>
 
-              {/* LinkedIn Card */}
+
               <a href="https://www.linkedin.com/company/student-council-bpdc/" target="_blank" rel="noopener noreferrer"
                 className="w-full rounded-2xl bg-gray-700/20 backdrop-blur-lg p-4 flex items-center gap-4 shadow-md hover:bg-gray-700/40 transition-colors duration-300">
                 <div className="bg-gray-500/40 rounded-xl p-3 flex items-center justify-center">
@@ -100,7 +100,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Footer Bottom */}
+
           <div className="w-full text-center text-sm text-white/70 mt-8">
             {t('copyright', '© 2025 by Student Council, BITS Pilani, Dubai Campus.')}
             <span className="ml-3">{t('designedBy', 'Designed and Developed by Manav Arya and Ashmit Dhown')}</span>

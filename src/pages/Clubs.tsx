@@ -18,7 +18,7 @@ export default function Clubs() {
         { name: t('secMAD', 'SEC MAD'), logo: "/assets/logo.webp", head: { name: "Laksha Malik", photo: "/assets/Club-members/Laksha.webp", intro: t('president', 'President') }, description: "" },
         { name: t('groove', 'Groove'), logo: "/assets/logo.webp", head: { name: "Gourisankar Sajith", photo: "/assets/Club-members/Gourisankar.webp", intro: t('president', 'President') }, description: "" },
         { name: t('supernova', 'Supernova'), logo: "/assets/logo.webp", head: { name: "Rushirajsinh Solanki", photo: "/assets/Club-members/Rushirajsinh.webp", intro: t('president', 'President') }, description: "" },
-        { name: t('allure', 'Allure'), logo: "/assets/logo.webp", head: { name: "Vidyullekha V", photo: "/assets/compressed/Vidyullekha.webp", intro: t('president', 'President') }, description: "" },
+        { name: t('allure', 'Allure'), logo: "/assets/logo.webp", head: { name: "Vidyullekha V", photo: "/assets/compressed/Vidyullekha.jpeg", intro: t('president', 'President') }, description: "" },
         { name: t('ohCrop', 'Oh Crop'), logo: "/assets/logo.webp", head: { name: "Aimy Acksa", photo: "/assets/Club-members/Aimy.webp", intro: t('president', 'President') }, description: "" },
         { name: t('shades', 'Shades'), logo: "/assets/logo.webp", head: { name: "Varnikka TM", photo: "/assets/compressed/Varnikka_rotated.webp", intro: t('president', 'President') }, description: "" },
         { name: t('treble', 'Treble'), logo: "/assets/logo.webp", head: { name: "Mevin Mathews", photo: "/assets/Club-members/Mevin.webp", intro: t('president', 'President') }, description: "" },
@@ -30,7 +30,7 @@ export default function Clubs() {
     <>
       <SplineBg />
       <PageBgAndCursor>
-        {/* Hero Carousel */}
+
         <section className="relative h-[420px] md:h-[640px] lg:h-[900px] w-full overflow-hidden flex items-center justify-center pointer-events-none">
           <div className="w-full h-[640px] md:h-[900px] lg:h-[1100px] flex items-center justify-center relative" style={{ willChange: 'transform' }}>
             <img
@@ -39,7 +39,7 @@ export default function Clubs() {
               className="w-full h-full object-cover"
               loading="lazy"
             />
-            {/* -Floating View Clubs Button  only on large screens */}
+
             <button
               onClick={() => {
                 const section = document.getElementById('clubs-section');
@@ -47,7 +47,7 @@ export default function Clubs() {
                   section.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="hidden lg:flex absolute bottom-36 left-1/2 -translate-x-1/2 bg-white/30 backdrop-blur-lg text-2xl font-bold text-white px-10 py-5 rounded-full shadow-2xl border-2 border-white/40 hover:bg-white/40 transition-all duration-300"
+              className="hidden lg:flex absolute bottom-36 left-1/2 -translate-x-1/2 bg-white/30 backdrop-blur-lg text-2xl font-bold text-white px-10 py-5 rounded-full shadow-2xl border-2 border-white/40 hover:bg-white/40 transition-all duration-300 pointer-events-auto"
               style={{ letterSpacing: '0.05em', zIndex: 30 }}
               aria-label={t('viewClubs', 'View Clubs')}
             >
@@ -56,7 +56,7 @@ export default function Clubs() {
           </div>
         </section>
 
-        {/* Clubs Section Redesigned */}
+
         <section id="clubs-section" className="py-20 min-h-screen">
           <div className="max-w-7xl mx-auto px-4 relative z-20">
             <div className="text-center mb-16">
@@ -70,7 +70,7 @@ export default function Clubs() {
                   key={index}
                   className="bg-[#14213d99] rounded-xl shadow-md flex flex-row items-center p-0 overflow-hidden relative min-h-[180px] transition-transform duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer backdrop-blur-md"
                 >
-                  {/* Photo left */}
+
                   <div className="flex-shrink-0 w-28 h-36 m-4 rounded-lg overflow-hidden bg-white flex items-center justify-center border border-white/60">
                     <img
               src={club.head.photo}
@@ -80,14 +80,14 @@ export default function Clubs() {
                     />
                   </div>
 
-                  {/* Info right */}
+
                   <div className="flex flex-col flex-1 justify-center px-4 py-2">
-                    {/* Club Name at Top */}
+
                     <h3 className="text-xl md:text-2xl font-extrabold text-white mb-2 tracking-tight">
                       {club.name}
                     </h3>
 
-                    {/* Head Info Below */}
+
                     <div className="flex flex-col">
                       <span className="text-lg md:text-xl font-semibold text-white mb-1">
                         {club.head.name}
@@ -104,7 +104,7 @@ export default function Clubs() {
         </section>
       </PageBgAndCursor>
 
-      {/* Floating Contact Button */}
+
       <a
         href="/contact"
         className="fixed z-50 bottom-2 right-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2 hover:bg-primary/90 transition-all text-lg font-semibold"

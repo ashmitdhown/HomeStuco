@@ -20,7 +20,7 @@ export const HeroSection = () => {
   return ( 
     <>
       <section className="w-full h-screen flex items-center justify-center relative overflow-hidden z-30 p-0 m-0 -mt-16">
-        {/* Background */}
+
         <div className="absolute inset-0 w-full h-full z-0">
           <img
             src={"/assets/Hero 2.webp"}
@@ -32,7 +32,7 @@ export const HeroSection = () => {
           <div className="absolute inset-0 bg-black/40" />
         </div>
 
-        {/* Social Icons */}
+
         <div className="hidden md:flex flex-col items-center gap-6 absolute right-12 top-1/2 -translate-y-1/2 z-20">
           <a href="mailto:studentcouncil@dubai.bits-pilani.ac.in" className="text-white hover:text-champagne transition">
             <Mail size={28} />
@@ -45,7 +45,7 @@ export const HeroSection = () => {
           </a>
         </div>
 
-        {/* Main Text */}
+
         <div className="w-full max-w-4xl mx-auto text-center relative z-10 flex flex-col items-center justify-center" style={{ minHeight: "100vh" }}>
           <h1
             className="text-[4.5rem] xs:text-[4.5rem] sm:text-[6rem] md:text-[7.5rem] lg:text-[8rem] font-extrabold text-white mb-[-2rem] tracking-tight uppercase drop-shadow-lg"
@@ -76,7 +76,7 @@ export const HeroSection = () => {
           </h2>
         </div>
 
-        {/* Floating Contact Us Button (Instant show/hide) */}
+
         {showContact && (
           <a
             href="/contact"

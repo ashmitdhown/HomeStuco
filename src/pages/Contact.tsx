@@ -140,7 +140,7 @@ const Contact = () => {
               </div>
 
               <div className="grid lg:grid-cols-5 gap-10">
-                {/* Contact Methods */}
+
                 <div className="lg:col-span-2">
                   <div className="h-full flex flex-col justify-between space-y-5">
                     {contactMethods.map((method, index) => (
@@ -167,7 +167,7 @@ const Contact = () => {
                   </div>
                 </div>
 
-                {/* Contact Form */}
+
                 <div className="lg:col-span-3">
                   <div className="bg-white/30 backdrop-blur-xl border border-white/40 rounded-3xl p-10 shadow-2xl text-white h-full flex flex-col">
                     <div className="flex items-center gap-4 mb-10">
@@ -278,7 +278,7 @@ const Contact = () => {
         </div>
       </PageBgAndCursor>
 
-      {/* Back to Homepage button (conditionally rendered) */}
+
       {showBackButton && (
         <a
           href="/"

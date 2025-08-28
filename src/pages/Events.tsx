@@ -46,7 +46,7 @@ const EventCard = ({
       transition={{ duration: 0.3 }}
       className="bg-[#14213d]/60 backdrop-blur-md text-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col border border-gray-900"
     >
-      {/* Event Image */}
+
       <div className="relative h-48 overflow-hidden">
         <img 
           src={image} 
@@ -92,7 +92,7 @@ const EventCard = ({
           </div>
         </div>
 
-        {/* 👇 Each Event Has Its Own Button */}
+
         <div className="mt-6 flex justify-center">
           <a 
             href={buttonLink} 
@@ -204,7 +204,7 @@ const Events = () => {
     <>
       <SplineBg />
       <PageBgAndCursor>
-        {/* Hero Carousel */}
+
         <section className="relative h-[420px] md:h-[640px] lg:h-[900px] w-full overflow-hidden flex items-center justify-center pointer-events-none">
           <div className="w-full h-[640px] md:h-[900px] lg:h-[1100px] flex items-center justify-center relative" style={{ willChange: 'transform' }}>
             <img
@@ -229,7 +229,7 @@ const Events = () => {
           </div>
         </section>
       
-        {/* Search and Filter */}
+
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="bg-black rounded-xl shadow-sm p-6 mb-8">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -272,7 +272,7 @@ const Events = () => {
               </div>
             </div>
 
-            {/* Category Filters */}
+
             <AnimatePresence>
               {isFilterOpen && (
                 <motion.div
@@ -304,7 +304,7 @@ const Events = () => {
             </AnimatePresence>
           </div>
 
-          {/* Featured Events */}
+
           {featuredEvents.length > 0 && (
             <div className="mb-12">
               <h2 className="text-2xl font-bold text-white mb-6">{t('featuredEvents', 'Featured Events')}</h2>
@@ -329,7 +329,7 @@ const Events = () => {
             </div>
           )}
 
-          {/* All Events */}
+
           <div className="mb-12" id="events-section">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-white">{t('allEvents', 'All Events')}</h2>
@@ -369,7 +369,7 @@ const Events = () => {
         </div>
       </PageBgAndCursor>
 
-      {/* Floating Contact Button*/}
+
       <a
         href="/Contact"
         className="fixed z-[9999] bottom-4 right-4 bg-primary text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2 hover:bg-primary/90 transition-all text-lg font-semibold"
