@@ -215,9 +215,12 @@ const Events = () => {
             />
             <button
               onClick={() => {
-                window.scrollBy({ top: 500, left: 0, behavior: 'smooth' });
+                const section = document.getElementById('events-section');
+                if (section) {
+                  section.scrollIntoView({ behavior: 'smooth' });
+                }
               }}
-              className="hidden lg:flex absolute bottom-36 left-1/2 -translate-x-1/2 bg-white/30 backdrop-blur-lg text-2xl font-bold text-white px-10 py-5 rounded-full shadow-2xl border-2 border-white/40 hover:bg-white/40 transition-all duration-300"
+              className="hidden lg:flex absolute bottom-36 left-1/2 -translate-x-1/2 bg-white/30 backdrop-blur-lg text-2xl font-bold text-white px-10 py-5 rounded-full shadow-2xl border-2 border-white/40 hover:bg-white/40 transition-all duration-300 pointer-events-auto"
               style={{ letterSpacing: '0.05em' }}
               aria-label={t('viewEvents', 'View Events')}
             >

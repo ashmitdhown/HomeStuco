@@ -39,7 +39,7 @@ export default function Clubs() {
               className="w-full h-full object-cover"
               loading="lazy"
             />
-            {/* Floating View Clubs Button - only on large screens */}
+            {/* -Floating View Clubs Button  only on large screens */}
             <button
               onClick={() => {
                 const section = document.getElementById('clubs-section');

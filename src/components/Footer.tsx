@@ -15,7 +15,7 @@ const Footer = () => {
     <>
       <SplineBg />
       <footer className="w-full bg-gray-900/20 backdrop-blur-md border-t border-gray-800 mt-16">
-        <div className="w-full px-6 md:px-16 py-0 flex justify-center">
+        <div className="w-full px-6 md:px-16 py-0 pb-12 md:pb-0 flex justify-center">
           <div className="w-full max-w-7xl bg-gray-900/10 backdrop-blur-lg shadow-xl p-6 md:p-8 flex flex-col gap-6 md:gap-8 rounded-none mx-auto">
           {/* Contact & Address */}
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 w-full md:w-full">
