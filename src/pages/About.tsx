@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Users, Award, Heart, Target, Quote } from "lucide-react";
-// ...existing code...
 import { PageBgAndCursor } from "@/components/PageBgAndCursor";
 
 import { useTranslation } from 'react-i18next';
@@ -26,7 +25,7 @@ const About = () => {
         {t('contactUs', 'Contact Us')}
       </a>
       {/* Hero Section with Background Image */}
-      <section className="w-full h-[45vh] md:h-screen flex items-center justify-center relative overflow-hidden z-30 p-0 m-0">
+      <section className="w-full h-[60vh] md:h-screen flex items-center justify-center relative overflow-hidden z-30 p-0 m-0">
         {/* Full Background Image */}
         <div className="absolute inset-0 w-full h-full z-0">
           <picture>
@@ -34,8 +33,8 @@ const About = () => {
             <img
               src="/assets/Untitled design-5.webp"
               alt="About Student Council Background"
-              className="w-full h-full object-cover object-center"
-              style={{ minHeight: '80vh', maxHeight: '100vh' }}
+              className="w-full h-full object-cover md:object-contain object-center"
+              style={{ minHeight: '60vh', maxHeight: '100vh' }}
             />
           </picture>
         </div>
@@ -181,7 +180,7 @@ const About = () => {
               <div className="flex flex-col lg:flex-row gap-10 items-center">
                 {/* President Portrait - card container fills card height on large screens */}
                 <div className="w-full lg:w-1/3 h-auto lg:h-full flex flex-col items-center justify-center">
-                  <div className="w-60 h-[420px] lg:w-full lg:h-full rounded-2xl overflow-hidden shadow-xl border-4 border-champagne/30 bg-white mb-6 flex flex-col items-center justify-center">
+                  <div className="w-60 h-[350px] md:h-[420px] lg:w-full lg:h-full rounded-2xl overflow-hidden shadow-xl border-4 border-champagne/30 bg-white mb-6 flex flex-col items-center justify-center">
                     <img
                             src="/assets/councilphotos/Siva.webp"
                       alt="Siva Balamurugan - President"
