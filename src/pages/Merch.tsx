@@ -126,7 +126,7 @@ const Merch = () => {
     <>
       <PageBgAndCursor>
       <div className="min-h-screen">
-        {/* Hero Section - Spline Cover */}
+
         <div className="relative w-full overflow-hidden h-[34vh] md:h-screen">
           <div className="absolute inset-0 w-full h-full z-0">
             <Spline scene="https://prod.spline.design/E9Y1f0Wp36HmvzX0/scene.splinecode" style={{ width: '100%', height: '100%' }} />
@@ -142,17 +142,17 @@ const Merch = () => {
           </div>
         </div>
 
-        {/* Main Content */}
+
         <div id="products-section" className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           
-          {/* Coming Soon Overlay*/}
+
           <div className="absolute inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50">
             <h2 className="text-4xl md:text-6xl font-bold text-white uppercase tracking-wider">
               Coming Soon
             </h2>
           </div>
 
-          {/* Category Filter */}
+
           <div className="flex flex-wrap justify-center gap-3 mb-12">
             {categories.map(category => (
               <button
@@ -169,7 +169,7 @@ const Merch = () => {
             ))}
           </div>
 
-          {/* Products Grid */}
+
           <div className="w-full">
             <ProductList
               height={900}
@@ -288,7 +288,7 @@ const Merch = () => {
         </div>
       </div>
       </PageBgAndCursor>
-      {/* Floating Contact Button*/}
+
       <a
         href="/contact"
         className="fixed z-[9999] bottom-4 right-4 bg-primary text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2 hover:bg-primary/90 transition-all text-lg font-semibold"

@@ -26,6 +26,7 @@ const OurBackbone = lazy(() => import("./pages/OurBackbone"));
 const TermsOfUse = lazy(() => import("./pages/TermsOfUse"));
 const CodeOfConduct = lazy(() => import("./pages/CodeOfConduct"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const DesignersPage = lazy(() => import("./pages/designers"));
 
 const queryClient = new QueryClient();
 
@@ -111,7 +112,13 @@ const App = () => {
                       <PrivacyPolicy />
                     </Suspense>
                   } />
-                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+
+                  <Route path="/designers" element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <DesignersPage />
+                    </Suspense>
+                  } />
+
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </div>

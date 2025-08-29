@@ -34,7 +34,7 @@ const TermsOfUse = () => {
         </div>
       </PageBgAndCursor>
 
-      {/* Floating Contact Button*/}
+
       <a
         href="/contact"
         className="fixed z-[9999] bottom-4 right-4 bg-primary text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2 hover:bg-primary/90 transition-all text-lg font-semibold"

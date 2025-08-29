@@ -13,7 +13,7 @@ const Home = () => {
         <h1 className="text-5xl md:text-7xl font-bold text-white drop-shadow-lg mb-8 text-center">
           {t('home', 'Home Page')}
         </h1>
-        {/* Add your home page content here */}
+
       </div>
     </PageBgAndCursor>
   );

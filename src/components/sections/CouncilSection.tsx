@@ -21,7 +21,7 @@ const councilMembers: CouncilMember[] = [
     name: "Mohammad Shamshuddin Gangavali",
     position: "Ex-Officio",
     image: "/assets/councilphotos/Shams.webp",
-    instagram: "https://www.instagram.com/shamshuddin_gangavali",
+    instagram: "https://www.instagram.com/shamshuddin2424/",
     linkedin: "https://www.linkedin.com/in/shamshuddin-gangavali",
     bio: LOREM
   },
@@ -29,18 +29,17 @@ const councilMembers: CouncilMember[] = [
     name: "Sivaa Balamurugan",
     position: "President",
     image: "/assets/councilphotos/Siva.webp",
-    instagram: "https://www.instagram.com/siva_balamurugan",
-    linkedin: "https://www.linkedin.com/in/siva-balamurugan",
+    instagram: "https://www.instagram.com/siv.xxa/",
+    linkedin: "https://www.linkedin.com/in/sivaab/",
     bio: LOREM
   },
   {
     name: "Isharjot Singh Pasricha",
     position: "Vice President",
     image: "/assets/councilphotos/Isharjot.webp",
-    instagram: "https://www.instagram.com/isharjotpasricha",
+    instagram: "https://www.instagram.com/isharjotpasricha/",
     linkedin: "https://www.linkedin.com/in/isharjotpasricha",
     bio: LOREM
-
   },
   {
     name: "Sivapriya Madhu Pillai",
@@ -49,21 +48,20 @@ const councilMembers: CouncilMember[] = [
     instagram: "https://www.instagram.com/sivapriyamadhupillai/",
     linkedin: "https://www.linkedin.com/in/sivapriya-madhu-pillai-721aa130a/",
     bio: LOREM
-
   },
   {
     name: "Raj Singh",
     position: "4th Year HR",
     image: "/assets/councilphotos/Raj.webp",
     instagram: "https://www.instagram.com/raj_singh",
-    linkedin: "https://www.linkedin.com/in/raj-singh",
+    linkedin: "https://www.linkedin.com/in/raj-singh-913a21278?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
     bio: LOREM
   },
   {
     name: "Mustafa Fatehi",
     position: "4th Year DSR",
     image: "/assets/councilphotos/Mustafa.webp",
-    instagram: "https://www.instagram.com/mustafatehi",
+    instagram: "https://www.instagram.com/mustafatehi/profilecard/?igsh=OHNlaDdwdjI4ODU3",
     linkedin: "https://www.linkedin.com/in/mustafa-fatehi",
     bio: LOREM
   },
@@ -71,17 +69,16 @@ const councilMembers: CouncilMember[] = [
     name: "Ashmit Dhown",
     position: "3rd Year HR",
     image: "/assets/councilphotos/Ashmit.webp",
-    instagram: "https://www.instagram.com/ashmitdhown",
+    instagram: "https://www.instagram.com/ashmitdhown/",
     linkedin: "https://www.linkedin.com/in/ashmit-dhown-3b5523314/",
     bio: LOREM
-
   },
   {
     name: "Gurkaran Singh",
     position: "3rd Year DSR",
     image: "/assets/councilphotos/Gurkaran.webp",
-    instagram: "https://www.instagram.com/gurkaran_singh",
-    linkedin: "https://www.linkedin.com/in/gurkaran-singh",
+    instagram: "https://www.instagram.com/i._guru?igsh=MW1jbWx4dG5xZG5rMA%3D%3D&utm_source=qr",
+    linkedin: "https://www.linkedin.com/in/gurkaran-singh-b1127b327?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
     bio: LOREM
   },
   {
@@ -95,7 +92,7 @@ const councilMembers: CouncilMember[] = [
     name: "Tanisha Handa",
     position: "2nd Year DSR",
     image: "/assets/councilphotos/Tanisha.webp",
-    instagram: "https://www.instagram.com/tanisha_handa",
+    instagram: "https://www.instagram.com/txnishx24/",
     bio: LOREM
   },
   {
@@ -132,7 +129,7 @@ export const CouncilSection = () => {
               key={index}
               className="bg-[#14213d99] rounded-xl shadow-md flex flex-row items-center p-0 overflow-hidden relative min-h-[180px] transition-transform duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer backdrop-blur-md"
             >
-              {/* Social icons top right */}
+
               <div className="absolute top-4 right-4 z-10 flex gap-2">
                 {member.instagram && (
                   <a
@@ -143,7 +140,7 @@ export const CouncilSection = () => {
                     title="Instagram"
                     onClick={e => e.stopPropagation()}
                   >
-                    {/* Simple Instagram SVG icon */}
+
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
                       <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 3.25a5.25 5.25 0 1 1 0 10.5 5.25 5.25 0 0 1 0-10.5zm0 1.5a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5zm5.25.75a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
                     </svg>
@@ -162,7 +159,7 @@ export const CouncilSection = () => {
                   </a>
                 )}
               </div>
-              {/* Photo left, info right */}
+
               <div className="flex-shrink-0 w-28 h-36 m-4 rounded-lg overflow-hidden bg-white flex items-center justify-center border border-white/60">
                 <img
                   src={member.image}

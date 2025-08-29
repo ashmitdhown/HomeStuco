@@ -70,14 +70,14 @@ const Navigation = () => {
     <>
       <SplineBg />
       
-      {/* Main Navigation Bar */}
+
       <nav
         className={`w-full fixed top-0 left-0 z-50 px-8 pt-6 flex items-center transition-all duration-300 ease-out ${
           scrolled ? "bg-black/90 backdrop-blur-sm" : "bg-transparent"
         }`}
         style={{ willChange: 'transform' }}
       >
-        {/* Logo */}
+
         <div className="flex-shrink-0">
           <Link to="/">
             <img 
@@ -89,7 +89,7 @@ const Navigation = () => {
           </Link>
         </div>
 
-        {/* Desktop Navigation Links */}
+
         <div className="flex-1 flex justify-center">
           <ul className="hidden md:flex items-center justify-evenly w-[70%] text-white font-semibold text-xl tracking-wide navbar-optimized">
             {React.useMemo(() => navLinks.map((link, idx) => (
@@ -115,7 +115,7 @@ const Navigation = () => {
           </ul>
         </div>
 
-        {/* Mobile Hamburger Menu Button */}
+
         <div className="md:hidden ml-auto">
           <button
             onClick={() => setMobileMenuOpen(true)}
@@ -127,16 +127,16 @@ const Navigation = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay and Slider */}
+
       {mobileMenuOpen && (
         <>
-          {/* Dark Overlay */}
+
           <div
             className="fixed inset-0 bg-black/50 z-[998] transition-opacity duration-300"
             onClick={() => setMobileMenuOpen(false)}
           />
           
-          {/* Black to Red Gradient Mobile Menu Slider */}
+
           <div
             className={`fixed top-0 right-0 h-full w-[85vw] max-w-[400px] z-[999] shadow-2xl transform transition-transform duration-300 ease-in-out ${
               mobileMenuOpen ? "translate-x-0" : "translate-x-full"
@@ -145,7 +145,7 @@ const Navigation = () => {
               background: "linear-gradient(180deg, #000000 0%, #1a1a1a 30%, #4a1a1a 70%, #dc2626 100%)"
             }}
           >
-            {/* Header with Logo and Close Button */}
+
             <div className="flex items-center justify-between p-6 border-b border-white/10">
               <div className="flex items-center gap-3">
                 <img src="/assets/logo.webp" alt="Logo" className="w-10 h-10" />
@@ -160,7 +160,7 @@ const Navigation = () => {
               </button>
             </div>
 
-            {/* Navigation Menu Items */}
+
             <div className="px-6 py-4">
               <ul className="space-y-2">
                 {navLinks.map((link) => (
