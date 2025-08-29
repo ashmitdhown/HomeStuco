@@ -103,7 +103,11 @@ const Footer = () => {
 
           <div className="w-full text-center text-sm text-white/70 mt-8">
             {t('copyright', '© 2025 by Student Council, BITS Pilani, Dubai Campus.')}
-            <span className="ml-3">{t('designedBy', 'Designed and Developed by Manav Arya and Ashmit Dhown')}</span>
+            <span className="ml-3">
+              <a href="/designers" className="hover:underline text-blue-300">
+                {t('designedBy', 'Designed and Developed by Manav Arya and Ashmit Dhown')}
+              </a>
+            </span>
           </div>
           <div className="w-full flex flex-col items-center mt-3 gap-2">
             <div className="flex gap-6 text-sm text-white/80">

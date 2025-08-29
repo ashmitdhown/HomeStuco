@@ -21,7 +21,7 @@ const councilMembers: CouncilMember[] = [
     name: "Mohammad Shamshuddin Gangavali",
     position: "Ex-Officio",
     image: "/assets/councilphotos/Shams.webp",
-    instagram: "https://www.instagram.com/shamshuddin_gangavali",
+    instagram: "https://www.instagram.com/shamshuddin2424/",
     linkedin: "https://www.linkedin.com/in/shamshuddin-gangavali",
     bio: LOREM
   },
@@ -29,18 +29,17 @@ const councilMembers: CouncilMember[] = [
     name: "Sivaa Balamurugan",
     position: "President",
     image: "/assets/councilphotos/Siva.webp",
-    instagram: "https://www.instagram.com/siva_balamurugan",
-    linkedin: "https://www.linkedin.com/in/siva-balamurugan",
+    instagram: "https://www.instagram.com/siv.xxa/",
+    linkedin: "https://www.linkedin.com/in/sivaab/",
     bio: LOREM
   },
   {
     name: "Isharjot Singh Pasricha",
     position: "Vice President",
     image: "/assets/councilphotos/Isharjot.webp",
-    instagram: "https://www.instagram.com/isharjotpasricha",
+    instagram: "https://www.instagram.com/isharjotpasricha/",
     linkedin: "https://www.linkedin.com/in/isharjotpasricha",
     bio: LOREM
-
   },
   {
     name: "Sivapriya Madhu Pillai",
@@ -49,21 +48,20 @@ const councilMembers: CouncilMember[] = [
     instagram: "https://www.instagram.com/sivapriyamadhupillai/",
     linkedin: "https://www.linkedin.com/in/sivapriya-madhu-pillai-721aa130a/",
     bio: LOREM
-
   },
   {
     name: "Raj Singh",
     position: "4th Year HR",
     image: "/assets/councilphotos/Raj.webp",
     instagram: "https://www.instagram.com/raj_singh",
-    linkedin: "https://www.linkedin.com/in/raj-singh",
+    linkedin: "https://www.linkedin.com/in/raj-singh-913a21278?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
     bio: LOREM
   },
   {
     name: "Mustafa Fatehi",
     position: "4th Year DSR",
     image: "/assets/councilphotos/Mustafa.webp",
-    instagram: "https://www.instagram.com/mustafatehi",
+    instagram: "https://www.instagram.com/mustafatehi/profilecard/?igsh=OHNlaDdwdjI4ODU3",
     linkedin: "https://www.linkedin.com/in/mustafa-fatehi",
     bio: LOREM
   },
@@ -71,17 +69,16 @@ const councilMembers: CouncilMember[] = [
     name: "Ashmit Dhown",
     position: "3rd Year HR",
     image: "/assets/councilphotos/Ashmit.webp",
-    instagram: "https://www.instagram.com/ashmitdhown",
+    instagram: "https://www.instagram.com/ashmitdhown/",
     linkedin: "https://www.linkedin.com/in/ashmit-dhown-3b5523314/",
     bio: LOREM
-
   },
   {
     name: "Gurkaran Singh",
     position: "3rd Year DSR",
     image: "/assets/councilphotos/Gurkaran.webp",
-    instagram: "https://www.instagram.com/gurkaran_singh",
-    linkedin: "https://www.linkedin.com/in/gurkaran-singh",
+    instagram: "https://www.instagram.com/i._guru?igsh=MW1jbWx4dG5xZG5rMA%3D%3D&utm_source=qr",
+    linkedin: "https://www.linkedin.com/in/gurkaran-singh-b1127b327?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
     bio: LOREM
   },
   {
@@ -95,7 +92,7 @@ const councilMembers: CouncilMember[] = [
     name: "Tanisha Handa",
     position: "2nd Year DSR",
     image: "/assets/councilphotos/Tanisha.webp",
-    instagram: "https://www.instagram.com/tanisha_handa",
+    instagram: "https://www.instagram.com/txnishx24/",
     bio: LOREM
   },
   {
