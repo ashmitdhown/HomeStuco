@@ -202,7 +202,7 @@ export default function DesignersPage() {
                       className="relative w-28 h-28 rounded-full object-cover border-4 border-slate-600 transform transition-all duration-500 group-hover:scale-110 z-10"
                       style={{ margin: '8px' }}
                       onError={(e) => {
-                        e.target.src = `https://api.dicebear.com/7.x/avataaars/svg?seed=${designer.name}`;
+                        (e.target as HTMLImageElement).src = `https://api.dicebear.com/7.x/avataaars/svg?seed=${designer.name}`;
                       }}
                     />
                     {/* Pulse Effect */}
@@ -333,7 +333,7 @@ export default function DesignersPage() {
       </div>
 
       {/* CSS Animations */}
-      <style jsx>{`
+      <style>{`
         @keyframes slideUp {
           from {
             opacity: 0;

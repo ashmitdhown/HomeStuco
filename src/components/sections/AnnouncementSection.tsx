@@ -116,14 +116,14 @@ export const AnnouncementSection = () => {
                     {event.id === 1 ? (
                       <Button
                         className="w-full bg-velvet hover:bg-velvet/90 text-pearl font-semibold transition-all duration-300 hover:shadow-glow"
-                        onClick={() => window.open('https://forms.gle/mRtcp1uHZFMz4Gi58', '_blank')}
+                    onClick={() => window.open('https://forms.gle/mRtcp1uHZFMz4Gi58', '_self')}
                       >
                         {t('joinMentee', 'Join as Mentee')}
                       </Button>
                     ) : (
                       <Button
                         className="w-full bg-velvet hover:bg-velvet/90 text-pearl font-semibold transition-all duration-300 hover:shadow-glow"
-                        onClick={() => window.open(`/Events/`, '_blank')}
+                    onClick={() => window.open(`/Events/`, '_self')}
                       >
                         {t('learnMore', 'Learn more')}
                       </Button>
