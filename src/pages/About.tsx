@@ -34,7 +34,7 @@ const About = () => {
             <img
               src="/assets/Untitled design-5.webp"
               alt="About Student Council Background"
-              className="w-full h-full object-cover md:object-contain object-center"
+              className="w-full h-full object-cover object-center"
               style={{ minHeight: '60vh', maxHeight: '100vh' }}
             />
           </picture>
