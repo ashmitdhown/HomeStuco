@@ -53,7 +53,6 @@ const councilMembers: CouncilMember[] = [
     name: "Raj Singh",
     position: "4th Year HR",
     image: "/assets/councilphotos/Raj.webp",
-    instagram: "https://www.instagram.com/raj_singh",
     linkedin: "https://www.linkedin.com/in/raj-singh-913a21278?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
     bio: LOREM
   },

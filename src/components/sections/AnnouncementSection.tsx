@@ -31,7 +31,7 @@ const events: Announcement[] = [
     id: 2,
     title: "gameNightTitle",
     date: "August 29, 2025",
-    time: "8:00 PM",
+    time: "6:00 PM",
     description: "gameNightDesc",
     image: '/assets/gamenight.webp',
     category: "orientationCat"

@@ -171,7 +171,7 @@ const Events = () => {
       gradient: 'bg-gradient-to-r from-orange-400 to-yellow-500',
       image: '/assets/compressed/sparks.webp',
       buttonLabel: 'Coming Soon... ',
-      buttonLink: '/Events/'
+      buttonLink: ''
     },
     {
       id: 7,
