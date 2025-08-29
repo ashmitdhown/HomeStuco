@@ -278,19 +278,6 @@ const Contact = () => {
         </div>
       </PageBgAndCursor>
 
-
-      {showBackButton && (
-        <a
-          href="/"
-          className="fixed z-[9999] bottom-4 right-3 bg-primary text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2 hover:bg-primary/90 transition-all text-lg font-semibold"
-          style={{ minWidth: 0, boxShadow: '0 4px 24px 0 rgba(0,0,0,0.18)' }}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l9-9 9 9M4.5 10.5V21h15V10.5" />
-          </svg>
-          {t('backToHomepage', 'Back to Homepage')}
-        </a>
-      )}
     </>
   );
 };
