@@ -37,10 +37,10 @@ export const HeroSection = () => {
           <a href="mailto:studentcouncil@dubai.bits-pilani.ac.in" className="text-white hover:text-champagne transition">
             <Mail size={28} />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-champagne transition">
+          <a href="https://www.linkedin.com/company/student-council-bpdc/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-champagne transition">
             <Linkedin size={28} />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-champagne transition">
+          <a href="https://www.instagram.com/council.bitsdubai/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-champagne transition">
             <Instagram size={28} />
           </a>
         </div>
