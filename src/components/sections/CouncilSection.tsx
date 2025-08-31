@@ -18,14 +18,6 @@ const LOREM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellente
 
 const councilMembers: CouncilMember[] = [
   {
-    name: "Mohammad Shamshuddin Gangavali",
-    position: "Ex-Officio",
-    image: "/assets/councilphotos/Shams.webp",
-    instagram: "https://www.instagram.com/shamshuddin2424/",
-    linkedin: "https://www.linkedin.com/in/shamshuddin-gangavali",
-    bio: LOREM
-  },
-  {
     name: "Sivaa Balamurugan",
     position: "President",
     image: "/assets/councilphotos/Siva.webp",
@@ -47,6 +39,14 @@ const councilMembers: CouncilMember[] = [
     image: "/assets/councilphotos/Sivapriya.webp",
     instagram: "https://www.instagram.com/sivapriyamadhupillai/",
     linkedin: "https://www.linkedin.com/in/sivapriya-madhu-pillai-721aa130a/",
+    bio: LOREM
+  },
+  {
+    name: "Mohammad Shamshuddin Gangavali",
+    position: "Ex-Officio",
+    image: "/assets/councilphotos/Shams.webp",
+    instagram: "https://www.instagram.com/shamshuddin2424/",
+    linkedin: "https://www.linkedin.com/in/shamshuddin-gangavali",
     bio: LOREM
   },
   {

@@ -20,7 +20,7 @@ export default function Clubs() {
         { name: t('supernova', 'Supernova'), logo: "/assets/logo.webp", head: { name: "Rushirajsinh Solanki", photo: "/assets/Club-members/Rushirajsinh.webp", intro: t('president', 'President') }, description: "" },
         { name: t('allure', 'Allure'), logo: "/assets/logo.webp", head: { name: "Vidyullekha V", photo: "/assets/Club-members/Vidyullekha.jpeg", intro: t('president', 'President') }, description: "" },
         { name: t('ohCrop', 'Oh Crop'), logo: "/assets/logo.webp", head: { name: "Aimy Acksa", photo: "/assets/Club-members/Aimy.webp", intro: t('president', 'President') }, description: "" },
-        { name: t('shades', 'Shades'), logo: "/assets/logo.webp", head: { name: "Varnikka TM", photo: "/assets/compressed/Varnikka_rotated.webp", intro: t('president', 'President') }, description: "" },
+        { name: t('shades', 'Shades'), logo: "/assets/logo.webp", head: { name: "Drisya Manikkath", photo: "/assets/Club-members/DrisyaManikkath.webp", intro: t('president', 'President') }, description: "" },
         { name: t('treble', 'Treble'), logo: "/assets/logo.webp", head: { name: "Mevin Mathews", photo: "/assets/Club-members/Mevin.webp", intro: t('president', 'President') }, description: "" },
       ],
     },
