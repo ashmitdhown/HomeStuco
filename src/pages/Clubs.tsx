@@ -22,6 +22,7 @@ export default function Clubs() {
         { name: t('ohCrop', 'Oh Crop'), logo: "/assets/logo.webp", head: { name: "Aimy Acksa", photo: "/assets/Club-members/Aimy.webp", intro: t('president', 'President') }, description: "" },
         { name: t('shades', 'Shades'), logo: "/assets/logo.webp", head: { name: "Drisya Manikkath", photo: "/assets/Club-members/DrisyaManikkath.webp", intro: t('president', 'President') }, description: "" },
         { name: t('treble', 'Treble'), logo: "/assets/logo.webp", head: { name: "Mevin Mathews", photo: "/assets/Club-members/Mevin.webp", intro: t('president', 'President') }, description: "" },
+        { name: t('sportsclub', 'Sports Club'), logo: "/assets/logo.webp", head: { name: "Shaurya Gupta", photo: "/assets/Club-members/ShauryaGupta.webp", intro: t('president', 'President') }, description: "" },
       ],
     },
   ];
