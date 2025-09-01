@@ -186,17 +186,8 @@ If you are a council member or have an official request, please contact the main
 
 ---
 
-## 🗺️ Roadmap
-
-- [ ] Add dark mode support
-- [ ] Add admin dashboard
-- [ ] Add more event types
-- [ ] Improve mobile experience
-- [ ] Add automated tests
-- [ ] Multi-language support
 
 ---
-
 ## 📜 License, Privacy Policy & Contact
 
 <details>
