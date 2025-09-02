@@ -12,6 +12,7 @@ import { lazy, Suspense, useEffect } from 'react';
 import NotFound from "./pages/NotFound";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { useTranslation } from 'react-i18next';
+import ViewGalleryButton from "@/components/ViewGalleryButton";
 
 // Lazy-loaded page components
 const Index = lazy(() => import("./pages/Index"));
@@ -27,6 +28,7 @@ const TermsOfUse = lazy(() => import("./pages/TermsOfUse"));
 const CodeOfConduct = lazy(() => import("./pages/CodeOfConduct"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const DesignersPage = lazy(() => import("./pages/designers"));
+const Gallery = lazy(() => import("./pages/Gallery"));
 
 const queryClient = new QueryClient();
 
@@ -63,8 +65,11 @@ const App = () => {
                     </Suspense>
                   } />
                   <Route path="/events" element={
-                    <Suspense fallback={<LoadingSpinner />}>
-                      <Events />
+                    <Suspense fallback={<LoadingSpinner />}> 
+                      <>
+                        <Events />
+                        <ViewGalleryButton />
+                      </>
                     </Suspense>
                   } />
                   <Route path="/merch" element={
@@ -116,6 +121,11 @@ const App = () => {
                   <Route path="/designers" element={
                     <Suspense fallback={<LoadingSpinner />}>
                       <DesignersPage />
+                    </Suspense>
+                  } />
+                  <Route path="/gallery" element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <Gallery />
                     </Suspense>
                   } />
 
