@@ -48,6 +48,11 @@ const events: Announcement[] = [
   }
 ];
 
+const isPastEvent = (event: Announcement) => {
+  // You can use a more robust date check if needed
+  return event.id === 2 || event.id === 3;
+};
+
 export const AnnouncementSection = () => {
   const { t } = useTranslation();
 
@@ -77,15 +82,22 @@ export const AnnouncementSection = () => {
                   <img
                     src={event.image}
                     alt={event.title}
-                    className="w-full h-48 object-cover transition-transform duration-500"
+                    className={`w-full h-48 object-cover transition-transform duration-500 ${isPastEvent(event) ? 'grayscale opacity-70' : ''}`}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-velvet/60 via-transparent to-transparent opacity-0 group-hover:opacity-100" />
+                  {/* Overlay for past events */}
+                  {isPastEvent(event) && (
+                    <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+                      <span className="text-xl font-bold text-champagne drop-shadow-lg">Event Ended</span>
+                    </div>
+                  )}
                   <div className="absolute top-4 left-4">
                     <Badge
                       variant="secondary"
-                      className="bg-champagne/90 text-velvet hover:bg-champagne border-none"
+                      className={isPastEvent(event)
+                        ? "bg-muted text-muted-foreground border-none"
+                        : "bg-champagne/90 text-velvet hover:bg-champagne border-none"}
                     >
-                      {t(event.category)}
+                      {isPastEvent(event) ? 'Completed' : t(event.category)}
                     </Badge>
                   </div>
                 </div>
@@ -116,16 +128,17 @@ export const AnnouncementSection = () => {
                     {event.id === 1 ? (
                       <Button
                         className="w-full bg-velvet hover:bg-velvet/90 text-pearl font-semibold transition-all duration-300 hover:shadow-glow"
-                    onClick={() => window.open('https://forms.gle/mRtcp1uHZFMz4Gi58', '_self')}
+                        onClick={() => window.open('https://forms.gle/mRtcp1uHZFMz4Gi58', '_self')}
                       >
                         {t('joinMentee', 'Join as Mentee')}
                       </Button>
                     ) : (
                       <Button
                         className="w-full bg-velvet hover:bg-velvet/90 text-pearl font-semibold transition-all duration-300 hover:shadow-glow"
-                    onClick={() => window.open(`/Events/`, '_self')}
+                        onClick={() => window.open(`/Events/`, '_self')}
+                        disabled={isPastEvent(event)}
                       >
-                        {t('learnMore', 'Learn more')}
+                        {isPastEvent(event) ? 'Event Ended' : t('learnMore', 'Learn more')}
                       </Button>
                     )}
                   </div>
