@@ -22,7 +22,8 @@ interface EventCardProps {
   image: string;
   featured?: boolean;
   buttonLabel?: string;  
-  buttonLink?: string;   
+  buttonLink?: string;
+  isPastEvent?: boolean;
 }
 
 const categories = [
@@ -35,7 +36,7 @@ const categories = [
 
 const EventCard = ({ 
   title, description, date, time, location, category, icon, gradient, image, 
-  featured = false, buttonLabel = 'Register Now', buttonLink = '#' 
+  featured = false, buttonLabel = 'Register Now', buttonLink = '#', isPastEvent = false
 }: EventCardProps) => {
   const { t } = useTranslation();
 
@@ -44,14 +45,13 @@ const EventCard = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="bg-[#14213d]/60 backdrop-blur-md text-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col border border-gray-900"
+      className="bg-[#14213d]/60 backdrop-blur-md text-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col border border-gray-900 relative"
     >
-
       <div className="relative h-48 overflow-hidden">
         <img 
           src={image} 
           alt={t(title, title)}
-          className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+          className={`w-full h-full object-cover transform hover:scale-105 transition-transform duration-500 ${isPastEvent ? 'opacity-60 grayscale' : ''}`}
           loading="lazy"
         />
         {featured && (
@@ -59,13 +59,20 @@ const EventCard = ({
             {t('featured', 'Featured')}
           </div>
         )}
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#14213d]/90 to-transparent p-4">
+        {isPastEvent && (
+          <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+            <span className="text-white text-lg font-bold bg-black/60 px-4 py-2 rounded">{t('eventEnded', 'Event Ended')}</span>
+          </div>
+        )}
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#14213d]/90 to-transparent p-4 flex justify-between items-center">
           <span className="text-white text-sm font-medium bg-[#14213d]/80 px-2 py-1 rounded">
             {t(category, category)}
           </span>
+          {isPastEvent && (
+            <span className="ml-2 bg-gray-400 text-gray-900 text-xs font-bold px-2 py-1 rounded-full">{t('eventEnded', 'Event Ended')}</span>
+          )}
         </div>
       </div>
-
       <div className={`h-1 ${gradient}`}></div>
       <div className="p-6 flex-grow flex flex-col">
         <div className="flex items-center mb-4">
@@ -74,9 +81,7 @@ const EventCard = ({
           </div>
           <h3 className="text-2xl font-bold text-white">{t(title, title)}</h3>
         </div>
-
         <p className="text-white/80 mb-6 flex-grow">{t(description, description)}</p>
-
         <div className="space-y-3 mt-auto">
           <div className="flex items-center text-white/70">
             <Calendar className="w-5 h-5 mr-2 text-indigo-300" />
@@ -91,15 +96,14 @@ const EventCard = ({
             <span>{location}</span>
           </div>
         </div>
-
-
         <div className="mt-6 flex justify-center">
           <a 
             href={buttonLink} 
             target="_self" 
-            className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-[1.02] shadow-md hover:shadow-lg"
+            className={`bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-[1.02] shadow-md hover:shadow-lg ${isPastEvent ? 'pointer-events-none opacity-60 cursor-not-allowed' : ''}`}
+            aria-disabled={isPastEvent}
           >
-            {t(buttonLabel, buttonLabel)}
+            {isPastEvent ? t('eventEnded', 'Event Ended') : t(buttonLabel, buttonLabel)}
           </a>
         </div>
       </div>
@@ -128,7 +132,8 @@ const Events = () => {
       image: '/assets/gamenight.webp',
       featured: true,
       buttonLabel: 'Join Game Night',
-      buttonLink: '#'
+      buttonLink: '#',
+      isPastEvent: true
     },
     {
       id: 2,
