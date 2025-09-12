@@ -152,15 +152,15 @@ const Events = () => {
     },
     {
       id: 5,
-      title: 'Jashn',
-      description: 'A vibrant cultural festival celebrating diversity through music, dance, and art from around the world.',
+      title: 'Bits Sports Fest',
+      description: ' UAE’s largest inter-university and inter-school sports fest. It brings together sports, live events, food, and entertainment in a vibrant celebration of talent, sportsmanship, and community.',
       date: 'TBA',
       time: 'TBA',
       location: 'TBA',
       category: 'Cultural',
       icon: <PartyPopper className="w-6 h-6" />,
       gradient: 'bg-gradient-to-r from-pink-500 to-rose-500',
-      image: '/assets/jashn.webp',
+      image: '/assets/bsf.png',
       buttonLabel: 'Coming Soon... ',
       buttonLink: ''
     },
