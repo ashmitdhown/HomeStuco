@@ -18,6 +18,7 @@ import ViewGalleryButton from "@/components/ViewGalleryButton";
 const Index = lazy(() => import("./pages/Index"));
 const About = lazy(() => import("./pages/About"));
 const Events = lazy(() => import("./pages/Events"));
+const Sparks = lazy(() => import("./pages/Sparks"));
 const Merch = lazy(() => import("./pages/Merch"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Jashn26 = lazy(() => import("./pages/Jashn26"));
@@ -70,6 +71,11 @@ const App = () => {
                         <Events />
                         <ViewGalleryButton />
                       </>
+                    </Suspense>
+                  } />
+                  <Route path="/sparks" element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <Sparks />
                     </Suspense>
                   } />
                   <Route path="/merch" element={

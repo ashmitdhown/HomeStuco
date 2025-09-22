@@ -15,6 +15,7 @@ const navLinks = [
   { name: "EMC", to: "/EMC" },
   { name: "ABOUT", to: "/about" },
   { name: "CONTACT", to: "/contact" },
+  { name: "SPARKS", to: "/sparks" },
   { name: "JASHN26", to: "/jashn26" },
 ];
 
