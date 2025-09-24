@@ -3,6 +3,7 @@ import InstagramContactBar from "@/components/ui/InstagramContactBar";
 import { useState } from 'react';
 import { Heart, Star, CreditCard } from 'lucide-react';
 import { FixedSizeList as ProductList } from 'react-window';
+import Spline from '@splinetool/react-spline';
 
 import { PageBgAndCursor } from "@/components/PageBgAndCursor";
 
@@ -126,7 +127,8 @@ const Merch = () => {
       <div className="min-h-screen">
 
         <div className="relative w-full overflow-hidden h-[34vh] md:h-screen">
-          <div className="absolute inset-0 w-full h-full z-0 bg-gradient-to-br from-gray-900 via-black to-gray-800">
+          <div className="absolute inset-0 w-full h-full z-0">
+            <Spline scene="https://prod.spline.design/E9Y1f0Wp36HmvzX0/scene.splinecode" style={{ width: '100%', height: '100%' }} />
           </div>
           <div className="absolute z-10 bottom-2 right-1 md:bottom-4 md:right-6">
             <button

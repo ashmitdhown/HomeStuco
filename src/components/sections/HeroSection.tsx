@@ -77,7 +77,7 @@ export const HeroSection = () => {
         </div>
 
 
-        {showContact && (
+        {/* {showContact && (
           <a
             href="/contact"
             className="fixed z-50 bottom-2 right-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2 hover:bg-primary/90 transition-colors text-lg font-semibold"
@@ -100,7 +100,7 @@ export const HeroSection = () => {
             </svg>
             {t("contactUs")}
           </a>
-        )}
+        )} */}
       </section>
       <InstagramContactBar />
     </>
