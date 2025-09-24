@@ -104,29 +104,23 @@ const councilMembers: CouncilMember[] = [
     bio: LOREM
   },
   {
-    name: "To be announced",
+    name: "Manjushree Magesh",
     position: "IMT HR",
-    image: "/assets/councilphotos/blank-profile-picture-973460_1280-2.webp",
+    image: "/assets/councilphotos/IMT.jpeg",
     bio: LOREM
   },
   {
-    name: "To be announced",
+    name: "Vaani Gill",
     position: "STUDY WORLD HR",
-    image: "/assets/councilphotos/blank-profile-picture-973460_1280-2.webp",
+    image: "/assets/councilphotos/studyworld.jpeg",
     bio: LOREM
   },
   {
-    name: "To be announced",
-    position: "G-Block HR",
-    image: "/assets/councilphotos/blank-profile-picture-973460_1280-2.webp",
+    name: "Mansha Saraswat",
+    position: "G/H-Block HR",
+    image: "/assets/councilphotos/G:H.jpg",
     bio: LOREM
   },
-  {
-    name: "To be announced",
-    position: "H-Block HR",
-    image: "/assets/councilphotos/blank-profile-picture-973460_1280-2.webp",
-    bio: LOREM
-  }
 ];
 
 export const CouncilSection = () => {

@@ -1,5 +1,6 @@
 // Author: Manav Arya & Ashmit Dhown
 import { useEffect } from "react";
+import { PageBgAndCursor } from "@/components/PageBgAndCursor";
 
 const NotFound = () => {
   // You can uncomment and adapt these when using with react-router-dom
@@ -12,8 +13,7 @@ const NotFound = () => {
   // }, [location.pathname]);
 
   return (
-    // Replace with <PageBgAndCursor> when using your component
-    <div>
+    <PageBgAndCursor>
       <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-gray-900 via-gray-800 to-black">
 
         <div className="absolute inset-0">
@@ -125,8 +125,7 @@ const NotFound = () => {
           ))}
         </div>
       </div>
-    // Close PageBgAndCursor when using your component
-    </div>
+    </PageBgAndCursor>
   );
 };
 

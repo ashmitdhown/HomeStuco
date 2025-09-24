@@ -1,5 +1,4 @@
 // Author: Manav Arya & Ashmit Dhown
-import SplineBg from "@/components/SplineBg";
 import { Link, useLocation } from "react-router-dom";
 // ...existing code...
 import { useTranslation } from "react-i18next";
@@ -69,9 +68,6 @@ const Navigation = () => {
 
   return (
     <>
-      <SplineBg />
-      
-
       <nav
         className={`w-full fixed top-0 left-0 z-50 px-8 pt-6 flex items-center transition-all duration-300 ease-out ${
           scrolled ? "bg-black/90 backdrop-blur-sm" : "bg-transparent"
