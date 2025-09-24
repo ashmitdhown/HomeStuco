@@ -1,7 +1,5 @@
 // Author: Manav Arya & Ashmit Dhown
-import SplineBg from "@/components/SplineBg";
 import { Mail, Linkedin } from "lucide-react";
-
 import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
@@ -12,11 +10,9 @@ const Footer = () => {
   };
 
   return (
-    <>
-      <SplineBg />
-      <footer className="w-full bg-gray-900/10 backdrop-blur-md border-t border-gray-800 mt-16">
-        <div className="w-full px-6 md:px-16 py-0 pb-12 md:pb-0 flex justify-center">
-          <div className="w-full max-w-7xl bg-gray-900/5 backdrop-blur-lg shadow-xl p-6 md:p-8 flex flex-col gap-6 md:gap-8 rounded-none mx-auto">
+    <footer className="w-full bg-black border-t border-gray-800 overflow-hidden">
+        <div className="w-full px-6 md:px-16 py-0 flex justify-center">
+          <div className="w-full max-w-7xl bg-black p-6 md:p-6 flex flex-col gap-4 md:gap-6 mx-auto">
 
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 w-full md:w-full">
 
@@ -64,8 +60,8 @@ const Footer = () => {
             <div className="flex-1 min-w-[240px] flex flex-col items-center md:items-start mt-12 md:mt-0 md:ml-14 gap-6">
 
               <a href="mailto:studentcouncil@dubai.bits-pilani.ac.in" target="_blank" rel="noopener noreferrer"
-                className="w-full rounded-2xl bg-gray-700/10 backdrop-blur-lg p-4 flex items-center gap-4 shadow-md hover:bg-gray-700/20 transition-colors duration-300">
-                <div className="bg-gray-500/40 rounded-xl p-3 flex items-center justify-center">
+                className="w-full rounded-2xl bg-gray-900 p-4 flex items-center gap-4 shadow-md hover:bg-gray-800 transition-colors duration-300">
+                <div className="bg-gray-800 rounded-xl p-3 flex items-center justify-center">
                   <Mail className="w-8 h-8 text-white" />
                 </div>
                 <div>
@@ -76,8 +72,8 @@ const Footer = () => {
 
 
               <a href="https://www.instagram.com/council.bitsdubai/" target="_blank" rel="noopener noreferrer"
-                className="w-full rounded-2xl bg-gray-700/10 backdrop-blur-lg p-4 flex items-center gap-4 shadow-md hover:bg-gray-700/20 transition-colors duration-300">
-                <div className="bg-gray-500/40 rounded-xl p-3 flex items-center justify-center">
+                className="w-full rounded-2xl bg-gray-900 p-4 flex items-center gap-4 shadow-md hover:bg-gray-800 transition-colors duration-300">
+                <div className="bg-gray-800 rounded-xl p-3 flex items-center justify-center">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" /><path strokeLinecap="round" strokeLinejoin="round" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" /><path strokeLinecap="round" strokeLinejoin="round" d="M17.5 6.5h.01" /></svg>
                 </div>
                 <div>
@@ -88,8 +84,8 @@ const Footer = () => {
 
 
               <a href="https://www.linkedin.com/company/student-council-bpdc/" target="_blank" rel="noopener noreferrer"
-                className="w-full rounded-2xl bg-gray-700/10 backdrop-blur-lg p-4 flex items-center gap-4 shadow-md hover:bg-gray-700/20 transition-colors duration-300">
-                <div className="bg-gray-500/40 rounded-xl p-3 flex items-center justify-center">
+                className="w-full rounded-2xl bg-gray-900 p-4 flex items-center gap-4 shadow-md hover:bg-gray-800 transition-colors duration-300">
+                <div className="bg-gray-800 rounded-xl p-3 flex items-center justify-center">
                   <Linkedin className="w-8 h-8 text-white" />
                 </div>
                 <div>
@@ -101,7 +97,7 @@ const Footer = () => {
           </div>
 
 
-          <div className="w-full text-center text-sm text-white mt-8">
+          <div className="w-full text-center text-sm text-white mt-4">
             {t('copyright', '© 2025 by Student Council, BITS Pilani, Dubai Campus.')}
             <span className="ml-3">
               <a href="/designers" className="hover:underline text-blue-300">
@@ -109,7 +105,7 @@ const Footer = () => {
               </a>
             </span>
           </div>
-          <div className="w-full flex flex-col items-center mt-3 gap-2">
+          <div className="w-full flex flex-col items-center mt-2 gap-2 mb-0">
             <div className="flex gap-6 text-sm text-white">
               <a href="/terms-of-use" className="hover:underline">{t('termsOfUse', 'Terms of Use')}</a>
               <a href="/code-of-conduct" className="hover:underline">{t('codeOfConduct', 'Code of Conduct')}</a>
@@ -130,7 +126,6 @@ const Footer = () => {
         </div>
       </div>
       </footer>
-    </>
   );
 };
 

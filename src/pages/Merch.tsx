@@ -5,8 +5,6 @@ import { Heart, Star, CreditCard } from 'lucide-react';
 import { FixedSizeList as ProductList } from 'react-window';
 
 import { PageBgAndCursor } from "@/components/PageBgAndCursor";
-import Spline from '@splinetool/react-spline';
-// ...existing code...
 
 interface Product {
   id: number;
@@ -128,8 +126,7 @@ const Merch = () => {
       <div className="min-h-screen">
 
         <div className="relative w-full overflow-hidden h-[34vh] md:h-screen">
-          <div className="absolute inset-0 w-full h-full z-0">
-            <Spline scene="https://prod.spline.design/E9Y1f0Wp36HmvzX0/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+          <div className="absolute inset-0 w-full h-full z-0 bg-gradient-to-br from-gray-900 via-black to-gray-800">
           </div>
           <div className="absolute z-10 bottom-2 right-1 md:bottom-4 md:right-6">
             <button
@@ -288,19 +285,7 @@ const Merch = () => {
         </div>
       </div>
       </PageBgAndCursor>
-
-      <a
-        href="/contact"
-        className="fixed z-[9999] bottom-4 right-4 bg-primary text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2 hover:bg-primary/90 transition-all text-lg font-semibold"
-        style={{ boxShadow: '0 4px 24px 0 rgba(0,0,0,0.18)' }}
-        aria-label="Contact Us"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-.659 1.591l-7.5 7.5a2.25 2.25 0 01-3.182 0l-7.5-7.5A2.25 2.25 0 012.25 6.993V6.75" />
-        </svg>
-        Contact Us
-      </a>
-    <InstagramContactBar />
+      <InstagramContactBar />
     </>
   );
 };

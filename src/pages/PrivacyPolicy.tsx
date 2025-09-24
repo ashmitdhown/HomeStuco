@@ -1,19 +1,19 @@
 import InstagramContactBar from "@/components/ui/InstagramContactBar";
 import React, { useEffect, useState } from "react";
-import { throttle } from "../lib/throttle";
 import { PageBgAndCursor } from "@/components/PageBgAndCursor";
+import { scrollManager } from "../lib/scroll-manager";
 
 const PrivacyPolicy = () => {
   const [fade, setFade] = useState(false);
 
   useEffect(() => {
-    const handleScroll = throttle(() => {
+    const id = "privacy-fade";
+    scrollManager.addListener(id, (scrollY) => {
       requestAnimationFrame(() => {
-        setFade(window.scrollY > 100);
+        setFade(scrollY > 100);
       });
-    }, 30);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    });
+    return () => scrollManager.removeListener(id);
   }, []);
 
   return (
