@@ -92,33 +92,26 @@ const councilMembers: CouncilMember[] = [
     bio: LOREM
   },
   {
-    name: "To be announced",
-    position: "1st Year HR",
-    image: "/assets/councilphotos/blank-profile-picture-973460_1280-2.webp",
-    bio: LOREM
-  },
-  {
-    name: "To be announced",
-    position: "1st Year DSR",
-    image: "/assets/councilphotos/blank-profile-picture-973460_1280-2.webp",
-    bio: LOREM
-  },
-  {
     name: "Manjushree Magesh",
     position: "IMT HR",
-    image: "/assets/councilphotos/IMT.jpeg",
+    image: "/assets/councilphotos/Manjushree.jpeg",
+    instagram:"https://www.instagram.com/oblivious.really?igsh=MWNmd3RqN2F2cWc4Mw%3D%3D&utm_source=qr",
     bio: LOREM
   },
   {
     name: "Vaani Gill",
     position: "STUDY WORLD HR",
-    image: "/assets/councilphotos/studyworld.jpeg",
+    image: "/assets/councilphotos/Vaani.jpeg",
+    instagram:"https://www.instagram.com/vaanii.gill?igsh=MTJtd3YwODhsOTJp",
+    linkedin:"https://www.linkedin.com/in/vaani-gill-71a8bb372?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
     bio: LOREM
   },
   {
     name: "Mansha Saraswat",
     position: "G/H-Block HR",
-    image: "/assets/councilphotos/G:H.jpg",
+    image: "/assets/councilphotos/Mansha.jpeg",
+    instagram:"https://www.instagram.com/eternallythought/",
+    linkedin:"https://www.linkedin.com/in/mansha-saraswat/",
     bio: LOREM
   },
 ];
@@ -181,7 +174,7 @@ export const CouncilSection = () => {
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-full object-cover object-center"
                   />
                 </div>
                 <div className="flex flex-col flex-1 justify-center px-4 py-2">
@@ -232,7 +225,7 @@ export const CouncilSection = () => {
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-full object-cover object-center"
                   />
                 </div>
                 <div className="flex flex-col flex-1 justify-center px-4 py-2">
@@ -283,7 +276,7 @@ export const CouncilSection = () => {
                     <img
                       src={hBlock.image}
                       alt={hBlock.name}
-                      className="w-full h-full object-cover object-top"
+                      className="w-full h-full object-cover object-center"
                     />
                   </div>
                   <div className="flex flex-col flex-1 justify-center px-4 py-2">
@@ -332,7 +325,7 @@ export const CouncilSection = () => {
                     <img
                       src={hBlock.image}
                       alt={hBlock.name}
-                      className="w-full h-full object-cover object-top"
+                      className="w-full h-full object-cover object-center"
                     />
                   </div>
                   <div className="flex flex-col flex-1 justify-center px-4 py-2">
@@ -382,7 +375,7 @@ export const CouncilSection = () => {
                     <img
                       src={hBlock.image}
                       alt={hBlock.name}
-                      className="w-full h-full object-cover object-top"
+                      className="w-full h-full object-cover object-center"
                     />
                   </div>
                   <div className="flex flex-col flex-1 justify-center px-4 py-2">

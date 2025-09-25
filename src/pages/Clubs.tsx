@@ -30,8 +30,8 @@ export default function Clubs() {
     <>
       <PageBgAndCursor>
 
-        <section className="relative h-[420px] md:h-[640px] lg:h-[900px] w-full overflow-hidden flex items-center justify-center pointer-events-none">
-          <div className="w-full h-[640px] md:h-[900px] lg:h-[1100px] flex items-center justify-center relative" style={{ willChange: 'transform' }}>
+        <section className="relative h-[60vh] md:h-screen w-full overflow-hidden flex items-center justify-center pointer-events-none">
+          <div className="w-full h-full flex items-center justify-center relative" style={{ willChange: 'transform' }}>
             <img
               src="/assets/clubs2carousel.jpg"
               alt={t('clubCarousel', 'Club Carousel')}
