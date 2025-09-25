@@ -91,6 +91,22 @@ const councilMembers: CouncilMember[] = [
     instagram: "https://www.instagram.com/txnishx24/",
     bio: LOREM
   },
+
+  {
+    name: "Amaan Purohit Haider",
+    position: "1st Year HR",
+    image: "/assets/councilphotos/Amaan.jpeg",
+    bio: LOREM
+  },
+  
+
+  {
+    name: "Shreya Pramode",
+    position: "1st Year DSR",
+    image: "/assets/councilphotos/Shreya.jpeg",
+    instagram:"https://www.instagram.com/shreya.pramod1011?igsh=OTIwaHhqb3p3NXB5&utm_source=qr",
+    bio: LOREM
+  },
   {
     name: "Manjushree Magesh",
     position: "IMT HR",
@@ -114,6 +130,7 @@ const councilMembers: CouncilMember[] = [
     linkedin:"https://www.linkedin.com/in/mansha-saraswat/",
     bio: LOREM
   },
+
 ];
 
 export const CouncilSection = () => {
@@ -126,7 +143,7 @@ export const CouncilSection = () => {
             {t("meetCouncil")}
           </h2>
           <div className="w-24 h-1 bg-gradient-accent mx-auto mb-6"></div>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-white/90 max-w-2xl mx-auto font-medium">
             {t("councilDesc")}
           </p>
         </div>

@@ -69,7 +69,7 @@ export const AnnouncementSection = () => {
             {t("announcements")}
           </h2>
           <div className="w-24 h-1 bg-gradient-accent mx-auto mb-6"></div>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-white/90 max-w-2xl mx-auto font-medium">
             {t("announcementDesc")}
           </p>
         </div>
