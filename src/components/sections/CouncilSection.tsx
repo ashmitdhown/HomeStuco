@@ -101,7 +101,7 @@ const councilMembers: CouncilMember[] = [
   
 
   {
-    name: "Shreya Pramode",
+    name: "Shreya Pramod",
     position: "1st Year DSR",
     image: "/assets/councilphotos/Shreya.jpeg",
     instagram:"https://www.instagram.com/shreya.pramod1011?igsh=OTIwaHhqb3p3NXB5&utm_source=qr",
