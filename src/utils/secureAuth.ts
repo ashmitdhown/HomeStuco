@@ -81,7 +81,7 @@ export class SecureAuth {
 
 // Environment-based configuration
 export const AUTH_CONFIG = {
-  API_BASE_URL: process.env.REACT_APP_API_URL || 'http://localhost:3001',
+  API_BASE_URL: import.meta.env.VITE_API_URL || 'http://localhost:3001',
   SESSION_TIMEOUT: 24 * 60 * 60 * 1000, // 24 hours
-  ENABLE_LOGGING: process.env.NODE_ENV === 'development',
+  ENABLE_LOGGING: import.meta.env.DEV || false,
 };

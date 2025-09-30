@@ -13,14 +13,23 @@ const AdminLogin = () => {
     e.preventDefault();
     setError('');
     
+    console.log('Login form submitted');
+    console.log('Username:', username);
+    console.log('Password:', password);
+    
     try {
+      console.log('Importing validateCredentials...');
       // Import credentials from secure config
       const { validateCredentials } = await import('../utils/secureAuth');
+      console.log('validateCredentials imported successfully');
       
+      console.log('Calling validateCredentials...');
       // Validate credentials securely
       const isValid = await validateCredentials(username, password);
+      console.log('Validation result:', isValid);
       
       if (isValid) {
+        console.log('Login successful, redirecting...');
         // Generate a session token for security
         const sessionToken = btoa(Date.now() + '-' + Math.random().toString(36));
         localStorage.setItem('adminToken', sessionToken);
@@ -28,9 +37,11 @@ const AdminLogin = () => {
         localStorage.setItem('adminSession', Date.now().toString());
         navigate('/admin/dashboard');
       } else {
+        console.log('Login failed - invalid credentials');
         setError('Invalid username or password');
       }
     } catch (error) {
+      console.error('Login error:', error);
       setError('Login failed. Please try again.');
     }
   };
