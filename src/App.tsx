@@ -13,6 +13,7 @@ import NotFound from "./pages/NotFound";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { useTranslation } from 'react-i18next';
 import ViewGalleryButton from "@/components/ViewGalleryButton";
+import AuthGuard from "@/components/AuthGuard";
 
 // Lazy-loaded page components
 const Index = lazy(() => import("./pages/Index"));
@@ -30,6 +31,10 @@ const CodeOfConduct = lazy(() => import("./pages/CodeOfConduct"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const DesignersPage = lazy(() => import("./pages/designers"));
 const Gallery = lazy(() => import("./pages/Gallery"));
+
+// Admin pages
+const AdminLogin = lazy(() => import("./pages/AdminLogin"));
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 
 const queryClient = new QueryClient();
 
@@ -132,6 +137,20 @@ const App = () => {
                   <Route path="/gallery" element={
                     <Suspense fallback={<LoadingSpinner />}>
                       <Gallery />
+                    </Suspense>
+                  } />
+                  
+                  {/* Admin routes */}
+                  <Route path="/admin" element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <AdminLogin />
+                    </Suspense>
+                  } />
+                  <Route path="/admin/dashboard" element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <AuthGuard>
+                        <AdminDashboard />
+                      </AuthGuard>
                     </Suspense>
                   } />
 
