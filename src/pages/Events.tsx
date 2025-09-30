@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import InstagramContactBar from "@/components/ui/InstagramContactBar";
 import { Calendar, Clock, MapPin, BookOpen, Sparkles, PartyPopper, Search, Filter, Grid, List } from 'lucide-react';
@@ -7,22 +7,11 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PageBgAndCursor } from "@/components/PageBgAndCursor";
+import eventService, { EventData as EventDataType } from "../services/eventService";
 
-interface EventCardProps {
-  id: number;
-  title: string;
-  description: string;
-  date: string;
-  time: string;
-  location: string;
-  category: string;
-  icon: React.ReactNode;
-  gradient: string;
-  image: string;
-  featured?: boolean;
-  buttonLabel?: string;  
-  buttonLink?: string;
-  isPastEvent?: boolean;
+interface EventCardProps extends EventDataType {
+  icon?: React.ReactNode;
+  gradient?: string;
 }
 
 const categories = [
@@ -116,84 +105,55 @@ const Events = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [eventsData, setEventsData] = useState<EventDataType[]>([]);
 
-  const events: EventCardProps[] = [
-    {
-      id: 1,
-      title: 'Freshers’ Game Night',
-      description: 'Start your campus journey with an unforgettable night of games, laughs, and bonding. Hosted by the Student Council, this event is designed to break the ice !',
-      date: 'Friday, 29th August',
-      time: '7:00 PM',
-      location: 'TBA',
-      category: 'Orientation',
-      icon: <PartyPopper className="w-6 h-6" />,
-      gradient: 'bg-gradient-to-r from-yellow-400 to-orange-500',
-      image: '/assets/gamenight.webp',
-      featured: true,
-      buttonLabel: 'Join Game Night',
-      buttonLink: '#',
-      isPastEvent: true
-    },
-    {
-      id: 2,
-      title: 'Peer-to-Peer Mentorship',
-      description: 'Connect, learn, and grow together with our Peer-to-Peer Mentorship Programme — a supportive space where students help each other succeed academically and socially.',
-      date: 'TBA',
-      time: 'TBA',
-      location: 'TBA',
-      category: 'Academic',
-      icon: <BookOpen className="w-6 h-6" />,
-      gradient: 'bg-gradient-to-r from-blue-500 to-indigo-600',
-      image: '/assets/P2P.webp',
-      featured: true,
-      buttonLabel: 'Mentorship',
-      buttonLink: ''
-    },
-    {
-      id: 5,
-      title: 'Bits Sports Fest',
-      description: ' UAE’s largest inter-university and inter-school sports fest. It brings together sports, live events, food, and entertainment in a vibrant celebration of talent, sportsmanship, and community.',
-      date: 'TBA',
-      time: 'TBA',
-      location: 'TBA',
-      category: 'Cultural',
-      icon: <PartyPopper className="w-6 h-6" />,
-      gradient: 'bg-gradient-to-r from-pink-500 to-rose-500',
-      image: '/assets/bsf.png',
-      buttonLabel: 'Coming Soon... ',
-      buttonLink: ''
-    },
-    {
-      id: 6,
-      title: 'Sparks',
-      description: 'Three days of non-stop energy, creativity, and campus spirit — SPARKS brings students together to perform, compete, and celebrate everything that makes college unforgettable.',
-      date: 'TBA',
-      time: 'TBA',
-      location: 'TBA',
-      category: 'Cultural',
-      icon: <Sparkles className="w-6 h-6" />,
-      gradient: 'bg-gradient-to-r from-orange-400 to-yellow-500',
-      image: '/assets/compressed/sparks.webp',
-      buttonLabel: 'Coming Soon... ',
-      buttonLink: ''
-    },
-    {
-      id: 7,
-      title: 'Ethnic Day',
-      description: 'Celebrate the rich cultural heritage of our campus with traditional attire, music, and festivities. Join us for a day of unity and diversity!',
-      date: 'TBA',
-      time: 'TBA',
-      location: 'TBA',
-      category: 'Cultural',
-      icon: <PartyPopper className="w-6 h-6" />,
-      gradient: 'bg-gradient-to-r from-green-400 to-emerald-500',
-      image: '/assets/ethnic.webp',
-      buttonLabel: 'Coming Soon... ',
-      buttonLink: ''
+  // Load events from service
+  useEffect(() => {
+    const loadedEvents = eventService.getEvents();
+    setEventsData(loadedEvents);
+  }, []);
+
+  // Map event categories to icons and gradients
+  const getCategoryIcon = (category: string) => {
+    switch(category.toLowerCase()) {
+      case 'academic':
+        return <span className="text-2xl text-black">📚</span>;
+      case 'cultural':
+        return <span className="text-2xl text-black">🔥</span>;
+      case 'workshop':
+        return <span className="text-2xl text-black">🛠️</span>;
+      case 'social':
+        return <span className="text-2xl text-black">🎉</span>;
+      case 'orientation':
+        return <span className="text-2xl text-black">🎯</span>;
+      default:
+        return <span className="text-2xl text-black">✨</span>;
     }
-  ];
+  };
 
-  const filteredEvents = events.filter(event => {
+  const getCategoryGradient = (category: string) => {
+    switch(category.toLowerCase()) {
+      case 'academic':
+        return 'bg-gradient-to-r from-blue-500 to-indigo-600';
+      case 'cultural':
+        return 'bg-gradient-to-r from-pink-500 to-rose-500';
+      case 'workshop':
+        return 'bg-gradient-to-r from-indigo-500 to-purple-600';
+      case 'social':
+        return 'bg-gradient-to-r from-orange-400 to-yellow-500';
+      case 'orientation':
+        return 'bg-gradient-to-r from-yellow-400 to-orange-500';
+      default:
+        return 'bg-gradient-to-r from-green-400 to-emerald-500';
+    }
+  };
+
+  // Convert loaded events to event cards with icons and gradients
+  const events: EventCardProps[] = eventsData.map(event => ({
+    ...event,
+    icon: getCategoryIcon(event.category),
+    gradient: getCategoryGradient(event.category)
+  }));  const filteredEvents = events.filter(event => {
     const matchesSearch = event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       event.description.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = activeCategory === 'all' || event.category.toLowerCase() === activeCategory.toLowerCase();
