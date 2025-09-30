@@ -8,15 +8,30 @@ const AdminLogin = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  // For demo purposes only - in a real app, use proper authentication
-  const handleLogin = (e: React.FormEvent) => {
+  // Secure client-side authentication (transitional solution)
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simple validation - in a real app, connect to your backend
-    if (username === 'admin' && password === 'password') {
-      localStorage.setItem('adminAuthenticated', 'true');
-      navigate('/admin/dashboard');
-    } else {
-      setError('Invalid username or password');
+    setError('');
+    
+    try {
+      // Import credentials from secure config
+      const { validateCredentials } = await import('../utils/secureAuth');
+      
+      // Validate credentials securely
+      const isValid = await validateCredentials(username, password);
+      
+      if (isValid) {
+        // Generate a session token for security
+        const sessionToken = btoa(Date.now() + '-' + Math.random().toString(36));
+        localStorage.setItem('adminToken', sessionToken);
+        localStorage.setItem('adminAuthenticated', 'true');
+        localStorage.setItem('adminSession', Date.now().toString());
+        navigate('/admin/dashboard');
+      } else {
+        setError('Invalid username or password');
+      }
+    } catch (error) {
+      setError('Login failed. Please try again.');
     }
   };
 

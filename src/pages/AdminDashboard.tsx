@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Plus, Calendar, Clock, MapPin, Calendar as CalendarIcon, Image, Tag, Edit, Trash2, LogOut, ArrowLeft, Save } from 'lucide-react';
 import { motion } from 'framer-motion';
 import eventService, { EventData } from '../services/eventService';
+import { SecureAuth } from '../utils/secureAuth';
 
 // Example categories
 const categories = [
@@ -38,11 +39,13 @@ const AdminDashboard = () => {
 
   // Check authentication
   useEffect(() => {
-    const isAdmin = localStorage.getItem('adminAuthenticated') === 'true';
+    const isAdmin = SecureAuth.isAuthenticated();
     if (!isAdmin) {
       navigate('/admin');
     } else {
       setIsAuthenticated(true);
+      // Refresh session on dashboard access
+      SecureAuth.refreshSession();
       
       // Load events from service
       const loadedEvents = eventService.getEvents();
@@ -51,8 +54,8 @@ const AdminDashboard = () => {
   }, [navigate]);
 
   const handleLogout = () => {
-    // Clear the authentication state
-    localStorage.removeItem('adminAuthenticated');
+    // Clear the authentication state securely
+    SecureAuth.logout();
     // Use navigate instead of window.location for proper routing
     navigate('/admin', { replace: true });
   };
