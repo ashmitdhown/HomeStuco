@@ -180,7 +180,7 @@ const Merch = () => {
     {
       id: 9,
       name: 'Tote Bag',
-      price: 60,
+      price: 15,
       category: 'Bags',
       images: [
         "/assets/MERCH/ToteBag1.png",
